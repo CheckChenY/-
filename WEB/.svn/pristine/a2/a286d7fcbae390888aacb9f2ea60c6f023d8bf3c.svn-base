@@ -1,0 +1,54 @@
+.issues-title-word-left {
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ff5454;
+}
+
+.issues-title-word {
+    font-family: PingFangSC;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #353535;
+}
+
+.issues-title-word-en {
+    display: inline-block;
+    font-family: PingFangSC;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    /* text-align: left; */
+    color: #848484;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.stocks-body-pic-one {
+    width:100%;
+    margin-bottom: 20px;
+}
+
+.stocks-body-pic-two {
+    width:100%;
+    margin-bottom: 20px;
+}
+
+.stocks-body-pic-three {
+    width:100%;
+}
+
+.stocks-body-pic-four {
+    width:100%;
+}

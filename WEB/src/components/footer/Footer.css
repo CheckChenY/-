@@ -1,0 +1,15 @@
+.footer-text
+{
+    border-top: solid 1px #e5e5e5;
+    margin-top: 10px;
+    padding: 5px 10px 10px 10px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6f6f6f;
+}
