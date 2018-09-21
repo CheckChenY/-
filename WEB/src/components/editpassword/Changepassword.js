@@ -2,28 +2,45 @@
 * Created by mapbar_front on 2018/3/18.
 */
 import React,{ Component} from 'react';
-// import { Button} from 'antd';
-import { Modal, Button } from 'antd';
-import { Row, Col } from 'antd';
+import { connect } from 'react-redux';
+import { Row, Col,Modal, Button } from 'antd';
+import { editPassword , editPasswordHide,editPasswordSave} from './action'
 import './Changepassword.css';
 import imgoneURL from '../assient/invalid-name.png';
 
-export default class Changepassword extends Component{
-    state = { visible: false }
-        showModal = () => {
-            this.setState({
-                visible: true,
-            });
+class Changepassword extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            userPassword:'123',
+            newPassword:'456'
         }
-        hideModal = () => {
-            this.setState({
-                visible: false,
-            });
-        }
+        this.oldPassword = this.oldPassword.bind(this);
+        this.newPassword = this.newPassword.bind(this);
+    }
+
+    oldPassword(e){
+        this.setState({
+            userPassword: e.target.value
+        })
+    }
+    newPassword(e){
+        this.setState({
+            newPassword: e.target.value
+        })
+    }
+
         render() {
+            const self = this,
+            { props ,state:selfState} = self,
+            { userPassword, newPassword} = selfState,
+            { editPassword,state,editPasswordHide,editPasswordSave } = props,
+            { visible,user } = state;
+            const userArr = JSON.parse(user),
+            { userAccount } = userArr.data;
             return (
             <div>
-                <Button  onClick={this.showModal} className="change-psw">
+                <Button  onClick={editPassword} className="change-psw">
                     {/* <img alt='修改密码' src={imgoneURL} /> */}
                     修改密码
                 </Button>
@@ -31,9 +48,9 @@ export default class Changepassword extends Component{
                     title="修改密码"
                     wrapClassName ="change-base"
                     iconType= {<img alt='修改密码' src={imgoneURL} />}
-                    visible={this.state.visible}
-                    onOk={this.hideModal}
-                    onCancel={this.hideModal}
+                    visible={visible}
+                    onOk={editPasswordHide}
+                    onCancel={editPasswordHide}
                     okText="确认"
                     cancelText="取消"
                     // width={'1000px'}
@@ -65,7 +82,10 @@ export default class Changepassword extends Component{
                     <Row className="change">
                         <Col xl={7} md={7} className="change-left"></Col>
                         <Col xl={10} md={10} className="change-oldpassword-input">
-                            <input className="change-oldpassword-textone" /> 
+                            <input 
+                            className="change-oldpassword-textone"
+                            onChange={this.oldPassword}
+                             /> 
                         </Col>
                         <Col xl={7} md={7} className="change-right"></Col>
                     </Row>
@@ -80,7 +100,10 @@ export default class Changepassword extends Component{
                     <Row className="change">
                         <Col xl={7} md={7} className="change-left"></Col>
                         <Col xl={10} md={10} className="change-newpassword-input">
-                            <input className="change-newpassword-texttwo"/> 
+                            <input 
+                            className="change-newpassword-texttwo"
+                            onChange={this.newPassword}
+                            /> 
                         </Col>
                         <Col xl={7} md={7} className="change-right"></Col>
                     </Row>
@@ -105,8 +128,10 @@ export default class Changepassword extends Component{
                         <Col xl={8} md={8} className="change-save">
                             <button 
                                 className="change-save-one"
+                                type='danger'
+                                onClick={()=>editPasswordSave(userPassword,newPassword,userAccount)}
                             >
-                                <span className="change-save-text">保存</span>
+                                保存
                             </button> 
                         </Col>
                         <Col xl={8} md={8} className="change-right"></Col>
@@ -116,19 +141,11 @@ export default class Changepassword extends Component{
             );
     }
 }
-// function confirm() {
-// Modal.confirm({
-// title: 'Confirm',
-// content: 'Bla bla ...',
-// okText: '确认',
-// cancelText: '取消',
-// });
-// }
-// ReactDOM.render(
-// <div>
-// <Changepassword />
-// <br />
-// <Button onClick={confirm}>Confirm</Button>
-// </div>,
-// mountNode
-// );
+
+const mapDispatchToProps = state => ({
+    state:state.checkReducer
+  })
+  
+  export default connect(mapDispatchToProps,{
+    editPassword,editPasswordHide,editPasswordSave
+  })(Changepassword);

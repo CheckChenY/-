@@ -12,7 +12,7 @@ import { Button, Form, Input, Checkbox, Layout, Row, Col, Tabs,Icon } from 'antd
 
 import Register from '../components/login/register';
 
-import { showModal } from './editpassword/action'
+// import { showModal } from './editpassword/action'
 
 // import BackPasswordStepOne from './editpassword/backPasswordStepOne'
 // import BackPasswordStepTwo from './editpassword/backPasswordStepTwo'
@@ -68,7 +68,7 @@ class NormalLoginForm extends React.Component {
   render() {
     const self = this,
     { props } = self,
-    { form ,showModal} = props,
+    { form } = props,
     { getFieldDecorator } = form;
 
     return (
@@ -106,7 +106,6 @@ class NormalLoginForm extends React.Component {
                       fontSize:'12px',
                       color:'#3172be',
                   }} 
-                  onClick={showModal}
               >
                   <span className="forgetpass">忘记密码？</span>
               </Button>
@@ -193,5 +192,5 @@ const mapDispatchToProps = state => ({
 })
 
 export default connect(mapDispatchToProps,{
-  showModal,
+  // showModal,
 })(LoginTxt);

@@ -31,13 +31,7 @@ export const registerSuccess = (userPassword,email ,code,uuid,userName) => dispa
         uuid         : uuid,
         userAccount  : userName
     })).then(function (response) {
-
-        
-        // dispath({
-        //     type:GET_REGISTER_SUCCESS,
-        //     values:"values",
-        // })
-        if(response.data.code === '1'){
+        if(response.data.code === 1){
             alert("注册成功")
         }
     })

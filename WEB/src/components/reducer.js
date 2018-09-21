@@ -14,12 +14,16 @@ import {
 } from './login/action'
 
 import {
+	GET_EDIT_PASSWORD,
+	GET_EDIT_PASSWORD_HIDE,
+} from './editpassword/action'
+
+import {
 	GET_IMG_CODE,
 	GET_HIDE_MODAL,
 	GET_NEXT_STEP_ONE,
 	GET_NEXT_STEP_TWO,
 	GET_NEXT_STEP_TRE,
-
 } from './backPassword/action'
 
 const initState = {
@@ -78,6 +82,14 @@ const checkReducer = (state = initState, action) => {
 		case GET_REGISTER_SUCCESS:
 			return update(newState, {
 				data: { $set: "action.data" },
+			});
+		case GET_EDIT_PASSWORD:
+			return update(newState, {
+				visible: { $set: action.visible},
+			});
+		case GET_EDIT_PASSWORD_HIDE:
+			return update(newState, {
+				visible: { $set: action.visible},
 			});
 		default:
 			return state
