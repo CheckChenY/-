@@ -5,7 +5,7 @@ import Footer from '../footer/Footer';
 
 import { Layout} from 'antd';
 
-import imgUrl_2 from '../assient/login_register_bk.jpg'; 
+import imgUrl_2 from '../assient/loginRegisterBG/login_register_bk.jpg'; 
 
 const { /*Header, Footer, Sider,*/ Content } = Layout;
 
@@ -14,7 +14,11 @@ class BackPassword extends Component {
     const self = this;
     console.log(self);
     return (
-      <div>
+      <div 
+        style={{
+          minWidth:'1140px'
+        }}
+      >
           <Header/>  
           <Content
             style={{

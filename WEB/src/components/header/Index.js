@@ -21,37 +21,24 @@ function handleChange(value) {
     console.log(`selected ${value}`);
 }
 
-export default class Header extends Component{
-
-    constructor (props) {
-        super(props)
-        this.handleMenuClick = this.handleMenuClick.bind(this)
-        console.log(this);
-    }
-
-    menu = (
-        <Menu onClick={this.handleMenuClick}>
-          <Menu.Item key="1"><Personalinformation/></Menu.Item>
-          <Menu.Item key="2"><Changepassword /></Menu.Item>
-        </Menu>
-    );
-      
-    handleMenuClick(e) {
-        console.log(this)
-    }
-
+class Header extends Component{
     render(){
-        const { user } = this.props;
-        console.log(user);
+        const menu = (
+            <Menu>
+                <Menu.Item key="1"><Personalinformation /></Menu.Item>
+                <Menu.Item key="2"><Changepassword /></Menu.Item>
+            </Menu>
+        );
         return (
             <div >
                 <Row className="head">
-                    <Col xl={5} md={8} className="head-left">
+                    <Col span={8} className="head-left">
                         <img alt='aaa' src={imgoneURL} className="logo"/> 
                         <span className="head-left-one">金融搜索</span>
                         <span className="head-left-two">BAR</span>
                     </Col>
-                    <Col xl={14} md={8} className="head-center">
+                    <Col span={8} className="head-center">
+                    { 1 ? '':(
                         <div className="head-center-search">
                             <Search                            
                                 placeholder="港元汇率"                                
@@ -59,9 +46,10 @@ export default class Header extends Component{
                                 enterButton="搜索"
                                 size="default"
                             />
-                        </div>                        
+                        </div>  
+                    )}                      
                     </Col>
-                    <Col xl={5} md={8} className="head-right">
+                    <Col span={8} className="index-head-right">
                         <div className='head-rigth-select' >
                             <Select 
                                 className="head-right-select"
@@ -74,14 +62,14 @@ export default class Header extends Component{
                             >
                                 <Option value="CH">CH</Option>
                                 <Option value="TW">TW</Option>
-                                <Option value="EN">EN</Option>
+                                {/* <Option value="EN">EN</Option> */}
                             </Select>
                         </div>                        
-                        <Dropdown overlay={this.menu}>    
+                        <Dropdown overlay={menu}>    
                             <img  alt='aaa' src={imgoneURL1} className="user-picture"/> 
                         </Dropdown>
                         <div className='head-right-text' >
-                            id:{user ? user.data.userAccount : '刘德华' }|
+                            {/* ID: {user ? user.data.userAccount : '刘德华' } */}
                         </div>
                     </Col>
                 </Row>
@@ -89,3 +77,5 @@ export default class Header extends Component{
         )
     } 
 }
+
+export default Header;

@@ -11,6 +11,7 @@ import {
 import { Button, Form, Input, Checkbox, Layout, Row, Col, Tabs,Icon } from 'antd';
 
 import Register from '../components/login/register';
+import intl from 'react-intl-universal';
 
 // import { showModal } from './editpassword/action'
 
@@ -19,7 +20,7 @@ import Register from '../components/login/register';
 // import BackPasswordStepTre from './editpassword/backPasswordStepTre'
 
 import imgUrl_1 from './assient/group-4.png'; 
-import imgUrl_2 from './assient/login_register_bk.jpg'; 
+import imgUrl_2 from './assient/loginRegisterBG/login_register_bk.jpg'; 
 
 import './loginTxt.css'
 
@@ -31,7 +32,7 @@ const FormItem = Form.Item;
 
 
 
-class NormalLoginForm extends React.Component {
+class NormalLoginForm extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -48,14 +49,14 @@ class NormalLoginForm extends React.Component {
         // console.log('Received values of form: ', values);
         localStorage.setItem('userName', values.userName);
 
-        Axios.post('/User/userLogin', {
+        Axios.post('/api/User/userLogin', {
           userAccount: values.userName,
           userPassword: values.password
         })
         .then(function (response) {
           if(response.data.code === 1){
             localStorage.setItem('user', JSON.stringify(response.data));
-            self.props.history.push('/Home');
+            self.props.history.push('/index');
           }
         })
         .catch(function (error) {
@@ -77,14 +78,14 @@ class NormalLoginForm extends React.Component {
           {getFieldDecorator('userName', {
             rules: [{ required: true, message: 'Please input your username!' }],
           })(
-            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名：" />
           )}
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
-            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码：" />
           )}
         </FormItem>
         <FormItem >
@@ -93,7 +94,7 @@ class NormalLoginForm extends React.Component {
               valuePropName: 'checked',
               initialValue: true,
             })(
-              <Checkbox className="rememberpass">记住密码</Checkbox>
+              <Checkbox className="rememberpass">{intl.get('login.remember.password')}</Checkbox>
             )}
           </Col>
           <Col span={14} style={{display:'inline-block', textAlign:'right'}} >
@@ -113,8 +114,11 @@ class NormalLoginForm extends React.Component {
           </Col>
         </FormItem>
         <FormItem style={{marginBottom:'28px'}}>
-          <Button type="primary" htmlType="submit" className="login-box-button">
-            Log in
+          <Button type="primary" 
+          htmlType="submit" 
+
+          className="login-box-button">
+              登陆
           </Button>
         </FormItem>
       </Form>
@@ -139,8 +143,8 @@ class LoginTxt extends Component {
         }}
         >
           <Row>
-            <Col span={2}></Col>
-            <Col span={8}>                            
+            <Col md={2} sm={0} xs={0}></Col>
+            <Col md={8} sm={12} xs={12}>                            
               <div className='login-register-left-head' style={{marginTop:'120px', }}>
                 金融搜索BAR    一款强大的搜索工具
               </div>
@@ -154,8 +158,8 @@ class LoginTxt extends Component {
                 <Col span={3}></Col>
               </Row>                            		
             </Col>
-            <Col span={4}></Col>
-            <Col span={7} >
+            <Col md={4} sm={2} xs={2}></Col>
+            <Col md={7} sm={9} xs={9}>
               <div className='login-register-box'>                         
                 <Row>
                   <Col span={3}></Col>
@@ -178,7 +182,7 @@ class LoginTxt extends Component {
                 </Row>
               </div>
             </Col>
-          <Col span={3}></Col>
+            <Col md={3} sm={1} xs={1}></Col>
         </Row>  
       </Content>                    
     </div>

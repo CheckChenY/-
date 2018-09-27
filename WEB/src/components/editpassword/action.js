@@ -113,7 +113,7 @@ export const editPasswordHide = () => dispath => {
 
 export const editPasswordSave = (userPassword,newPassword,userName) => dispath => {
 
-    Axios.post('/User/updatePassword',qs.stringify({
+    Axios.post('/api/User/updatePassword',qs.stringify({
         userPassword : userPassword,
         newPassword  : newPassword,
         userAccount  : userName

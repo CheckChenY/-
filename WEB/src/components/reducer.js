@@ -3,10 +3,9 @@ import { combineReducers } from 'redux';
 import update from 'react-addons-update';
 
 
-import {
-	LOAD_POSTS,
-	HOME_PLUS_TEXT,
-} from './action'
+// import {
+// 	GET_UPDATA_LOCATION_USER,
+// } from './home/action'
 
 import {
 	GET_USER_REGISTER,
@@ -19,6 +18,20 @@ import {
 } from './editpassword/action'
 
 import {
+	SAVE_USER_CODE,
+	GET_LOADING_INT,
+	GET_LOADING_BOOL,
+} from './personal/action'
+
+// import {
+// 	GET_HOME_SEARCH_TEXT,
+// } from './home/action'
+
+import {
+	GET_HK_NEWS
+} from './shareDetails/action'
+
+import {
 	GET_IMG_CODE,
 	GET_HIDE_MODAL,
 	GET_NEXT_STEP_ONE,
@@ -27,10 +40,10 @@ import {
 } from './backPassword/action'
 
 const initState = {
-		num: 0,
-		user:localStorage.getItem('user'),
+		user:JSON.parse(localStorage.getItem('user')),
 		nextStep:'one',
-		userName:'123'
+		userName:'123',
+		Bool:true,//我的信息判断显示
   };
 
 
@@ -40,17 +53,16 @@ const checkReducer = (state = initState, action) => {
 		action: { $set: action.type }, // Required: for native event
 	});
 	switch (action.type) {
-		case LOAD_POSTS:
-			// return action.loadingTxt
-			return update(newState, {
-				loadingTxt: { $set: action.loadingTxt },
-				user:{ $set: action.loadingTxt }
-			});
-		case HOME_PLUS_TEXT:
-			return update(newState, {
-				homePlusTxt: { $set: action.homePlusTxt },
-				num: { $set: newState.num + 1},
-			});
+		// case GET_UPDATA_LOCATION_USER:
+		// 	// return action.loadingTxt
+		// 	return update(newState, {
+		// 		user:{ $set: action.user }
+		// 	});
+		// case HOME_PLUS_TEXT:
+		// 	return update(newState, {
+		// 		homePlusTxt: { $set: action.homePlusTxt },
+		// 		num: { $set: newState.num + 1},
+		// 	});
 		case GET_IMG_CODE:
 			return update(newState, {
 				imgSrc: 	{ $set: action.imgSrc },
@@ -90,6 +102,28 @@ const checkReducer = (state = initState, action) => {
 		case GET_EDIT_PASSWORD_HIDE:
 			return update(newState, {
 				visible: { $set: action.visible},
+			});
+		case SAVE_USER_CODE:
+			return update(newState, {
+				show : { $set: action.show},
+				userAccount:{ $set: action.userAccount},
+				userEmail:{ $set: action.userEmail},
+				userNickname:{ $set: action.userNickname},
+				userAddress:{ $set: action.userAddress},
+				userSlogan:{ $set: action.userSlogan},
+			});
+		case GET_LOADING_INT:
+			return update(newState, {
+				comment : { $set: action.data},
+				Bool : { $set: action.Bool},
+			});
+		case GET_LOADING_BOOL:
+			return update(newState, {
+				Bool : { $set: action.Bool},
+			});
+		case GET_HK_NEWS:
+			return update(newState, {
+				infoList : { $set: action.data},
 			});
 		default:
 			return state

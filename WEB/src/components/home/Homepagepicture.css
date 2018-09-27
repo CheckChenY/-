@@ -1,3 +1,14 @@
+.home-picture-all {
+    width: 1000px;
+    margin: auto;
+}
+
+.home-page-picture {
+    min-width: 1000px;
+    /* margin-left: 180px; */
+}
+    
 .home-picture {
     width: 100%;
 }
+    

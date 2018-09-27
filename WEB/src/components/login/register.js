@@ -125,7 +125,7 @@ handeChangeCode(e){
                         <Input 
                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         onChange={this.handeChangeUser} 
-                        placeholder="Username" />
+                        placeholder="用户名：" />
                     </FormItem>
 
                     <FormItem>
@@ -160,7 +160,7 @@ handeChangeCode(e){
                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                     type="text" 
                     onChange={this.handeChangeEmail}
-                    placeholder="邮箱" />
+                    placeholder="邮箱：" />
                 </FormItem>
 
                 <FormItem>
@@ -173,8 +173,8 @@ handeChangeCode(e){
                          />
                     </Col>
                     <Col span={1}></Col>
-                    <Col span={8} style={{border:'solid 1px pink'}}>
-                        <img onClick={getImgCode} src={"data:image/jpeg;base64,"+imgSrc} alt='金融搜索' style={{height:'32px'}} /> 
+                    <Col span={8} >
+                        <img onClick={getImgCode} src={"data:image/jpeg;base64,"+imgSrc} alt='金融搜索' style={{height:'32px', borderRadius: '4px', width:'100%',border:' solid 1px #e1e1e1'}} /> 
                     </Col>
                 </FormItem>
 

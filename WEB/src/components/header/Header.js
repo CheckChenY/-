@@ -2,6 +2,10 @@
 * Created by mapbar_front on 2018/3/18.
 */
 import React,{ Component} from 'react';
+
+import {
+	Link
+} from 'react-router-dom';
 import { Button} from 'antd';
 // import { Modal, Button } from 'antd';
 import { Row, Col } from 'antd';
@@ -17,17 +21,22 @@ function handleChange(value) {
 }
 
 class Header extends Component{
+
     render(){
+        const self = this,   
+        { bLoginRegister } = self.props;
+
         return (
             <div >
                 <Row className="head">
-                    <Col xl={5} md={8} className="head-left">
+                    <Col span={12} className="head-left">
                         <img alt='logo' src={imgoneURL} className="logo"/> 
                         <span className="head-left-one">金融搜索</span>
                         <span className="head-left-two">BAR</span>
                     </Col>
-                    <Col xl={14} md={8} className="head-center"></Col>
-                    <Col xl={5} md={8} className="head-right">
+                    {/* <Col xl={14} md={8} className="head-center"></Col> */}
+                    {bLoginRegister?'':(
+                    <Col span={12} className="head-right">
                         <Select 
                             className="head-right-select"
                             defaultValue="CH" 
@@ -39,28 +48,33 @@ class Header extends Component{
                         >
                             <Option value="CH">CH</Option>
                             <Option value="TW">TW</Option>
-                            <Option value="EN">EN</Option>
+                            {/* <Option value="EN">EN</Option> */}
                         </Select>
-                        <Button 
-                            style={{
-                                borderRadius:'4px',
-                                backgroundImage: 'linear-gradient(236deg, #ff4444, #ff9191)',
-                                marginLeft:'25px',
-                                marginRight:'20px'
-                            }}
-                        >
-                            <span className="head-right-login-btn">登录</span>
-                        </Button> 
-                        <Button 
-                            style={{
-                                borderRadius:'6px',
-                                backgroundColor:'ffffff',
-                                border:'solid 1px #ff5454'
-                            }}
-                        >
-                            <span className="head-right-resiger-btn">注册</span>
-                        </Button> 
+                        <Link to='/login'>
+                            <Button 
+                                style={{
+                                    borderRadius:'4px',
+                                    backgroundImage: 'linear-gradient(236deg, #ff4444, #ff9191)',
+                                    marginLeft:'25px',
+                                    marginRight:'12px'
+                                }}
+                            >
+                                <span className="head-right-login-btn">登录</span>
+                            </Button> 
+                        </Link>
+                        <Link to='/login'>
+                            <Button 
+                                style={{
+                                    borderRadius:'6px',
+                                    backgroundColor:'ffffff',
+                                    border:'solid 1px #ff5454'
+                                }}
+                            >
+                                <span className="head-right-resiger-btn">注册</span>
+                            </Button> 
+                        </Link>
                     </Col>
+                    )}
                 </Row>
             </div>
 

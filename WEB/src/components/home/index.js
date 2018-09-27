@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import Plus from './plus';
-import {homePlus } from '../action'
+// import { getUser } from './action'
 
-// import Header from '../header/Index'
-import Header from '../header/Header'
+// import Header from '../header/Index';
+import Header from '../header/Header';//访客头部按钮
+
+
+import Footer from '../footer/Footer';
 import Homepagesearch from './Homepagesearch'
 import Homepagepicture from './Homepagepicture'
 import Homepagestocks from './Homepagestocks'
@@ -12,22 +15,31 @@ import Homepageissues from './Homepageissues'
 
 class Home extends Component {
   render() {
-    // const self = this,
-    // { props } = self,
-    // { user } = props.loadingTxt;
+    const self = this,
+    { props } = self,
+    { state } = props,
+    { user } = state;
     return (
-      <div>
-        {/* <Header user={JSON.parse(user)} /> */}
+      <div
+        style={{
+          minWidth:'1140px'
+        }}
+      >
+        <Header 
+          user={user} 
+        />
         {/* <Plus { ...props } /> */}
-        <Header />
+        {/* <Header /> */}
+        <hr />
         <Homepagesearch />
-        <br />
+        {/* <br /> */}
         <Homepagepicture />
-        <br />
+        {/* <br /> */}
         <Homepagestocks />
-        <br />
+        {/* <br /> */}
         <Homepageissues/>
-        <br />
+        {/* <br /> */}
+        <Footer/>
       </div>
     );
   }
@@ -35,9 +47,11 @@ class Home extends Component {
 
 
 const mapDispatchToProps = state => ({
-    loadingTxt:state.checkReducer
+    state:state.checkReducer
 })
 
 export default connect(mapDispatchToProps,{
-    homePlus
+  // getUser
 })(Home);
+
+// export default Home;

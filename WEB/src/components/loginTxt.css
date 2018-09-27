@@ -1,6 +1,6 @@
 .login-register
 {
-  background-image: url(./assient/login_register_bk.jpg) no-repeat;
+  background-image: url(./assient/loginRegisterBG/login_register_bk.jpg) no-repeat;
   background: pink; 
   padding:0 0 50px 0;
 }
@@ -44,7 +44,7 @@
 .login-register-box
 {
   display:inline-block;
-  width:100%;
+  width:393px;
   height: auto;
   background-color:#ffffff;
   border-radius: 8px;

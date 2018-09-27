@@ -1,21 +1,15 @@
 .head {
-    border-bottom: 2px solid whitesmoke;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
-}
-.head-left
-{
-    margin-top: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .logo {
-    width: 66px;
-    height: 57px;
+    width: 58px;
+    height: 50px;
     margin-left: 10px;
 }
     
 .head-left-one {
-    width: 172px;
     height: 37px;
     font-family: PingFangSC;
     font-size: 26px;
@@ -53,7 +47,7 @@
 
 .head-center-search
 {
-    width: 60%;
+    width: 90%;
     margin-left: 30px;
 }
 .head-center-search Button
@@ -89,6 +83,12 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+}
+
+.index-head-right
+{
+    text-align: right;
+    padding-right: 50px;
 }
 
 .head-rigth-select

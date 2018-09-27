@@ -10,7 +10,7 @@ export const GET_NEXT_STEP_TRE = 'GET_NEXT_STEP_TRE';
 
 export const getImgCode = () => dispath => {
     const uuid = Uuid.v4();
-    Axios.post('/User/checkPicture',qs.stringify({uuid:uuid})
+    Axios.post('/api/User/checkPicture',qs.stringify({uuid:uuid})
         ,{
             headers: {
             'Content-Type':'application/x-www-form-urlencoded'
@@ -44,7 +44,7 @@ export const getImgCode = () => dispath => {
 //     })
 // }
 export const nextStepTwo = (uuid,code,userName) => dispath => {
-    Axios.post('/User/checkCode',qs.stringify({
+    Axios.post('/api/User/checkCode',qs.stringify({
             uuid:uuid,
             yanzheng:code,
             userAccount:userName
@@ -69,14 +69,14 @@ export const nextStepTwo = (uuid,code,userName) => dispath => {
 }
 
 export const getEmailCode = (userName) => dispath => {
-    Axios.post('/User/sendEmailCode',qs.stringify({
+    Axios.post('/api/User/sendEmailCode',qs.stringify({
         userAccount:userName
     }))
 }
 
 export const nextStepTre = (userName,email,password,emailCode) => dispath => {
 
-    Axios.post('/User/findPassword',qs.stringify({
+    Axios.post('/api/User/findPassword',qs.stringify({
             userAccount  :  userName,
             userEmail    :  email,
             userPassword :  password,

@@ -1,17 +1,16 @@
-/* .head {
-    border-bottom: 2px solid whitesmoke;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
-} */
+.head {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 .logo {
-    width: 66px;
-    height: 57px;
+    width: 58px;
+    height: 50px;
     margin-left: 10px;
 }
     
 .head-left-one {
-    width: 172px;
+    /* width: 172px; */
     height: 37px;
     font-family: PingFangSC;
     font-size: 26px;
@@ -24,10 +23,12 @@
     color: #3e3e3e;
     /* background-color: #3e3e3e; */
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    vertical-align: middle;
 }
     
 .head-left-two {
-    width: 55px;
+    /* width: 55px; */
     height: 32px;
     background-image: linear-gradient(60deg, #eb5858, #f12b2b);
     font-family: Times;
@@ -41,10 +42,14 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .head-right {
     margin-top: 12px;
+    text-align: right;
+    padding-right: 50px;
 }
 
 .ant-select-selection {

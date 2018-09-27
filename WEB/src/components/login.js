@@ -4,20 +4,33 @@ import Header from './header/Header';
 import LoginTxt from './loginTxt';
 import Footer from './footer/Footer';
 
-import { loading } from './action'
+// import { loading } from './action'
 // import reducer from './reducer'
 
 import './login.css';
 
 class Login extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      bLoginRegister: true,
+    }
+  }
+
   render() {
-    const self = this,
-    { props } = self;
+    const self = this,   
+    { props ,state } = self,
+    { bLoginRegister }= state;
+    
     return (
 
-      <div>
-        <Header/>
-        <LoginTxt { ...props } />
+      <div
+      style={{
+        minWidth:'1140px'
+      }}
+      >
+        <Header bLoginRegister = {bLoginRegister}/>
+          <LoginTxt { ...props } />
         <Footer/>
       </div>
     );
@@ -30,5 +43,5 @@ const mapDispatchToProps = state => ({
 })
 
 export default connect(mapDispatchToProps,{
-    loading
+    // loading
 })(Login);

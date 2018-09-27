@@ -8,7 +8,7 @@ export const GET_REGISTER_SUCCESS = 'GET_REGISTER_SUCCESS'
 export const nextStep = (userName)=> dispath => {
     console.log(userName);
 
-	Axios.get(`/User/accountCheck?userAccount=${userName}`).then(function (response) {
+	Axios.get(`/api/User/accountCheck?userAccount=${userName}`).then(function (response) {
 
         dispath({
             type:GET_USER_REGISTER,
@@ -24,7 +24,7 @@ export const nextStep = (userName)=> dispath => {
 
 export const registerSuccess = (userPassword,email ,code,uuid,userName) => dispath => {
 
-    Axios.post('/User/userRegister',qs.stringify({
+    Axios.post('/api/User/userRegister',qs.stringify({
         userPassword : userPassword,
         userEmail    : email,
         yz           : code,

@@ -89,7 +89,7 @@ class BackPasswordStepOne extends Component {
                           onChange={
                             this.handeChangeAccound
                           }
-                          placeholder="input placeholder" />
+                          placeholder="账号" />
                         </FormItem>
                         <FormItem
                           label="验证码"
@@ -97,11 +97,11 @@ class BackPasswordStepOne extends Component {
                           <Col span={15}>
                             <Input type="text"
                             onChange={this.changeCode}
-                            placeholder="验证码：" />
+                            placeholder="验证码" />
                           </Col>
                           <Col span={1}></Col>
-                          <Col span={8} style={{border:'solid 1px pink'}}>
-                              <img src={imgSrc ? `data:image/jpeg;base64,${imgSrc}` : imgtwoURL} alt='金融搜索' style={{height:'32px'}}/> 
+                          <Col span={8} >
+                              <img src={imgSrc ? `data:image/jpeg;base64,${imgSrc}` : imgtwoURL} alt='金融搜索' style={{height:'32px', borderRadius: '4px', width:'100%',border:' solid 1px #e1e1e1'}}/> 
                           </Col>
                         </FormItem>
                         <FormItem >

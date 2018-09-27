@@ -2,7 +2,10 @@
 * Created by Migual on 2018/9/19.
 */
 import React,{ Component} from 'react';
+import { connect } from 'react-redux';
 import { Modal, Button, Tabs} from 'antd';
+
+import { getLoading } from './action'
 
 import MyComments from './myComments';
 import MyInformation from './myInformation';
@@ -13,9 +16,14 @@ import imgoneURL1 from '../assient/userdefine.jpg';
 
 const TabPane = Tabs.TabPane;
 
-export default class Changepassword extends Component{
-        state = { 
-            visible: false,
+class Changepassword extends Component{
+
+        constructor(props){
+            super(props)
+            this.state={
+                visible: false,
+                tabBol:false,
+            }
         }
 
         showModal = () => {
@@ -30,6 +38,14 @@ export default class Changepassword extends Component{
         }
 
         render() {
+            const self = this,
+            { props,state } = self,
+            { getLoading , state:selfState } = props,
+            { user,comment=[] } = selfState,
+            { data } = user,
+            { userId,userNickname } = data,
+            { tabBol } = state;
+
             return (
             <div>
                 <Button  onClick={this.showModal} className="my-information">
@@ -47,20 +63,24 @@ export default class Changepassword extends Component{
                     <Tabs
                         defaultActiveKey="1"
                         tabPosition='left'
-                    >
+                        onChange={
+                            ()=>getLoading(userId)
+                        }
+                        >
                         <TabPane 
+                            tabBol={tabBol}
                             tab={
                                 <span>
                                     <div style={{backgroundColor: '#ebedef', paddingBottom:'28px' }}>
                                         <img  alt='aaa' src={imgoneURL1} className="my-information-left-user-picture"/>
-                                        <div className='my-information-left-text'>ID:{'张海城'}</div>
+                                        <div className='my-information-left-text'>ID: {data.userAccount}</div>
                                     </div>
                                     <div className='my-information-left-tab' >个人信息</div>
                                 </span>
                             }
                                 key="1"
                             >
-                            <MyInformation/>
+                            <MyInformation  />
                         </TabPane>                           
                         <TabPane 
                             tab={
@@ -68,7 +88,10 @@ export default class Changepassword extends Component{
                             } 
                             key="2"
                         >
-                            <MyComments/>
+                            <MyComments 
+                            comment={comment}
+                            userNickname={userNickname}
+                            />
                         </TabPane>
                     </Tabs>
                     </div>
@@ -77,4 +100,12 @@ export default class Changepassword extends Component{
         );
     }
 }
+
+const mapDispatchToProps = (state) => ({
+    state:state.checkReducer
+  })
+  
+  export default connect(mapDispatchToProps,{
+    getLoading
+  })(Changepassword);
 

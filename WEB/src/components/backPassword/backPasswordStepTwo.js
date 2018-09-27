@@ -83,27 +83,28 @@ class BackPasswordStepTwo extends Component {
                     <FormItem
                       label="新密码"
                     >
-                      <Input onChange={this.handeChangePassword} placeholder="input placeholder" />
+                      <Input onChange={this.handeChangePassword} placeholder="新密码" />
                     </FormItem>
                     <FormItem
                       label="重新输入密码"
                     >
-                      <Input placeholder="input placeholder" />
+                      <Input placeholder="重新输入密码" />
                     </FormItem>
                     
                     <FormItem
                       label="验证码"
                     >
-                      <Col span={15}>
+                      <Col span={10}>
                         <Input type="text"
                         onChange={this.handeChangeCode}
-                        placeholder="验证码：" />
+                        placeholder="验证码" />
                       </Col>
                       <Col span={1}></Col>
-                      <Col span={8} style={{border:'solid 1px pink'}}>
+                      <Col span={13} >
                           <Button 
                           type='danger'
                           onClick={()=>getEmailCode(userName)}
+                          style={{ width:'100%'}}
                           >
                             获取邮箱验证码
                           </Button> 

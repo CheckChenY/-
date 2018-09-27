@@ -36,7 +36,7 @@ class Changepassword extends Component{
             { userPassword, newPassword} = selfState,
             { editPassword,state,editPasswordHide,editPasswordSave } = props,
             { visible,user } = state;
-            const userArr = JSON.parse(user),
+            const userArr = user,
             { userAccount } = userArr.data;
             return (
             <div>
