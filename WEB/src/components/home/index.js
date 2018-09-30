@@ -30,8 +30,8 @@ class Home extends Component {
         />
         {/* <Plus { ...props } /> */}
         {/* <Header /> */}
-        <hr />
-        <Homepagesearch />
+        {/* <hr style={{border: 'solid 1px #dadada', minWidth:'1000px'}}/> */}
+        <Homepagesearch vister={true} />
         {/* <br /> */}
         <Homepagepicture />
         {/* <br /> */}

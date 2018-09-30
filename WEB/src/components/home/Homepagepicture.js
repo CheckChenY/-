@@ -1,6 +1,3 @@
-/**
-* Created by mapbar_front on 2018/3/18.
-*/
 import React,{ Component} from 'react';
 // import { Row, Col } from 'antd';
 import { Carousel } from 'antd';
@@ -11,7 +8,7 @@ import imgthreeURL from '../assient/home/3.png';
 import imgfourURL from '../assient/home/4.png';
 
 
-export default class Homepagepicture extends Component{
+class Homepagepicture extends Component{
 
     render() {
         return (
@@ -30,3 +27,4 @@ export default class Homepagepicture extends Component{
 }
                 
 
+export default Homepagepicture;

@@ -1,6 +1,8 @@
 .head {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width:1000px ;
+    box-shadow: 0 2px 2px 0 rgba(220, 220, 220, 0.5);
 }
 
 .logo {

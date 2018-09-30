@@ -1,0 +1,46 @@
+.title-stock-two {
+    position: relative;
+}
+
+.title-stock-newstwo {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 6px solid #ff4444bf;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    position: absolute;
+    margin-top: -16px;
+    margin-left: 183px;
+}
+
+.title-select-one .ant-select-selection {
+    color:#626262;
+    border: 0;
+}
+
+.title-select-two .ant-select-selection {
+    color:#626262;
+    border: 0;
+}
+
+.title-search {
+    display: inline-block;
+    text-align: right;
+    /* width: 842px; */
+    width: 830px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    /* text-align: center; */
+    color: #626262;
+}
+
+.title-search-result {
+    color: yellow;
+}

@@ -1,6 +1,4 @@
-/**
-* Created by Migual on 2018/9/20.
-*/
+
 import React,{ Component} from 'react';
 import { Row, Col, Tabs } from 'antd';
 
@@ -12,7 +10,7 @@ import imgoneURL9 from '../assient/like.png';
 
 const TabPane = Tabs.TabPane;
 
-export default class MyComments extends Component{
+class MyComments extends Component{
     
         render() {
             const self = this,
@@ -120,3 +118,4 @@ export default class MyComments extends Component{
     }
 }
 
+export default MyComments;

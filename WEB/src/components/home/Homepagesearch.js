@@ -1,6 +1,3 @@
-/**
-* Created by mapbar_front on 2018/3/18.
-*/
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 // import {
@@ -18,7 +15,7 @@ class Homepage extends Component{
     constructor(props){
         super(props)
         this.state = {
-            keyValue:'港股资讯'
+            keyValue:' '
         }
     }
 
@@ -32,20 +29,37 @@ class Homepage extends Component{
             const self = this,
             { props,state} = self,
             { keyValue } = state,
-            { Homepagesearch } = props;
+            { Homepagesearch ,vister} = props;
             return (
                 <div className="home-page-search">
                     <div className="user-head">
                         <div className="search">
-                            <Search
-                                className="search-content"
-                                value={keyValue}
-                                enterButton="搜索"
-                                size="large"
-                                onSearch={
-                                    value=>Homepagesearch(props,value)
-                                }
-                            />
+                            {
+                                vister ? (
+                                    <Search
+                                        className="search-content"
+                                        value={keyValue}
+                                        enterButton="搜索"
+                                        size="large"
+                                        onSearch={
+                                            ()=>{
+                                                alert('请登录')
+                                            }
+                                        }
+                                    />
+                                ) : (
+                                    <Search
+                                        className="search-content"
+                                        value={keyValue}
+                                        enterButton="搜索"
+                                        size="large"
+                                        onSearch={
+                                            value=>Homepagesearch(props,value)
+                                        }
+                                        
+                                    />
+                                )
+                            }
                         </div>
                         <div className="hotsearch-all">
                             <span className="hotsearch-title">
@@ -54,7 +68,7 @@ class Homepage extends Component{
                             <a 
                             className="hotsearch-title-one"
                                 onClick={this.handeChangeValue}
-                            >港股开户</a>
+                            >中国开户</a>
                             <a className="hotsearch-title-one">A股H股</a>
                             <a className="hotsearch-title-one">市况不明</a>
                             <a className="hotsearch-title-one">恒生综合</a>

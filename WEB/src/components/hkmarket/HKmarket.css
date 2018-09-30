@@ -1,0 +1,119 @@
+/* 顶部头 */
+.HKmarket
+{
+    margin-top:34px;
+}
+
+.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-nav-container
+{
+    height: 62px;
+}
+
+.HKmarket .ant-tabs-bar 
+{
+    margin: 0;
+}
+
+.title .HKmarket .ant-tabs-nav .ant-tabs-tab-active
+{
+    height: 62px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.title .HKmarket .ant-tabs-tab
+{
+    height: 62px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #58626d;
+}
+
+.title .HKmarket .ant-tabs-nav
+{
+    padding-left: 0;
+}
+.title .HKmarket .ant-tabs-nav-scroll
+{
+    background-color: #ffffff;
+    border: solid 1px #ebebeb;
+}
+
+/* 去除每个tab中本身的样式 */
+.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab
+{
+    border: none;
+    padding: 0;
+    margin-right: 18px;
+    background: none;
+}
+
+/* 以下三者为左上角公司信息的样式 */
+.HKmarket-company-information
+{
+    width:248px;
+    height: 62px;
+    display: inline-block;
+    background-image: linear-gradient(63deg, #68c0ff, #4c87e2);
+    padding:12px 5px;
+}
+
+.HKmarket-company-information-name
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.HKmarket-company-information-code 
+{
+    font-family: PingFangSC;
+    font-size: 9px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+/* 以下三者为重新定义的tab样式 */
+.HKmarket-tab
+{
+    width: 80px;
+    height: 30px;
+    border: solid 1px #99a2ac;
+    border-radius: 4px;
+    padding: 7px 13px;   
+}
+
+.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab .HKmarket-tab
+{
+    background-color: #f6f6f6;
+}
+.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active .HKmarket-tab
+{
+    background-color: #7a8087;
+}
+
+/*  */

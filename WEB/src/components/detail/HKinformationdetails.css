@@ -1,0 +1,221 @@
+.information-details-tittle
+{
+  margin-top:55px;
+  font-family: PingFangSC;
+  font-size: 26px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #3d3d3d;
+  
+}
+
+.information-details-author
+{
+  margin-top:60px; 
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: justify;
+  color: #6c6c6c;
+}
+
+.information-details-text
+{
+  margin-top: 40px;
+  text-indent: 2em;
+  word-wrap : break-word;
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: justify;
+  color: #383838;
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.information-details-like-button
+{
+  background: none;
+  outline: none;
+  border:none;
+  height: 75px;
+  cursor: pointer;
+  vertical-align: bottom;  
+}
+
+.information-details-like
+{
+  margin-top: 12px;
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #6c6c6c;
+}
+.information-details-user-icon
+{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.information-details-user-ID
+{
+  margin-top:16px;
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #646464;
+}
+
+.information-details-add-comment
+{
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 10px 0 rgba(192, 192, 192, 0.5);
+  padding: 20px 22px;
+  text-align: right;
+}
+.information-details-add-comment-button
+{
+  width: 79.9px;
+  height: 36px;
+  border-radius: 6px;
+  background-image: linear-gradient(242deg, #ff4444, #ff9191);
+}
+
+.information-details-add-comment-button>span
+{
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.information-details-all-comment-time
+{
+  font-family: PingFangSC;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8e8e8e;    
+}
+
+.information-details-all-comment-text
+{
+  margin-top: 20px;
+  padding-right: 10px;
+  height: 90px;
+  overflow-y: auto;
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: justify;
+  color: #383838;
+}
+.information-details-all-comment-response
+{
+    display: inline-block;
+    margin:0 20px 0 8px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #272727;
+}
+.information-details-all-comment-number
+{
+    display: inline-block;
+    margin:0 0 0 8px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #8e8e8e;
+}
+
+.information-details-add-response
+{
+  width:'99%';
+  margin-right: 1px;
+  height:120px;
+  margin-top: 20px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 10px 0 rgba(192, 192, 192, 0.5);
+  padding: 20px 22px 10px;
+  text-align: right;
+}
+.information-details-add-response-button
+{
+  margin-top:5px;
+  width: 79.9px;
+  height: 36px;
+  border-radius: 6px;
+  background-image: linear-gradient(242deg, #ff4444, #ff9191);
+}
+
+.information-details-add-response-button>span
+{
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.information-details-layup-response
+{
+  margin-left: 12px;
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: justify;
+  color: #ff4444;
+}

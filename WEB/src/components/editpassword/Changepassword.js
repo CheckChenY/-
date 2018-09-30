@@ -1,6 +1,3 @@
-/**
-* Created by mapbar_front on 2018/3/18.
-*/
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 import { Row, Col,Modal, Button } from 'antd';

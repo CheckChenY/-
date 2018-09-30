@@ -1,0 +1,80 @@
+.valuation-analysis-title
+{
+    margin-left: 8px;
+    display: inline-block;
+    font-family: PingFangSC;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3b3b3b;
+}
+
+.valuation-analysis-table-head
+{
+    width: 14%;
+    height: 28px;
+    padding-left: 20px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #5b6878;
+    background-color: #ebeef1;
+}
+
+.valuation-analysis-select
+{
+    display: inline-block;
+}
+
+.valuation-analysis-select .ant-select-selection-selected-value
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #3f3f3f;
+}
+
+.valuation-analysis-table-value-type
+{
+    width: 21%;
+    font-family: PingFangSC;
+    font-size: 11px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;
+    text-align: right;
+    padding: 0 70px 0 35px;
+}
+
+.valuation-analysis-table-value-text
+{
+    width: 21%;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #515151;
+    padding: 0 70px 0 35px;
+}
+
+

@@ -1,0 +1,81 @@
+.basic-information-title
+{
+    margin-left: 8px;
+    display: inline-block;
+    font-family: PingFangSC;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3b3b3b;
+}
+.basic-information-col-1
+{
+    width: 12%; 
+    background-color: #ebeef1;
+    padding-top:10px;
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: top;
+    color: #5b6878;
+}
+.basic-information-col-2
+{
+    width: 24%;
+    padding-left: 30px;
+    padding-right: 28px;
+    padding-top:10px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    vertical-align: top;
+    color: #515151; 
+}
+.basic-information-col-3
+{
+    width: 12%; 
+    padding-top:10px;
+    background-color: #ebeef1;
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: top;
+    color: #5b6878;
+}
+.basic-information-col-4
+{
+    width: 52%; 
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-top:10px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    vertical-align: top;
+    color: #515151; 
+}

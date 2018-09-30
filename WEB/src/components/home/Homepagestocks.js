@@ -1,13 +1,10 @@
-/**
-* Created by mapbar_front on 2018/3/18.
-*/
 import React,{ Component} from 'react';
-// import { Row, Col } from 'antd';
+
 import './Homepagestocks.css'
 import imgoneURL from '../assient/home/stockphoto.png';
 
 
-export default class Homepagestocks extends Component{
+class Homepagestocks extends Component{
 
         render() {
             return (
@@ -43,3 +40,4 @@ export default class Homepagestocks extends Component{
     }
                 
 
+export default Homepagestocks;

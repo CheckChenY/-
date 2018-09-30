@@ -1,0 +1,95 @@
+.company-anouncement-title
+{
+    margin-left: 8px;
+    display: inline-block;
+    font-family: PingFangSC;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3b3b3b;
+}
+
+.company-anouncement-table-row-text
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;
+    background-color: #f4f4f4;    
+}
+
+.company-anouncement-table-row-text-another
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;   
+}
+
+.company-anouncement-table-title
+{
+    padding-left: 40px;
+}
+.ant-table-thead .company-anouncement-table-title
+{
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3a69a0;
+    background-color: #e0eefe;
+}
+
+.ant-table-tbody .company-anouncement-table-title>span
+{
+    margin-left: 40px;
+}
+
+.company-anouncement-table-date
+{
+    text-align: center;
+}
+.ant-table-thead .company-anouncement-table-date
+{
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3a69a0;
+    background-color: #e0eefe;
+}
+
+
+
+/* 以下两个为了底部分页居中 */
+.company-anouncement-table
+{
+    text-align: center;
+    border:solid 1px #ebebeb;
+}
+
+.company-anouncement-table .ant-table-pagination.ant-pagination
+{
+    float: none;
+}

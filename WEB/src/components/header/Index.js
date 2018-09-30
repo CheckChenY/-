@@ -1,7 +1,7 @@
-/**
-* Created by Migual on 2018/9/18.
-*/
+
 import React,{ Component} from 'react';
+import { connect } from 'react-redux';
+import { Homepagesearch } from '../home/action'
 import { Menu, Dropdown, Input } from 'antd';
 import { Row, Col } from 'antd';
 import { Select } from 'antd';
@@ -29,25 +29,32 @@ class Header extends Component{
                 <Menu.Item key="2"><Changepassword /></Menu.Item>
             </Menu>
         );
+
+        const self = this,  
+        { props } = self, 
+        { bShowSearch ,Homepagesearch} = props;
+
         return (
             <div >
                 <Row className="head">
-                    <Col span={8} className="head-left">
+                    <Col span={6} className="head-left">
                         <img alt='aaa' src={imgoneURL} className="logo"/> 
                         <span className="head-left-one">金融搜索</span>
                         <span className="head-left-two">BAR</span>
                     </Col>
-                    <Col span={8} className="head-center">
-                    { 1 ? '':(
+                    <Col span={10} className="head-center">
+                    { bShowSearch ? (
                         <div className="head-center-search">
                             <Search                            
-                                placeholder="港元汇率"                                
-                                onSearch={value => console.log(value)}
+                                defaultValue="港元汇率"                                
+                                onSearch={
+                                    value=>Homepagesearch(props,value)
+                                }
                                 enterButton="搜索"
-                                size="default"
+                                size="large"
                             />
                         </div>  
-                    )}                      
+                    ):''}                      
                     </Col>
                     <Col span={8} className="index-head-right">
                         <div className='head-rigth-select' >
@@ -78,4 +85,12 @@ class Header extends Component{
     } 
 }
 
-export default Header;
+
+const mapDispatchToProps = (state) => ({
+    state:state.checkReducer
+})
+    
+export default connect(mapDispatchToProps,{
+    Homepagesearch
+})(Header);
+// export default Header;

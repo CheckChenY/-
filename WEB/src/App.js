@@ -15,7 +15,7 @@ import Vister from './components/home/index';
 import User from './components/home/user'
 
 import intl from 'react-intl-universal';
-import ShareDetails from './components/shareDetails/index';
+import StockNews from './components/stockNews/index';
 import HKDetail from './components/detail/HKinformationdetails';
 import IssueDetail from './components/detail/HKissuedetails';
 
@@ -72,7 +72,7 @@ class App extends Component {
 
 					<Route path="/backPassword" component={BackPassword} />
 
-					<Route path="/shareDetails" component={ShareDetails} />
+					<Route path="/StockNews" component={StockNews} />
 
 					<Route path="/HKDetail" component={HKDetail} />
 

@@ -1,0 +1,95 @@
+.details-user-icon
+{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.details-user-icon-sm
+{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.details-user-ID
+{
+  margin-top:16px;
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #646464;
+}
+
+.details-add-comment
+{
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 10px 0 rgba(192, 192, 192, 0.5);
+  padding: 20px 22px;
+  text-align: right;
+}
+.details-add-comment-button
+{
+  width: 79.9px;
+  height: 36px;
+  border-radius: 6px;
+  background-image: linear-gradient(242deg, #ff4444, #ff9191);
+}
+
+.details-add-comment-button>span
+{
+  font-family: PingFangSC;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.details-add-comment-button:hover>span
+{
+  color: #ff9191
+}
+
+.comment-summarize
+{  
+  font-family: PingFangSC;
+}
+ 
+.comment-summarize .ant-tabs-nav .ant-tabs-tab
+{
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+
+.comment-summarize .ant-tabs-nav .ant-tabs-tab-active
+{
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #e46464;
+}
+
+.comment-summarize .ant-tabs-ink-bar
+{
+  background-color: #e46464;
+}
+

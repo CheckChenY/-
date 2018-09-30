@@ -1,0 +1,63 @@
+.growth-ability-title
+{
+    margin-left: 8px;
+    display: inline-block;
+    font-family: PingFangSC;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3b3b3b;
+}
+
+.growth-ability-table-head
+{
+    width: 29%;
+    height: 28px;
+    padding-left: 30px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #5b6878;
+    background-color: #ebeef1;
+}
+
+.growth-ability-table-year
+{
+    width: 151px;
+    height: 28px;
+    text-align: right;
+    padding-right: 20px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;
+}
+
+.growth-ability-table-text
+{
+    width: 151px;
+    height: 28px;
+    text-align: right;
+    padding-right: 20px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;
+}
+

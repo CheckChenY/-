@@ -1,0 +1,191 @@
+.capitalstructure-title
+{
+    margin-left: 8px;
+    display: inline-block;
+    font-family: PingFangSC;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3b3b3b;
+}
+
+.capitalstructure-stock-two {
+    margin-left: 112px;
+}
+
+.capitalstructure-table-one-top {
+    width: 160px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #5b6878;
+    background-color: #ebeef1;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+.capitalstructure-table-one {
+    width: 160px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #5b6878;
+    background-color: #ebeef1;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.capitalstructure-table-two-top {
+    width: 73px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #515151;
+    background-color: #ffffff;
+    padding-left: 30px;
+    padding-right: 56px;
+    padding-top: 20px;
+}
+
+.capitalstructure-table-two {
+    width: 73px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #515151;
+    background-color: #ffffff;
+    padding-left: 30px;
+    padding-right: 56px;
+    padding-top: 10px;
+}
+
+.capitalstructure-table-three-top {
+    width: 160px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #5b6878;
+    background-color: #ebeef1;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+.capitalstructure-table-three {
+    width: 160px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #5b6878;
+    background-color: #ebeef1;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.capitalstructure-table-four-top {
+    width: 496px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #515151;
+    background-color: #ffffff;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+.capitalstructure-table-four {
+    width: 496px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #515151;
+    background-color: #ffffff;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.capitalstructure-table-three-bottom {
+    width: 160px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #5b6878;
+    background-color: #ebeef1;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 231px;
+}
+
+.capitalstructure-table-four-bottom {
+    width: 496px;
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #515151;
+    background-color: #ffffff;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 231px;
+}

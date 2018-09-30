@@ -28,8 +28,21 @@ import {
 // } from './home/action'
 
 import {
-	GET_HK_NEWS
-} from './shareDetails/action'
+	GET_HK_NEWS,
+	// STOP_GET_HK_NEWS,
+	GET_HOT_HK_NEWS,
+	GET_HK_NEWS_START_LOADING
+} from './stockNews/action'
+
+import {
+	GET_HK_DETAIL_NEWS,
+	GET_HK_DETAIL_ISSEU,
+	GET_HK_DETAIL_COMMENT,
+	GET_HK_DETAIL_COMMENT_SUBMIT,
+	GET_HK_THUMBS_UP,
+	GET_HK_THUMBS_UP_ISSEU,
+	GET_HK_REPLY_TO_COMMENT,
+} from './detail/action'
 
 import {
 	GET_IMG_CODE,
@@ -44,6 +57,9 @@ const initState = {
 		nextStep:'one',
 		userName:'123',
 		Bool:true,//我的信息判断显示
+		loading:false,
+		newsListArry:[],
+		// stop:true,//没有信息停止刷新
   };
 
 
@@ -53,15 +69,13 @@ const checkReducer = (state = initState, action) => {
 		action: { $set: action.type }, // Required: for native event
 	});
 	switch (action.type) {
-		// case GET_UPDATA_LOCATION_USER:
-		// 	// return action.loadingTxt
+		case GET_HK_NEWS_START_LOADING:
+			return update(newState, {
+				loading:{ $set: action.loading }
+			});
+		// case STOP_GET_HK_NEWS:
 		// 	return update(newState, {
-		// 		user:{ $set: action.user }
-		// 	});
-		// case HOME_PLUS_TEXT:
-		// 	return update(newState, {
-		// 		homePlusTxt: { $set: action.homePlusTxt },
-		// 		num: { $set: newState.num + 1},
+		// 		stop: { $set: action.stop },
 		// 	});
 		case GET_IMG_CODE:
 			return update(newState, {
@@ -122,8 +136,72 @@ const checkReducer = (state = initState, action) => {
 				Bool : { $set: action.Bool},
 			});
 		case GET_HK_NEWS:
+		// newState.newsListArry = [];
+			if(action.firstBlood){
+				newState.newsListArry = action.list.data
+				// if(action.currentPage === 1){
+				// 	newState.stop = true
+				// }
+			}else{
+				// const arry1 = action.list.data.filter(item=>item.info_id === newState.newsListArry.info_id);
+				const arry = action.list.data.filter(item=>item.info_id !== newState.newsListArry.info_id);
+				
+				// console.log(arry1);
+				// console.log(arry2);
+
+
+				// if(action.list.data.info_id === newState.newsListArry.info_id){
+				// }else{
+				// }
+
+				arry.map((show)=>(
+					newState.newsListArry.push(show)
+				))
+				debugger;
+			}
+			
 			return update(newState, {
-				infoList : { $set: action.data},
+				infoListData : { $set: action.list.data},
+				infoListPage : { $set: action.list.page},
+				currentPage	 : { $set: action.currentPage},
+				numPage		 : { $set: action.numPage },
+				loading		 : { $set: action.loading },
+				// newsListArry : { $set: action.list.data },
+			});
+		case GET_HOT_HK_NEWS:
+			return update(newState, {
+				infoListHotData 	: { $set: action.list.data},
+				currentPageIsseu 	: { $set: action.currentPageIsseu},
+				numPageIsseu	 	: { $set: action.numPageIsseu},
+				loading		 		: { $set: action.loading },
+			});
+		case GET_HK_DETAIL_NEWS:
+			return update(newState, {
+				infoListHotDetail : { $set: action.data.data},
+			});
+		case GET_HK_DETAIL_ISSEU:
+			return update(newState, {
+				infoListHotIsseu : { $set: action.data.data},
+			});
+		case GET_HK_DETAIL_COMMENT://议题全部评论
+			return update(newState, {
+				infoListHotComment : { $set: action.data},
+			});
+		case GET_HK_DETAIL_COMMENT_SUBMIT://发表评论
+			return update(newState, {
+				locading : { $set: action.loading},
+			});
+		case GET_HK_THUMBS_UP://给资讯详情点赞
+			return update(newState, {
+				loading : { $set: action.loading},
+			});
+		case GET_HK_THUMBS_UP_ISSEU://给议题详情点赞
+			return update(newState, {
+				loading : { $set: action.loading},
+			});
+		case GET_HK_REPLY_TO_COMMENT://评论回复功能
+			return update(newState, {
+				loading : { $set: action.loading},
 			});
 		default:
 			return state

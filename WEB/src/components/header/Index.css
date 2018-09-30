@@ -1,6 +1,8 @@
 .head {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width:1000px ;
+    box-shadow: 0 2px 2px 0 rgba(220, 220, 220, 0.5);
 }
 
 .logo {
@@ -42,14 +44,20 @@
 }
 .head-center
 {
-    margin-top: 22px;
+    margin-top:10px;
+    display:inline-block;
 }
 
 .head-center-search
 {
     width: 90%;
-    margin-left: 30px;
 }
+
+.head-center-search>span
+{
+    box-shadow: 0 2px 4px 0 rgba(235, 235, 235, 0.5);
+}
+
 .head-center-search Button
 {
     border-radius:4px;

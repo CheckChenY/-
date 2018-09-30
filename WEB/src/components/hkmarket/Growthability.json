@@ -1,0 +1,88 @@
+{
+    "growthability": [
+        {
+            "year": "2017年年报",
+            "total_assets":"-8.79",
+            "net_asset_per_share":"-0.34",
+            "total_liabilities":"-13.97",
+            "pre_tax_profit":"23.37",
+            "basic_earnings_per_share":"34.27",
+            "gross_profit":"-5.13",
+            "net_profit_of_parent_shareholder":"34.25",
+            "equity_attributable_of_parent_shareholder":"-0.34",
+            "operating_profit ":"27.98",
+            "operating_revenue":"-7.95",
+            "total_shareholder_equity":"-0.34"
+        },
+        {
+            "year": "2017年中报",
+            "total_assets":"-8.79",
+            "net_asset_per_share":"-0.34",
+            "total_liabilities":"-13.97",
+            "pre_tax_profit":"23.37",
+            "basic_earnings_per_share":"34.27",
+            "gross_profit":"-5.13",
+            "net_profit_of_parent_shareholder":"34.25",
+            "equity_attributable_of_parent_shareholder":"-0.34",
+            "operating_profit ":"27.98",
+            "operating_revenue":"-7.95",
+            "total_shareholder_equity":"-0.34"
+        },
+        {
+            "year": "2016年年报",
+            "total_assets":"-8.79",
+            "net_asset_per_share":"-0.34",
+            "total_liabilities":"-13.97",
+            "pre_tax_profit":"23.37",
+            "basic_earnings_per_share":"34.27",
+            "gross_profit":"-5.13",
+            "net_profit_of_parent_shareholder":"34.25",
+            "equity_attributable_of_parent_shareholder":"-0.34",
+            "operating_profit ":"27.98",
+            "operating_revenue":"-7.95",
+            "total_shareholder_equity":"-0.34"
+        },
+        {
+            "year": "2016年中报",
+            "total_assets":"-8.79",
+            "net_asset_per_share":"-0.34",
+            "total_liabilities":"-13.97",
+            "pre_tax_profit":"23.37",
+            "basic_earnings_per_share":"34.27",
+            "gross_profit":"-5.13",
+            "net_profit_of_parent_shareholder":"34.25",
+            "equity_attributable_of_parent_shareholder":"-0.34",
+            "operating_profit ":"27.98",
+            "operating_revenue":"-7.95",
+            "total_shareholder_equity":"-0.34"
+        },
+        {
+            "year": "2015年年报",
+            "total_assets":"-8.79",
+            "net_asset_per_share":"-0.34",
+            "total_liabilities":"-13.97",
+            "pre_tax_profit":"23.37",
+            "basic_earnings_per_share":"34.27",
+            "gross_profit":"-5.13",
+            "net_profit_of_parent_shareholder":"34.25",
+            "equity_attributable_of_parent_shareholder":"-0.34",
+            "operating_profit ":"27.98",
+            "operating_revenue":"-7.95",
+            "total_shareholder_equity":"-0.34"
+        },
+        {
+            "year": "2015年中报",
+            "total_assets":"-8.79",
+            "net_asset_per_share":"-0.34",
+            "total_liabilities":"-13.97",
+            "pre_tax_profit":"23.37",
+            "basic_earnings_per_share":"34.27",
+            "gross_profit":"-5.13",
+            "net_profit_of_parent_shareholder":"34.25",
+            "equity_attributable_of_parent_shareholder":"-0.34",
+            "operating_profit ":"27.98",
+            "operating_revenue":"-7.95",
+            "total_shareholder_equity":"-0.34"
+        }
+    ]
+}

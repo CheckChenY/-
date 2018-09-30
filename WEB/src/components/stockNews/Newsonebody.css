@@ -1,0 +1,135 @@
+.news-one-all {
+    /* width: 1000px; */
+    padding-bottom: 32px;
+}
+
+.news-one {
+    border-bottom: solid 1px #d7d7d7;
+    padding-bottom: 19px;
+    margin-top: 20px;
+}
+
+.news-two {
+    border-bottom: solid 1px #d7d7d7;
+    padding-bottom: 19px;
+    margin-top: 20px;
+}
+
+.news-three {
+    border-bottom: solid 1px #d7d7d7;
+    padding-bottom: 19px;
+    margin-top: 20px;
+}
+
+.news-four {
+    border-bottom: solid 1px #d7d7d7;
+    padding-bottom: 19px;
+    margin-top: 20px;
+}
+.news-one-picture {
+    position: relative;
+}
+
+.news-one-title {
+    /* width: 557px; */
+    height: 33px;
+    font-family: PingFangSC;
+    font-size: 24px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #6f6f6f;
+    position: absolute;
+    margin-left: 31px;
+}
+
+.news-one-time {
+    /* width: 80px; */
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #646464;
+    position: absolute;
+    margin-left: 32px;
+    margin-top: 115px;
+}
+
+.news-one-author {
+    /* width: 80px; */
+    height: 18px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #646464;
+    position: absolute;
+    margin-left: 32px;
+    margin-top: 90px;
+}
+
+.news-one-share {
+    position: absolute;
+    margin-left: 570px;
+    margin-top: 100px;
+}
+
+.news-one-share-picture {
+    width: 17.8px;
+    height: 16.5px;
+    /* background-color: #8e8e8e; */
+    margin-right: 10px;
+}
+
+.news-one-share-word {
+    width: 24px;
+    height: 16px;
+    font-family: PingFangSC;
+    font-size: 11px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #8e8e8e;
+    vertical-align: middle;
+}
+
+.news-one-good {
+    position: absolute;
+    margin-left: 659.5px;
+    margin-top: 100px;
+}
+
+.news-one-good-picture {
+    width: 17.8px;
+    /* height: 16.5px; */
+    height: 19.5px;
+    /* background-color: #8e8e8e; */
+    margin-right: 10px;
+}
+
+.news-one-good-number {
+    width: 24px;
+    height: 16px;
+    font-family: PingFangSC;
+    font-size: 11px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #8e8e8e;
+    vertical-align: middle;
+}

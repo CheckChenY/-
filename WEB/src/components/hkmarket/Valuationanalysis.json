@@ -1,0 +1,57 @@
+{
+    "valuationanalysis": [
+        {
+            "valu_type": "平均值",
+            "PE_TTM":"-9.9858",
+            "PE_LYR":"-11.0136",
+            "PB_MRQ":"0.7949",
+            "PB_LYR":"0.7949",
+            "PS_TTM":"0.1818",
+            "PS_LYR":"0.1829",
+            "PCF_TTM":"-975.7607",
+            "PCF_LYR":"-",
+            "total_value":"309,778,721",
+            "circulation_value":"309,778,721",
+            "enterprise_equity_value":"309,778,721",
+            "dividend_yield":"-",
+            "interval_start_date":"2018-01-01",
+            "interval_end_date":"2018-08-17"
+        },
+        {
+            "valu_type": "最大值",
+            "PE_TTM":"-7.8157",
+            "PE_LYR":"-9.4246",
+            "PB_MRQ":"1.0387",
+            "PB_LYR":"1.0387",
+            "PS_TTM":"0.2389",
+            "PS_LYR":"0.2389",
+            "PCF_TTM":"-834.9831",
+            "PCF_LYR":"-"
+            
+        },
+        {
+            "valu_type": "最小值",
+            "PE_TTM":"-14.3903",
+            "PE_LYR":"-14.3903",
+            "PB_MRQ":"0.6803",
+            "PB_LYR":"0.6803",
+            "PS_TTM":"0.1565",
+            "PS_LYR":"0.1565",
+            "PCF_TTM":"-1,185.1373",
+            "PCF_LYR":"-"            
+        },
+        {
+            "valu_type": "期末值",
+            "PE_TTM":"-9.4246",
+            "PE_LYR":"-9.4246",
+            "PB_MRQ":"0.6803",
+            "PB_LYR":"0.6803",
+            "PS_TTM":"0.1565",
+            "PS_LYR":"0.1565",
+            "PCF_TTM":"-1,185.1373",
+            "PCF_LYR":"-"            
+        }
+
+       
+    ]
+}

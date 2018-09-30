@@ -1,6 +1,4 @@
-/**
-* Created by Migual on 2018/9/20.
-*/
+
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 
