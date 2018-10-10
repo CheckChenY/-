@@ -11,7 +11,7 @@ import {
 import { Button, Form, Input, Checkbox, Layout, Row, Col, Tabs,Icon } from 'antd';
 
 import Register from '../components/login/register';
-import intl from 'react-intl-universal';
+// import intl from 'react-intl-universal';
 
 // import { showModal } from './editpassword/action'
 
@@ -78,14 +78,14 @@ class NormalLoginForm extends Component {
           {getFieldDecorator('userName', {
             rules: [{ required: true, message: 'Please input your username!' }],
           })(
-            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名：" />
+            <Input className="login-form-name"  prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入用户名" />
           )}
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
-            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码：" />
+            <Input className="login-form-name"  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请输入密码" />
           )}
         </FormItem>
         <FormItem >
@@ -94,7 +94,7 @@ class NormalLoginForm extends Component {
               valuePropName: 'checked',
               initialValue: true,
             })(
-              <Checkbox className="rememberpass">{intl.get('login.remember.password')}</Checkbox>
+              <Checkbox className="rememberpass">记住密码</Checkbox>
             )}
           </Col>
           <Col span={14} style={{display:'inline-block', textAlign:'right'}} >
@@ -103,12 +103,12 @@ class NormalLoginForm extends Component {
                 <Button 
                   style={{
                       border:'none',
-                      textDecoration:'underline',
+                      // textDecoration:'underline',
                       fontSize:'12px',
                       color:'#3172be',
                   }} 
               >
-                  <span className="forgetpass">忘记密码？</span>
+                  <span className="forgetpass">忘记密码???</span>
               </Button>
             </Link>
           </Col>
@@ -118,7 +118,7 @@ class NormalLoginForm extends Component {
           htmlType="submit" 
 
           className="login-box-button">
-              登陆
+              登录
           </Button>
         </FormItem>
       </Form>
@@ -162,14 +162,14 @@ class LoginTxt extends Component {
             <Col md={7} sm={9} xs={9}>
               <div className='login-register-box'>                         
                 <Row>
-                  <Col span={3}></Col>
-                  <Col span={18}>  
+                  <Col span={2}></Col>
+                  <Col span={20}>  
                     <div className='login-register-box-content'>
                       <div className='login-register-box-imgBg' >
-                        <img src={imgUrl_1} alt='金融搜索'/>                                        
+                        <img src={imgUrl_1} alt='金融搜索' style={{width:'75px',height:'66px'}}/>                                        
                       </div>
                       <Tabs defaultActiveKey="1" tabBarGutter={20} className="login-register-box-tab" >
-                        <TabPane tab="登陆" key="1">
+                        <TabPane tab="登录" key="1">
                           <WrappedNormalLoginForm { ...props }/>                               
                         </TabPane>
                         <TabPane tab="注册" key="2">
@@ -178,7 +178,7 @@ class LoginTxt extends Component {
                       </Tabs>
                     </div>
                   </Col>
-                  <Col span={3}></Col> 
+                  <Col span={2}></Col> 
                 </Row>
               </div>
             </Col>

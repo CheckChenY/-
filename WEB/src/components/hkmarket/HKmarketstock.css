@@ -1,0 +1,68 @@
+/* 顶部头的样式 */
+.HKmarket-stock
+{
+    width: 99%;
+    box-shadow: 0 0 4px 0 rgba(179, 179, 179, 0.5);
+    background-color: #ffffff;
+    margin-bottom: 33px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.title .HKmarket-stock .ant-tabs-bar
+{
+    height: 60px;
+    margin: 0;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.title .HKmarket-stock .ant-tabs-nav-scroll
+{
+    background-color: #ffffff;
+    padding: 15px;
+}
+
+.title .HKmarket-stock .ant-tabs-nav .ant-tabs-tab
+{
+    height: 30px;
+    width: 80px;
+    margin-right: 20px;
+    padding: 0;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 30px;
+    letter-spacing: normal;
+    text-align: center;
+    color: #58626d;
+    background-image: none;
+    background-color: #f6f6f6;
+    border-radius: 4px;
+    border: solid 1px #99a2ac;
+}
+
+.title .HKmarket-stock .ant-tabs-nav .ant-tabs-tab-active
+{
+    height: 30px;
+    width: 80px;
+    margin-right: 20px;
+    padding: 0;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 30px;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    background-image: none;
+    background-color: #7a8087;    
+    border-radius: 4px;
+    border: solid 1px #99a2ac;
+}
+
+
+

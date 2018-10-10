@@ -31,7 +31,8 @@
 {
     width: 90px;
     height: 25px;
-    margin:10px 14px;     
+    margin:10px 14px; 
+    padding: 0;    
     font-family: PingFangSC;
     font-size: 11px;
     font-weight: normal;
@@ -39,11 +40,35 @@
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: left;
+    text-align: center;
     color: #ffffff;
     border-radius: 12.5px;
+    background-color: #ff8e8e;
     background-image: linear-gradient(250deg, #ff4444, #ff9191);
 }
+
+.my-information-right-button:hover
+{
+    color: #ffffff;
+    border-color: #ffffff;    
+    background-color: #ff8e8e;
+}
+
+.my-information-right-button:focus
+{
+    color: #ffffff;
+    border-color: #ffffff; 
+    background-image:linear-gradient(261deg, #ff4444, #ff9191);
+}
+
+.my-information-right-button:active 
+{
+    color: #ffffff;
+    border-color: #ffffff; 
+    background-image: linear-gradient(-219deg, #CD2222 32%, #DC2D2D 100%);
+}
+
+
 .my-information-right-text
 {
     font-family: PingFangSC;
@@ -96,9 +121,36 @@
     background-image: linear-gradient(250deg, #ff4444, #ff9191);
 }
 
+.modify-information-button:hover
+{
+    color: #ffffff;
+    border-color: #ffffff;    
+    background-color: #ff8e8e;
+}
+
+.modify-information-button:focus
+{
+    color: #ffffff;
+    border-color: #ffffff; 
+    background-image:linear-gradient(261deg, #ff4444, #ff9191);
+}
+
+.modify-information-button:active 
+{
+    color: #ffffff;
+    border-color: #ffffff; 
+    background-image: linear-gradient(-219deg, #CD2222 32%, #DC2D2D 100%);
+}
+
+
 .modify-information-form
 {
     margin-top: 20px;
+}
+
+.modify-information-form .ant-form-item
+{
+    margin-bottom: 14px;
 }
 
 .modify-information-form .ant-form-item-label
@@ -128,11 +180,25 @@
 
 .modify-information-form-button
 {
+    margin-top: 20px;
     display:inline-block;
     width:100%;
     border-radius:4px;
     border:0;
+    background-color: #ff8e8e;
     background-image:linear-gradient(261deg, #ff4444, #ff9191);
+}
+.modify-information-form-button:hover
+{
+  background-color: #ff8e8e;
+}
+.modify-information-form-button:focus
+{
+  background-image:linear-gradient(261deg, #ff4444, #ff9191);
+}
+.modify-information-form-button:active 
+{
+  background-image: linear-gradient(-219deg, #CD2222 32%, #DC2D2D 100%);
 }
 
 .modify-information-form-textArea

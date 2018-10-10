@@ -12,7 +12,7 @@
     border-bottom: 0px solid transparent;
     position: absolute;
     margin-top: -16px;
-    margin-left: 310px;
+    margin-left: 295px;
 }
 
 .title-select-one .ant-select-selection {
@@ -42,5 +42,21 @@
 }
 
 .title-search-result {
-    color: yellow;
+    color: red;
+}
+
+
+/*"时间不限、分类"切换下拉框外边框蓝色去掉*/
+.title-select .ant-select-focused .ant-select-selection, .ant-select-selection:focus, .ant-select-selection:active {
+    border-color: white;
+    /* box-shadow: 0 0 0 2px rgba(251, 252, 253, 0.979); */
+    box-shadow: 0 0 0 0;
+}
+
+.title-select .ant-select-open .ant-select-selection {
+    border-color: white;
+}
+
+.title-select .ant-select-selection:hover {
+    border-color: white;
 }

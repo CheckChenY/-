@@ -1,7 +1,11 @@
 
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
-import { Homepagesearch } from '../home/action'
+import { Homepagesearch } from '../home/action';
+import intl from 'react-intl-universal';
+import { 
+    loadLocales
+} from '../../action';
 import { Menu, Dropdown, Input } from 'antd';
 import { Row, Col } from 'antd';
 import { Select } from 'antd';
@@ -17,29 +21,33 @@ const Option = Select.Option;
 const Search = Input.Search;
 
 
-function handleChange(value) {
-    console.log(`selected ${value}`);
-}
+// function handleChange(value) {
+//     console.log(`selected ${value}`);
+// }
 
 class Header extends Component{
     render(){
         const menu = (
             <Menu>
-                <Menu.Item key="1"><Personalinformation /></Menu.Item>
-                <Menu.Item key="2"><Changepassword /></Menu.Item>
+                <Menu.Item key="1" className='head-right-choose'><Personalinformation /></Menu.Item>
+                <Menu.Item key="2" className='head-right-choose'><Changepassword /></Menu.Item>
             </Menu>
         );
 
         const self = this,  
         { props } = self, 
-        { bShowSearch ,Homepagesearch} = props;
+        { 
+            bShowSearch ,
+            Homepagesearch,
+            loadLocales=()=>{}
+        } = props;
 
         return (
             <div >
                 <Row className="head">
                     <Col span={6} className="head-left">
                         <img alt='aaa' src={imgoneURL} className="logo"/> 
-                        <span className="head-left-one">金融搜索</span>
+                        <span className="head-left-one">{intl.get('search')}</span>
                         <span className="head-left-two">BAR</span>
                     </Col>
                     <Col span={10} className="head-center">
@@ -61,14 +69,14 @@ class Header extends Component{
                             <Select 
                                 className="head-right-select"
                                 defaultValue="CH" 
-                                onChange={handleChange}
+                                onChange={ loadLocales }
                                 showArrow={true} 
                                 style={{ 
                                     borderRight:'solid 1px #979797'
                                 }}
                             >
-                                <Option value="CH">CH</Option>
-                                <Option value="TW">TW</Option>
+                                <Option value="zh-CN">CH</Option>
+                                <Option value="zh-TW">TW</Option>
                                 {/* <Option value="EN">EN</Option> */}
                             </Select>
                         </div>                        
@@ -91,6 +99,7 @@ const mapDispatchToProps = (state) => ({
 })
     
 export default connect(mapDispatchToProps,{
-    Homepagesearch
+    Homepagesearch,
+    loadLocales
 })(Header);
 // export default Header;

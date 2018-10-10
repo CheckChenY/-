@@ -1,4 +1,5 @@
 import React,{ Component} from 'react';
+import intl from 'react-intl-universal';
 
 import './Homepageissues.css'
 import imgoneURL from '../assient/home/issuephotoaa.png';
@@ -17,7 +18,7 @@ class Homepageissues extends Component{
                             丨
                         </span>
                         <span className="issues-title-word">
-                            议题推荐
+                            {intl.get('recommend_issues')}
                         </span>
                     </div>
                     <div>

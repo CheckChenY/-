@@ -19,7 +19,7 @@ class BackPassword extends Component {
           minWidth:'1140px'
         }}
       >
-          <Header/>  
+          <Header bNoBoxShadow={true}/>  
           <Content
             style={{
               background:`url(${imgUrl_2}) no-repeat`,

@@ -1,4 +1,6 @@
 import React,{ Component} from 'react';
+import intl from 'react-intl-universal';
+
 import { Select } from 'antd';
 
 
@@ -21,10 +23,10 @@ class Newsthree extends Component{
                     <div>
                         <span className="title-stock-newsthree"></span>
                     </div>
-                    <div>
+                    <div className='title-select'>
                         <Select 
                             className="title-select-one"
-                            defaultValue="时间不限" 
+                            defaultValue= {intl.get('any_time')} 
                             onChange={handleChange}
                             showArrow={true} 
                             style={{ 
@@ -32,14 +34,14 @@ class Newsthree extends Component{
                                 marginLeft:'-10px'
                             }}
                         >
-                            <Option value="day">一天内</Option>
-                            <Option value="week">一周内</Option>
-                            <Option value="month">一月内</Option>
-                            <Option value="yesr">一年内</Option>
+                            <Option value="day">{intl.get('day')}</Option>
+                            <Option value="week">{intl.get('week')}</Option>
+                            <Option value="month">{intl.get('month')}</Option>
+                            <Option value="yesr">{intl.get('year')}</Option>
                         </Select>
                         <Select 
                             className="title-select-two"
-                            defaultValue="分类" 
+                            defaultValue= {intl.get('classify')}
                             onChange={handleChange}
                             showArrow={true} 
                             style={{ 
@@ -51,9 +53,9 @@ class Newsthree extends Component{
                             <Option value="hotissue">热门议题</Option> */}
                         </Select>
                         <span className="title-search">
-                            为您找到相关结果约为
+                            {intl.get('search_result_one')}
                             <span className="title-search-result">490,000</span>
-                            条
+                            {intl.get('search_result_two')}
                         </span>
                     </div>
                 </div>

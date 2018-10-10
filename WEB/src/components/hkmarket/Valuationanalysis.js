@@ -1,6 +1,10 @@
 
 import React,{ Component} from 'react';
-
+import { connect } from 'react-redux';
+import { 
+    getYear,
+    getValuationListSelect
+} from './action';
 import { Select } from 'antd' 
 import data from './Valuationanalysis.json';
 
@@ -9,20 +13,50 @@ import './Valuationanalysis.css';
 const Option = Select.Option;
   
 
-function handleChange(value) {
-    console.log(`selected ${value}`);
-}
+// function handleChange(value) {
+//     console.log(`selected ${value}`);
+// }
 
 class ValuationAnalysis extends Component{
 
     constructor(props) {
-        super(props);        
+        super(props); 
+        this.state = {
+            yearArr:[]
+        }       
         this.ValuationAnalysisData = data.valuationanalysis;
       }    
     
+    componentDidMount(){
+          const self = this,
+          {   getYear , 
+            stockCodeList,
+        } = self.props,
+        { stockCode } = stockCodeList;
+        getYear(stockCode);
+    }
+    // componentDidMount(){
+    //     const self = this,
+    //     { 
+    //         stockCodeList,
+    //         getValuationList
+    //     } = self.props,
+    //     { stockCode } = stockCodeList;
+    //     getValuationList(stockCode)
+    // }
+
+    // getYear(stockCode){
+    //     const self = this;
+    // }
+    
 
     render(){
-        const { ValuationAnalysisData } =this;
+        const { ValuationAnalysisData,props } =this,
+        { state,
+            getValuationListSelect=()=>{},
+            stockCodeList } = props,
+        { stockCode } = stockCodeList,
+        { getYearList=[],getValuationList } = state;
         return (
             <div >
                 <div style={{padding:'20px 0 22px 0', border:'solid 1px #ebeef1'}}>
@@ -32,122 +66,123 @@ class ValuationAnalysis extends Component{
                 <div style={{marginBottom:'40px', border:'solid 1px #ebeef1'}}>
                 <table style={{width:'100%'}}>
                     <tbody>
-                    <tr>
+                    <tr >
                         <th className='valuation-analysis-table-head'></th>
-                        <td style={{paddingTop:'10px', paddingLeft:'40px'}}>
+                        <td style={{paddingTop:'20px', paddingLeft:'40px'}}>
                             <Select 
                                 defaultValue="2018" 
                                 style={{ width:'80px' }} 
-                                onChange={handleChange}
+                                onChange={getValuationListSelect}
                                 size="small"
                                 className='valuation-analysis-select'
                             >
-                                <Option value="2018">2018年</Option>
-                                <Option value="2017">2017年</Option>
-                                <Option value="2016">2016年</Option>
-                                <Option value="2015">2015年</Option>
+                                 {getYearList.map((show,i)=>(
+                                     <Option key={i} name={stockCode} value={show}>{show}年</Option>
+                                 ))}
                             </Select>
                         </td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'></th>
-                        <td style={{paddingLeft:'35px'}} colSpan='4'>
+                        <th className='valuation-analysis-table-head-none'></th>
+                        <td style={{paddingLeft:'35px',paddingBottom:'10px'}} colSpan='4'>
                             <hr style={{border:'solid 1px #ebeef1'}}/>
                         </td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'></th>
                         {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-type'>{show.valu_type}</td>
+                            <td key={i} className='valuation-analysis-table-value-type'>{show.valu_type}</td>
                         ))}
                     </tr>  
                     <tr>
                         <th className='valuation-analysis-table-head'>市盈率(PE,TTM)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PE_TTM}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>市盈率(PE,LYR)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PE_LYR}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peLyrMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peLyrMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peLyrFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>市净率(PB,MRQ)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PB_MRQ}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>市净率(PB,LYR)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PB_LYR}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>市销率(PS,TTM)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PS_TTM}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>市销率(PS,LYR)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PS_LYR}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>市现率(PCF,TTM)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PCF_TTM}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>市现率(PCF,LYR)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text'>{show.PCF_LYR}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfLyrAverageValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfLyrMaxValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfLyrMinValue:'-9.9858'}</td>
+                        <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfLyrFinalValue:'-9.9858'}</td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <th className='valuation-analysis-table-head'></th>
                         <td className='valuation-analysis-table-value-text' colSpan='4'></td>
+                    </tr> */}
+                    <tr>
+                        <th className='valuation-analysis-table-head-none'></th>
+                        <td style={{paddingLeft:'5px',paddingTop:'10px',paddingBottom:'10px'}} colSpan='4'>
+                            <hr style={{border:'solid 1px #ebeef1'}}/>
+                        </td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>总市值</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{show.total_value}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.totalMarketValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>流通市值</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{show.circulation_value}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.circulationMarketValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>企业股权价值</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{show.enterprise_equity_value}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.equityValue:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>股息率(股价复权)</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{show.dividend_yield}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.dividendYield:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>区间起始日</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{show.interval_start_date}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.startDate:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'>区间截至日</th>
-                        {ValuationAnalysisData.map((show,i)=>(
-                            <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{show.interval_end_date}</td>
-                        ))}
+                        <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.endDate:'-9.9858'}</td>
                     </tr>
                     <tr>
                         <th className='valuation-analysis-table-head'></th>
@@ -173,4 +208,13 @@ class ValuationAnalysis extends Component{
     } 
 }
 
-export default ValuationAnalysis;
+
+const mapDispatchToProps = (state) => ({
+    state:state.checkReducer
+})
+  
+export default connect(mapDispatchToProps,{
+    getYear,
+    getValuationListSelect
+})(ValuationAnalysis);
+// export default ValuationAnalysis;

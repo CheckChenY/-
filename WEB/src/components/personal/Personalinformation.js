@@ -5,6 +5,8 @@ import { Modal, Button, Tabs} from 'antd';
 
 import { getLoading } from './action'
 
+import intl from 'react-intl-universal';
+
 import MyComments from './myComments';
 import MyInformation from './myInformation';
 
@@ -47,11 +49,11 @@ class Changepassword extends Component{
             return (
             <div>
                 <Button  onClick={this.showModal} className="my-information">
-                    我的信息
+                    {intl.get('information_myself')}
                 </Button>
                 <Modal 
-                    title="我的信息"
-                    style={{ top: 20}}
+                    title={intl.get('information_myself')}
+                    style={{ top: 70 }}
                     visible={this.state.visible}
                     onCancel={this.hideModal}
                     footer={null}
@@ -73,7 +75,7 @@ class Changepassword extends Component{
                                         <img  alt='aaa' src={imgoneURL1} className="my-information-left-user-picture"/>
                                         <div className='my-information-left-text'>ID: {data.userAccount}</div>
                                     </div>
-                                    <div className='my-information-left-tab' >个人信息</div>
+                                    <div className='my-information-left-tab' >{intl.get('information_mine')}</div>
                                 </span>
                             }
                                 key="1"
@@ -82,7 +84,7 @@ class Changepassword extends Component{
                         </TabPane>                           
                         <TabPane 
                             tab={
-                                <div className='my-information-left-tab' style={{marginTop:'8px'}}>评论</div>
+                                <div className='my-information-left-tab' style={{marginTop:'8px'}}>{intl.get('comment')}</div>
                             } 
                             key="2"
                         >

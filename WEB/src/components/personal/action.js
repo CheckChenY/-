@@ -16,6 +16,7 @@ export const userInfoUpdate = (userAccount,userEmail,userNickname,userAddress,us
         }
     )
     .then(function (response) {
+        
         if(response.data.code === 1){
             alert("保存成功")
             dispath({

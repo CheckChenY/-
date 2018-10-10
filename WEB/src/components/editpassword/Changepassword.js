@@ -1,5 +1,8 @@
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
+
+import intl from 'react-intl-universal';
+
 import { Row, Col,Modal, Button } from 'antd';
 import { editPassword , editPasswordHide,editPasswordSave} from './action'
 import './Changepassword.css';
@@ -39,10 +42,10 @@ class Changepassword extends Component{
             <div>
                 <Button  onClick={editPassword} className="change-psw">
                     {/* <img alt='修改密码' src={imgoneURL} /> */}
-                    修改密码
+                    {intl.get('password_modify')}
                 </Button>
                 <Modal
-                    title="修改密码"
+                    title={intl.get('password_modify')}
                     wrapClassName ="change-base"
                     iconType= {<img alt='修改密码' src={imgoneURL} />}
                     visible={visible}
@@ -72,7 +75,7 @@ class Changepassword extends Component{
                     <Row className="change">
                         <Col xl={7} md={7} className="change-left"></Col>
                         <Col xl={10} md={10} className="change-oldpassword">
-                            <span className="change-oldpassword-title">旧密码</span> 
+                            <span className="change-oldpassword-title">{intl.get('password_old')}</span> 
                         </Col>
                         <Col xl={7} md={7} className="change-right"></Col>
                     </Row>
@@ -90,7 +93,7 @@ class Changepassword extends Component{
                     <Row className="change">
                         <Col xl={7} md={7} className="change-left"></Col>
                         <Col xl={10} md={10} className="change-newpassword">
-                            <span className="change-newpassword-title">新密码</span> 
+                            <span className="change-newpassword-title">{intl.get('password_new')}</span> 
                         </Col>
                         <Col xl={7} md={7} className="change-right"></Col>
                     </Row>
@@ -108,7 +111,7 @@ class Changepassword extends Component{
                     <Row className="change">
                         <Col xl={7} md={7} className="change-left"></Col>
                         <Col xl={10} md={10} className="change-expassword">
-                            <span className="change-expassword-title">重新输入新密码</span> 
+                            <span className="change-expassword-title">{intl.get('enteragain_password_new')}</span> 
                         </Col>
                         <Col xl={7} md={7} className="change-right"></Col>
                     </Row>
@@ -128,7 +131,7 @@ class Changepassword extends Component{
                                 type='danger'
                                 onClick={()=>editPasswordSave(userPassword,newPassword,userAccount)}
                             >
-                                保存
+                                {intl.get('save')}
                             </button> 
                         </Col>
                         <Col xl={8} md={8} className="change-right"></Col>

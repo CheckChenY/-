@@ -40,7 +40,7 @@ class MakeComment extends Component{
             { subCommentContent ,state} = props,
             { user } = state,
             { data } = user,
-            { userId } = data;
+            { userId ,userNickname} = data;
         return (
             <div>
                 <hr style={{border: 'solid 1px #dadada'}}/>
@@ -49,7 +49,7 @@ class MakeComment extends Component{
                             <Col span={3}>
                                 <div style={{width:'100%', textAlign:'center'}}>
                                     <img  alt='aaa' src={imgURL1} className='details-user-icon'/>
-                                    <div className='details-user-ID'>ID: {'张海城'}</div>
+                                    <div className='details-user-ID'>ID: {userNickname}</div>
                                 </div>
                             </Col>
                             <Col span={21}>

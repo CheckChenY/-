@@ -1,4 +1,5 @@
 import React,{ Component} from 'react';
+import intl from 'react-intl-universal';
 import { Tabs } from 'antd';
 
 import { connect } from 'react-redux';
@@ -18,9 +19,10 @@ import Newsonebody from './Newsonebody'
 // import Newstwobody from './Newstwobody'
 import Newsthreebody from './Newsthreebody'
 
-import HKMarket from '../hkmarket/HKmarket'
 
 import Index from '../header/Index'
+import HKMarketStock from '../hkmarket/HKmarketstock';
+import HKmarket from '../hkmarket/HKmarket';
 import './index.css'
 
 
@@ -51,7 +53,7 @@ class MyInformation extends Component{
         // console.log(event.scrollDom.clientHeight)
     
     
-        const clientHeight = event.scrollDom.clientHeight + 109;
+        const clientHeight = event.scrollDom.clientHeight + 107;
         // const scrollHeight = event.scrollDom.scrollHeight
         // const scrollTop = event.scrollDom.scrollTop
     
@@ -103,10 +105,12 @@ class MyInformation extends Component{
         const self = this,
         { props } = self,
         { state } = props,
-        { infoListPage } = state;
+        { infoListPage,dataListDetail,stockCodeList } = state;
+
         // { state } = props,
         // { newsListArry=[] } = state;
-        
+
+
         return (
             <div>
                 <Index bShowSearch={true}/>
@@ -115,7 +119,7 @@ class MyInformation extends Component{
                     <div ref={body=>self.scrollDom = body} className="title">
                         <Tabs defaultActiveKey="1" onChange={callback}>
                             <TabPane 
-                                tab={<div><span className="title-stock-one">港股资讯</span></div>}
+                                tab={<div><span className="title-stock-one">{intl.get('HKstocks_information')}</span></div>}
                                 key="1"
                             >   
                                 <div className="title-one"><Newsone infoListPage = {infoListPage} /></div>
@@ -126,15 +130,19 @@ class MyInformation extends Component{
                                 </div>
                             </TabPane>
                             <TabPane
-                                tab={<div><span className="title-stock-two">港股行情</span></div>} 
+                                tab={<div><span className="title-stock-two">{intl.get('HKstocks_quotes')}</span></div>} 
                                 key="2"
                             >
                                 <div className="title-two"><Newstwo /></div>
                                 {/* <div className="title-two"><Newstwobody /></div> */}
-                                <HKMarket/>
+                                { dataListDetail ? <HKMarketStock /> : <HKmarket 
+                                stockCodeList={stockCodeList}
+                                /> }
+                                
+                                {/* <HKmarket /> */}
                             </TabPane>
                             <TabPane 
-                                tab={<div><span className="title-stock-three">热门议题</span></div>}
+                                tab={<div><span className="title-stock-three">{intl.get('hot_issues')}</span></div>}
                                 key="3"
                             >
                                 <div className="title-three"><Newsthree /></div>

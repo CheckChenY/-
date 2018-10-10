@@ -1,4 +1,5 @@
 import React,{ Component} from 'react';
+import intl from 'react-intl-universal';
 
 import './Homepagestocks.css'
 import imgoneURL from '../assient/home/stockphoto.png';
@@ -15,7 +16,7 @@ class Homepagestocks extends Component{
                                 丨
                             </span>
                             <span className="stocks-title-word">
-                                港股推荐
+                                {intl.get('recommend_HKstocks')}
                             </span>
                         </div>
                         <div>

@@ -1,3 +1,10 @@
+.footer {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    /* background-color: #f8f8f8; */
+    /* height: 55px; */
+}
+
 .footer-text
 {
     border-top: solid 1px #e5e5e5;
@@ -13,4 +20,16 @@
     letter-spacing: normal;
     text-align: left;
     color: #6f6f6f;
+    /* margin-top: 16px;
+    margin-bottom: 20px; */
+    width: 443px;
 }
+
+.footer-text-one {
+    padding-right: 17px;
+}
+
+/* .footer-text-two {
+
+} */
+

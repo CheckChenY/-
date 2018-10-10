@@ -1,337 +1,154 @@
 import React,{ Component} from 'react';
+import { connect } from 'react-redux';
+import { 
+    getStockProfitTable
+} from './action';
+
+import { Row, Col } from 'antd';
+import intl from 'react-intl-universal';
 
 import './Slprofitstatement.css'
 
 
 
 class Slprofitstatement extends Component{
-
-        render() {
-            return (
+    componentDidMount(){
+        const self = this,
+        { getStockProfitTable,stockCodeList } = self.props,
+        { stockCode } = stockCodeList;
+        getStockProfitTable(stockCode);
+    }
+    render() {
+        const self = this,
+        { state } = self.props,
+        { dataProfitDetail=[] } = state;
+        console.log(dataProfitDetail);
+        return (
             <div>
                 <div style={{padding:'20px 0 22px 0', border:'solid 1px #ebeef1'}}>
                     <div style={{borderRight:'4px solid #f56f6f', marginLeft:'30px', display:'inline'}}/>
-                    <div className='profitstetement-title'>利润表</div>
+                    <div className='profitstetement-title'>{intl.get('slprofitTable')}</div>
                 </div>
-                <div>
-                    <table style={{width:'100%', margin:'0 0 22px', border:'solid 1px #ebeef1'}}>
-                        <thead>
-                            <tr>
-                                <th className="profitstetement-table-title-left"></th>
-                                <th className="profitstetement-table-title-right-one">2017年年报</th>
-                                <th className="profitstetement-table-title-right">2017年中报</th>
-                                <th className="profitstetement-table-title-right">2016年年报</th>
-                                <th className="profitstetement-table-title-right-two">2016年中报</th>
-                            </tr> 
-                        </thead>
-                        <tbody>
-                            <tr >
-                                <td className="profitstetement-table-left">起始日期</td>
-                                <td className="profitstetement-table-right-one">2017-05-01</td>
-                                <td className="profitstetement-table-right">2017-05-01</td>
-                                <td className="profitstetement-table-right">2017-05-01</td>
-                                <td className="profitstetement-table-right-two">2017-05-01</td>
-                            </tr>
-                            <tr >
-                                <td className="profitstetement-table-left">截止日期</td>
-                                <td className="profitstetement-table-right-one">2018-04-30</td>
-                                <td className="profitstetement-table-right">2018-04-30</td>
-                                <td className="profitstetement-table-right">2018-04-30</td>
-                                <td className="profitstetement-table-right-two">2018-04-30</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">报表类型</td>
-                                <td className="profitstetement-table-right-one">合并报表</td>
-                                <td className="profitstetement-table-right">合并报表</td>
-                                <td className="profitstetement-table-right">合并报表</td>
-                                <td className="profitstetement-table-right-two">合并报表</td>
-                            </tr>
-                            <tr>
-                                <td  className="profitstetement-table-left">报表年结日</td>
-                                <td className="profitstetement-table-right-one">0430</td>
-                                <td className="profitstetement-table-right">0430</td>
-                                <td className="profitstetement-table-right">0430</td>
-                                <td className="profitstetement-table-right-two">0430</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">上市前/上市后</td>
-                                <td className="profitstetement-table-right-one">上市后</td>
-                                <td className="profitstetement-table-right">上市后</td>
-                                <td className="profitstetement-table-right">上市后</td>
-                                <td className="profitstetement-table-right-two">上市后</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">原始币种</td>
-                                <td className="profitstetement-table-right-one">港元</td>
-                                <td className="profitstetement-table-right">港元</td>
-                                <td className="profitstetement-table-right">港元</td>
-                                <td className="profitstetement-table-right-two">港元</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">营业收入(计算)(元)</td>
-                                <td className="profitstetement-table-right-one">1,979,674,000.00</td>
-                                <td className="profitstetement-table-right">1,979,674,000.00</td>
-                                <td className="profitstetement-table-right">1,979,674,000.00</td>
-                                <td className="profitstetement-table-right-two">1,979,674,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">销售成本(元)</td>
-                                <td className="profitstetement-table-right-one">-1,285,380,000.00</td>
-                                <td className="profitstetement-table-right">-1,285,380,000.00</td>
-                                <td className="profitstetement-table-right">-1,285,380,000.00</td>
-                                <td className="profitstetement-table-right-two">-1,285,380,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">毛利(计算)(元)</td>
-                                <td className="profitstetement-table-right-one">694,294,000.00</td>
-                                <td className="profitstetement-table-right">694,294,000.00</td>
-                                <td className="profitstetement-table-right">694,294,000.00</td>
-                                <td className="profitstetement-table-right-two">694,294,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">其他收入(元)</td>
-                                <td className="profitstetement-table-right-one">8,636,000.00</td>
-                                <td className="profitstetement-table-right">8,636,000.00</td>
-                                <td className="profitstetement-table-right">8,636,000.00</td>
-                                <td className="profitstetement-table-right-two">8,636,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">销售及分销成本(元)</td>
-                                <td className="profitstetement-table-right-one">-569,947,000.00</td>
-                                <td className="profitstetement-table-right">-569,947,000.00</td>
-                                <td className="profitstetement-table-right">-569,947,000.00</td>
-                                <td className="profitstetement-table-right-two">-569,947,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">行政开支(元)</td>
-                                <td className="profitstetement-table-right-one">-151,221,000.00</td>
-                                <td className="profitstetement-table-right">-151,221,000.00</td>
-                                <td className="profitstetement-table-right">-151,221,000.00</td>
-                                <td className="profitstetement-table-right-two">-151,221,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">员工薪酬(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">研发费用(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">折旧和摊销(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">其他支出(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">资产减值损失(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">重估盈余(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">出售资产之溢利(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">经营溢利(计算)(元)</td>
-                                <td className="profitstetement-table-right-one">-18,238,000.00</td>
-                                <td className="profitstetement-table-right">-18,238,000.00</td>
-                                <td className="profitstetement-table-right">-18,238,000.00</td>
-                                <td className="profitstetement-table-right-two">-18,238,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">应占联营公司溢利(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">应占合营公司溢利(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">财务成本(元)</td>
-                                <td className="profitstetement-table-right-one">-22,053,000.00</td>
-                                <td className="profitstetement-table-right">-22,053,000.00</td>
-                                <td className="profitstetement-table-right">-22,053,000.00</td>
-                                <td className="profitstetement-table-right-two">-22,053,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">影响税前利润的其他项目(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">税前利润(元)</td>
-                                <td className="profitstetement-table-right-one">-40,291,000.00</td>
-                                <td className="profitstetement-table-right">-40,291,000.00</td>
-                                <td className="profitstetement-table-right">-40,291,000.00</td>
-                                <td className="profitstetement-table-right-two">-40,291,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">所得税(元)</td>
-                                <td className="profitstetement-table-right-one">7,422,000.00</td>
-                                <td className="profitstetement-table-right">7,422,000.00</td>
-                                <td className="profitstetement-table-right">7,422,000.00</td>
-                                <td className="profitstetement-table-right-two">7,422,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">影响净利润的其他项目(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">净利润(元)</td>
-                                <td className="profitstetement-table-right-one">-32,869,000.00</td>
-                                <td className="profitstetement-table-right">-32,869,000.00</td>
-                                <td className="profitstetement-table-right">-32,869,000.00</td>
-                                <td className="profitstetement-table-right-two">-32,869,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">本公司拥有人应占净利润(元)</td>
-                                <td className="profitstetement-table-right-one">-32,869,000.00</td>
-                                <td className="profitstetement-table-right">-32,869,000.00</td>
-                                <td className="profitstetement-table-right">-32,869,000.00</td>
-                                <td className="profitstetement-table-right-two">-32,869,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">非控股权益应占净利润(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">股息(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">每股股息(元)</td>
-                                <td className="profitstetement-table-right-one">0.0000</td>
-                                <td className="profitstetement-table-right">0.0000</td>
-                                <td className="profitstetement-table-right">0.0000</td>
-                                <td className="profitstetement-table-right-two">0.0000</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">每股收益</td>
-                                <td className="profitstetement-table-right-one">-</td>
-                                <td className="profitstetement-table-right">-</td>
-                                <td className="profitstetement-table-right">-</td>
-                                <td className="profitstetement-table-right-two">-</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">基本每股收益(元)</td>
-                                <td className="profitstetement-table-right-one">-0.0493</td>
-                                <td className="profitstetement-table-right">-0.0493</td>
-                                <td className="profitstetement-table-right">-0.0493</td>
-                                <td className="profitstetement-table-right-two">-0.0493</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">稀释每股收益(元)</td>
-                                <td className="profitstetement-table-right-one">-0.0493</td>
-                                <td className="profitstetement-table-right">-0.0493</td>
-                                <td className="profitstetement-table-right">-0.0493</td>
-                                <td className="profitstetement-table-right-two">-0.0493</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">其他全面收益(元)</td>
-                                <td className="profitstetement-table-right-one">31,300,000.00</td>
-                                <td className="profitstetement-table-right">31,300,000.00</td>
-                                <td className="profitstetement-table-right">31,300,000.00</td>
-                                <td className="profitstetement-table-right-two">31,300,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">全面收益总额(元)</td>
-                                <td className="profitstetement-table-right-one">-1,569,000.00</td>
-                                <td className="profitstetement-table-right">-1,569,000.00</td>
-                                <td className="profitstetement-table-right">-1,569,000.00</td>
-                                <td className="profitstetement-table-right-two">-1,569,000.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">本公司拥有人应占全面收益总额(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">非控股权益应占全面收益总额(元)</td>
-                                <td className="profitstetement-table-right-one">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right">0.00</td>
-                                <td className="profitstetement-table-right-two">0.00</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">公告日期</td>
-                                <td className="profitstetement-table-right-one">2018-07-27</td>
-                                <td className="profitstetement-table-right">2018-07-27</td>
-                                <td className="profitstetement-table-right">2018-07-27</td>
-                                <td className="profitstetement-table-right-two">2018-07-27</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">会计准则</td>
-                                <td className="profitstetement-table-right-one">香港会计准则</td>
-                                <td className="profitstetement-table-right">香港会计准则</td>
-                                <td className="profitstetement-table-right">香港会计准则</td>
-                                <td className="profitstetement-table-right-two">香港会计准则</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">审计意见</td>
-                                <td className="profitstetement-table-right-one">-</td>
-                                <td className="profitstetement-table-right">-</td>
-                                <td className="profitstetement-table-right">-</td>
-                                <td className="profitstetement-table-right-two">-</td>
-                            </tr>
-                            <tr>
-                                <td className="profitstetement-table-left">核数师</td>
-                                <td className="profitstetement-table-right-one">-</td>
-                                <td className="profitstetement-table-right">-</td>
-                                <td className="profitstetement-table-right">-</td>
-                                <td className="profitstetement-table-right-two">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="profitstetement-body">
+                    <Row>
+                        <Col span={6}>
+                            <ul className="profitstetement-body-left">
+                                <li className="profitstetement-body-left-none"></li>
+                                <li className="profitstetement-body-left-one">起始日期</li>
+                                <li className="profitstetement-body-left-two">截止日期</li>
+                                <li className="profitstetement-body-left-two">报表类型</li>
+                                <li className="profitstetement-body-left-two">报表年结日</li>
+                                <li className="profitstetement-body-left-two">上市前/上市后</li>
+                                <li className="profitstetement-body-left-two">原始币种</li>
+                                <li className="profitstetement-body-left-two">营业收入(计算)(元)</li>
+                                <li className="profitstetement-body-left-two">销售成本(元)</li>
+                                <li className="profitstetement-body-left-two">毛利(计算)(元)</li>
+                                <li className="profitstetement-body-left-two">其他收入(元)</li>
+                                <li className="profitstetement-body-left-two">销售及分销成本(元)</li>
+                                <li className="profitstetement-body-left-two">行政开支(元)</li>
+                                <li className="profitstetement-body-left-two">员工薪酬(元)</li>
+                                <li className="profitstetement-body-left-two">研发费用(元)</li>
+                                <li className="profitstetement-body-left-two">折旧和摊销(元)</li>
+                                <li className="profitstetement-body-left-two">其他支出(元)</li>
+                                <li className="profitstetement-body-left-two">资产减值损失(元)</li>
+                                <li className="profitstetement-body-left-two">重估盈余(元)</li>
+                                <li className="profitstetement-body-left-two">出售资产之溢利(元)</li>
+                                <li className="profitstetement-body-left-two">经营溢利(计算)(元)</li>
+                                <li className="profitstetement-body-left-two">应占联营公司溢利(元)</li>
+                                <li className="profitstetement-body-left-two">应占合营公司溢利(元)</li>
+                                <li className="profitstetement-body-left-two">财务成本(元)</li>
+                                <li className="profitstetement-body-left-two">影响税前利润的其他项目(元)</li>
+                                <li className="profitstetement-body-left-two">税前利润(元)</li>
+                                <li className="profitstetement-body-left-two">所得税(元)</li>
+                                <li className="profitstetement-body-left-two">影响净利润的其他项目(元)</li>
+                                <li className="profitstetement-body-left-two">净利润(元)</li>
+                                <li className="profitstetement-body-left-two">本公司拥有人应占净利润(元)</li>
+                                <li className="profitstetement-body-left-two">非控股权益应占净利润(元)</li>
+                                <li className="profitstetement-body-left-two">股息(元)</li>
+                                <li className="profitstetement-body-left-two">每股股息(元)</li>
+                                <li className="profitstetement-body-left-two">每股收益</li>
+                                <li className="profitstetement-body-left-two">基本每股收益(元)</li>
+                                <li className="profitstetement-body-left-two">稀释每股收益(元)</li>
+                                <li className="profitstetement-body-left-two">其他全面收益(元)</li>
+                                <li className="profitstetement-body-left-two">全面收益总额(元)</li>
+                                <li className="profitstetement-body-left-two">本公司拥有人应占全面收益总额(元)</li>
+                                <li className="profitstetement-body-left-two">非控股权益应占全面收益总额(元)</li>
+                                <li className="profitstetement-body-left-two">公告日期</li>
+                                <li className="profitstetement-body-left-two">会计准则</li>
+                                <li className="profitstetement-body-left-two">审计意见</li>
+                                <li className="profitstetement-body-left-two">核数师</li>
+                            </ul>
+                        </Col>
+                        <Col span={18}  style={{overflowX:'scroll'}}>
+                            <div className="profitstetement-body-div">
+                                {
+                                    dataProfitDetail.map((show,i)=>(
+                                        <ul className="profitstetement-body-right">
+                                            <li className="profitstetement-body-right-one">{show?show.year:'2017年年报'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.startDate:'2017-05-01'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.endDate:'2018-04-30'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.reportType:'合并报表'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.annualReportDate:'0430'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.listingBeforeAfter:'上市后'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.originalCurrency:'港元'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.operatingIncome:'1,979,674,000.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.salesCost:'-1,285,380,000.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.grossProfit:'694,294,000.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.otherIncome:'8,636,000.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.salesDistributionCost:'-569,947,000.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.administrativeExpenses:'-151,221,000.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.employeeCompensation:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.rdCost:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.depreciationAmortization:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.otherExpend:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.assetImpairmentLosses:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.revaluationSurplus:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.profitFromSellingAssets:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.operatingProfit:'-18,238,000.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.affiliatedCompanyProfit:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.jointVentureProfit:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.financialCost:'港元'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.otherProject:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.preTaxProfit:'港元'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.incomeTax:'港元'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.otherNetProfit:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.netProfit:'港元'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.ownerNetProfit:'港元'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.noncontrolNetProfit:'0.00'}&nbsp;</li>
+                                            <li className="profitstetement-body-right-two">{show?show.dividend:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.perDividend:'0.00'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.perProfit:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.basicPerProfit:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.dilutionPerProfit:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.otherTotalProfit:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.totalProfitAmount:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.ownerProfitAmount:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.noncontolProfitAmount:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.noticeDate:'2018-07-27'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.accountingStandard:'香港会计准则'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.auditOpinion:'-'}</li>
+                                            <li className="profitstetement-body-right-two">{show?show.auditor:'-'}</li>
+                                        </ul>
+                                    ))
+                                }
+                            </div>
+                        </Col>
+                        
+                    </Row>
+                    
+                    
                 </div>
             </div>
-            );
+        );
     }
 }
 
-export default Slprofitstatement;
+
+const mapDispatchToProps = (state) => ({
+    state:state.checkReducer
+})
+  
+export default connect(mapDispatchToProps,{
+    getStockProfitTable
+})(Slprofitstatement);
+// export default Slprofitstatement;

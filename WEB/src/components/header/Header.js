@@ -1,5 +1,9 @@
 import React,{ Component} from 'react';
-
+import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
+import { 
+    loadLocales
+} from '../../action';
 import {
 	Link
 } from 'react-router-dom';
@@ -13,19 +17,21 @@ import imgoneURL from '../assient/group-4.png';
 
 const Option = Select.Option;
 
-function handleChange(value) {
-    console.log(`selected ${value}`);
-}
+// function handleChange(value) {
+//     console.log(`selected ${value}`);
+// }
 
 class Header extends Component{
-
     render(){
         const self = this,   
-        { bLoginRegister } = self.props;
-
+        { 
+            bLoginRegister, 
+            bNoBoxShadow,
+            loadLocales=()=>{}
+         } = self.props;
         return (
             <div >
-                <Row className="head">
+                <Row className= {bNoBoxShadow?'head-no-box-shadow':'head'}>
                     <Col span={12} className="head-left">
                         <img alt='logo' src={imgoneURL} className="logo"/> 
                         <span className="head-left-one">金融搜索</span>
@@ -37,15 +43,14 @@ class Header extends Component{
                         <Select 
                             className="head-right-select"
                             defaultValue="CH" 
-                            onChange={handleChange}
+                            onChange={ loadLocales }
                             showArrow={true} 
                             style={{ 
                                 borderRight:'solid 1px #979797'
                             }}
                         >
-                            <Option value="CH">CH</Option>
-                            <Option value="TW">TW</Option>
-                            {/* <Option value="EN">EN</Option> */}
+                            <Option value="zh-CN">CH</Option>
+                            <Option value="zh-TW">TW</Option>
                         </Select>
                         <Link to='/login'>
                             <Button 
@@ -53,10 +58,12 @@ class Header extends Component{
                                     borderRadius:'4px',
                                     backgroundImage: 'linear-gradient(236deg, #ff4444, #ff9191)',
                                     marginLeft:'25px',
-                                    marginRight:'12px'
+                                    marginRight:'12px',
+                                    width:'100px',
+                                    height:'46px'
                                 }}
                             >
-                                <span className="head-right-login-btn">登录</span>
+                                <span className="head-right-login-btn">{intl.get('log_in')}</span>
                             </Button> 
                         </Link>
                         <Link to='/login'>
@@ -64,10 +71,12 @@ class Header extends Component{
                                 style={{
                                     borderRadius:'6px',
                                     backgroundColor:'ffffff',
-                                    border:'solid 1px #ff5454'
+                                    border:'solid 1px #ff5454',
+                                    width:'100px',
+                                    height:'46px'
                                 }}
                             >
-                                <span className="head-right-resiger-btn">注册</span>
+                                <span className="head-right-resiger-btn">{intl.get('registered')}</span>
                             </Button> 
                         </Link>
                     </Col>
@@ -79,4 +88,12 @@ class Header extends Component{
     } 
 }
 
-export default Header;
+
+const mapDispatchToProps = (state) => ({
+    state:state.checkReducer
+})
+  
+export default connect(mapDispatchToProps,{
+    loadLocales
+})(Header);
+// export default Header;

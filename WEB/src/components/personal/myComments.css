@@ -4,15 +4,53 @@
     padding: 5px 15px;
 }
 
-.my-information-body .my-comments-and-message .ant-tabs-bar /*以防外层的覆盖，保留my-information-body*/
+.my-comments-and-message .comment-and-message-summarize .ant-tabs-bar
 {
     display: inline-block;
     width: 100%;
-    height: 44px;
+    height: 47px;
     background-color:#ffffff;
     padding: 0 ;
     margin: 0;
     text-align: left;
+    border-bottom: solid 2px #d9d9d9;
+} 
+
+.comment-and-message-summarize
+{  
+  font-family: PingFangSC;
+}
+ 
+.comment-and-message-summarize .ant-tabs-nav .ant-tabs-tab
+{
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+
+.comment-and-message-summarize .ant-tabs-nav .ant-tabs-tab-active
+{
+  height: 48px;
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #e46464;
+}
+
+.comment-and-message-summarize .ant-tabs-ink-bar
+{
+  background-color: #e46464;
 }
 
 /* 我的评论  */

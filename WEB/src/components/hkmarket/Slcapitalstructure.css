@@ -1,3 +1,11 @@
+
+.testCharts{
+    width: 800px;
+    height: 300px;
+    border: 1px slid blue;
+    /* background-color: lightblue */
+}
+
 .capitalstructure-title
 {
     margin-left: 8px;
@@ -16,7 +24,7 @@
     margin-left: 112px;
 }
 
-.capitalstructure-table-one-top {
+/* .capitalstructure-table-one-top {
     width: 160px;
     height: 18px;
     font-family: PingFangSC;
@@ -188,4 +196,87 @@
     padding-left: 30px;
     padding-top: 10px;
     padding-bottom: 231px;
+} */
+
+
+
+.capitalstructure-body  {
+    border:solid 1px #ebeef1;
+    margin-bottom: 22px;
+}
+
+.capitalstructure-body ul > li {
+    list-style-type:none;
+}
+
+.capitalstructure-body-left {
+    /* margin-left: -40px; */
+    margin-bottom: 0;
+    padding-left: 28px;
+    background-color: #ebeef1;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #5b6878;
+    padding-bottom: 20px;
+}
+
+.capitalstructure-body-div{
+    /* overflow-x: auto; */
+    /* width:600px;  */
+    /* overflow-x: scroll; */
+    width: 200%;
+}
+
+.capitalstructure-body-right {
+    background-color: white;
+    display: inline-block;
+    /* width: 200px; */
+}
+
+.capitalstructure-body-left-one {
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.capitalstructure-body-left-two {
+    padding-bottom: 10px;
+    
+}
+.capitalstructure-body-left-none {
+    padding-bottom: 11px;
+}
+
+.capitalstructure-body-right-one {
+    padding-bottom: 10px;
+    padding-top: 20px;
+    /* padding-bottom: 12px; */
+    /* padding-top: 20px; */
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #515151;
+
+}
+
+.capitalstructure-body-right-two {
+    padding-bottom: 10px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #515151;
 }

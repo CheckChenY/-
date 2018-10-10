@@ -1,4 +1,5 @@
 import React,{ Component} from 'react';
+import intl from 'react-intl-universal';
 
 
 // import { connect } from 'react-redux';
@@ -104,7 +105,7 @@ class Newsonebody extends Component{
                                 <span className="news-one-share">
                                     <Button style={{border:'0'}}>
                                         <img alt='分享' src={imgfiveURL} className="news-one-share-picture"/>
-                                        <span className="news-one-share-word">分享</span>
+                                        <span className="news-one-share-word">{intl.get('share')}</span>
                                     </Button>
                                 </span>
                                 <span className="news-one-good">
@@ -119,7 +120,7 @@ class Newsonebody extends Component{
                    {loading ? (
                        <div className="news-three-body-loading">
                             <Spin 
-                                tip="加载中"
+                                tip={intl.get('loading')}
                                 indicator={antIcon} 
                             />
                         </div>

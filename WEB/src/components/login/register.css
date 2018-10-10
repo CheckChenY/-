@@ -4,5 +4,21 @@
     width:100%;
     border-radius:4px;
     border:0;
+    background-color: #ff8e8e;
     background-image:linear-gradient(261deg, #ff4444, #ff9191);
+}
+
+.register-box-button:hover
+{
+  background-color: #ff8e8e;
+}
+
+.register-box-button:focus
+{
+  background-image:linear-gradient(261deg, #ff4444, #ff9191);
+}
+
+.register-box-button:active 
+{
+  background-image: linear-gradient(-219deg, #CD2222 32%, #DC2D2D 100%);
 }

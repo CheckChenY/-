@@ -125,7 +125,7 @@ handeChangeCode(e){
                         <Input 
                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         onChange={this.handeChangeUser} 
-                        placeholder="用户名：" />
+                        placeholder="请输入用户名" />
                     </FormItem>
 
                     <FormItem>
@@ -133,11 +133,11 @@ handeChangeCode(e){
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                         type="password" 
                         onChange={this.handeChangePassword}
-                        placeholder="密码：" />
+                        placeholder="请输入密码" />
                     </FormItem>
 
                     <FormItem>
-                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="重复输入密码：" />
+                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请重复输入密码" />
                     </FormItem>
                     <FormItem
                     wrapperCol={{
@@ -160,7 +160,7 @@ handeChangeCode(e){
                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                     type="text" 
                     onChange={this.handeChangeEmail}
-                    placeholder="邮箱：" />
+                    placeholder="请输入邮箱" />
                 </FormItem>
 
                 <FormItem>
@@ -169,7 +169,7 @@ handeChangeCode(e){
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                         type="text" 
                         onChange={this.handeChangeCode}
-                        placeholder="验证码："
+                        placeholder="请输入验证码"
                          />
                     </Col>
                     <Col span={1}></Col>

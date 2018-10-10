@@ -1,8 +1,6 @@
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
-// import {
-//     Link
-//   } from 'react-router-dom';
+import intl from 'react-intl-universal';
 import { Homepagesearch } from './action'
 
 import { Input } from 'antd';
@@ -39,7 +37,7 @@ class Homepage extends Component{
                                     <Search
                                         className="search-content"
                                         value={keyValue}
-                                        enterButton="搜索"
+                                        enterButton={intl.get('search')}
                                         size="large"
                                         onSearch={
                                             ()=>{
@@ -51,7 +49,7 @@ class Homepage extends Component{
                                     <Search
                                         className="search-content"
                                         value={keyValue}
-                                        enterButton="搜索"
+                                        enterButton={intl.get('search')}
                                         size="large"
                                         onSearch={
                                             value=>Homepagesearch(props,value)
@@ -63,19 +61,21 @@ class Homepage extends Component{
                         </div>
                         <div className="hotsearch-all">
                             <span className="hotsearch-title">
-                            热门搜索
+                                {intl.get('search_hot')}
                             </span>
                             <a 
-                            className="hotsearch-title-one"
-                                onClick={this.handeChangeValue}
-                            >中国开户</a>
-                            <a className="hotsearch-title-one">A股H股</a>
-                            <a className="hotsearch-title-one">市况不明</a>
-                            <a className="hotsearch-title-one">恒生综合</a>
-                            <a className="hotsearch-title-one">业绩地雷</a>
-                            <a className="hotsearch-title-one">港股市场</a>
-                            <a className="hotsearch-title-one">三国议息</a>
-                            <a className="hotsearch-title-one">恒生指数</a>
+                                className="hotsearch-title-one"
+                                    onClick={this.handeChangeValue}
+                                >
+                                {intl.get('hot_search_one')}
+                            </a>
+                            <a className="hotsearch-title-one">{intl.get('hot_search_two')}</a>
+                            <a className="hotsearch-title-one">{intl.get('hot_search_three')}</a>
+                            <a className="hotsearch-title-one">{intl.get('hot_search_four')}</a>
+                            <a className="hotsearch-title-one">{intl.get('hot_search_five')}</a>
+                            <a className="hotsearch-title-one">{intl.get('hot_search_six')}</a>
+                            <a className="hotsearch-title-one">{intl.get('hot_search_seven')}</a>
+                            <a className="hotsearch-title-one">{intl.get('hot_search_eight')}</a>
                         </div>
                     </div>
                 </div>

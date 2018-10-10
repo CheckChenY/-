@@ -5,6 +5,13 @@
     box-shadow: 0 2px 2px 0 rgba(220, 220, 220, 0.5);
 }
 
+.head-no-box-shadow
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width:1000px ;
+}
+
 .logo {
     width: 58px;
     height: 50px;
@@ -13,13 +20,14 @@
     
 .head-left-one {
     /* width: 172px; */
-    height: 37px;
+    height: 50px;
+    margin-left: 4px;
     font-family: PingFangSC;
     font-size: 26px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    line-height: normal;
+    line-height: 50px;
     letter-spacing: normal;
     text-align: left;
     color: #3e3e3e;
@@ -31,14 +39,15 @@
     
 .head-left-two {
     /* width: 55px; */
-    height: 32px;
+    height: 50px;
+    margin-left: 2px;
     background-image: linear-gradient(60deg, #eb5858, #f12b2b);
     font-family: Times;
     font-size: 26px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
-    line-height: normal;
+    line-height: 50px;
     letter-spacing: normal;
     text-align: left;
     -webkit-background-clip: text;
@@ -49,7 +58,7 @@
 }
 
 .head-right {
-    margin-top: 12px;
+    margin-top: 3px;
     text-align: right;
     padding-right: 50px;
 }
@@ -96,4 +105,19 @@
     text-align: left;
     color: #ff5454;
 }
-    
+
+
+/*头部语言切换下拉框外边框蓝色去掉*/
+.head-rigth .ant-select-focused .ant-select-selection, .ant-select-selection:focus, .ant-select-selection:active {
+    border-color: white;
+    /* box-shadow: 0 0 0 2px rgba(251, 252, 253, 0.979); */
+    box-shadow: 0 0 0 0;
+}
+
+.head-rigth .ant-select-open .ant-select-selection {
+    border-color: white;
+}
+
+.head-rigth .ant-select-selection:hover {
+    border-color: white;
+}

@@ -1,70 +1,45 @@
-/* 顶部头 */
+.HKmarket-button
+{
+    margin-left: 4px;
+    padding: 0;
+    border:none;
+    font-family: PingFangSC;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #7a8087;
+}
+
+.HKmarket-company
+{
+    font-family: PingFangSC;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #7a8087;
+}
+
 .HKmarket
 {
-    margin-top:34px;
+    margin-top:10px;
 }
 
-.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-nav-container
+/* 公司信息的样式 */
+.HKmarket .ant-tabs-extra-content
 {
-    height: 62px;
+    float: left !important;
 }
 
-.HKmarket .ant-tabs-bar 
-{
-    margin: 0;
-}
-
-.title .HKmarket .ant-tabs-nav .ant-tabs-tab-active
-{
-    height: 62px;
-    font-family: PingFangSC;
-    font-size: 13px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #ffffff;
-}
-
-.title .HKmarket .ant-tabs-tab
-{
-    height: 62px;
-    font-family: PingFangSC;
-    font-size: 13px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #58626d;
-}
-
-.title .HKmarket .ant-tabs-nav
-{
-    padding-left: 0;
-}
-.title .HKmarket .ant-tabs-nav-scroll
-{
-    background-color: #ffffff;
-    border: solid 1px #ebebeb;
-}
-
-/* 去除每个tab中本身的样式 */
-.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab
-{
-    border: none;
-    padding: 0;
-    margin-right: 18px;
-    background: none;
-}
-
-/* 以下三者为左上角公司信息的样式 */
 .HKmarket-company-information
 {
-    width:248px;
+    width:260px;
     height: 62px;
     display: inline-block;
     background-image: linear-gradient(63deg, #68c0ff, #4c87e2);
@@ -86,8 +61,9 @@
 
 .HKmarket-company-information-code 
 {
+    margin-top:4px;
     font-family: PingFangSC;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
@@ -97,23 +73,62 @@
     color: #ffffff;
 }
 
-/* 以下三者为重新定义的tab样式 */
-.HKmarket-tab
+/* 保留 .title 以防被上一级页面覆盖样式 */
+.title .HKmarket .ant-tabs-nav-container
 {
-    width: 80px;
+    width: 740px;
+    height: 62px;
+    background-color: #ffffff;
+    border: solid 1px #ebebeb;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 15px 0 15px 30px;
+}
+
+.title .HKmarket .ant-tabs-nav-scroll
+{
+    background: none;
+}
+.title .HKmarket .ant-tabs-nav .ant-tabs-tab
+{
     height: 30px;
-    border: solid 1px #99a2ac;
-    border-radius: 4px;
-    padding: 7px 13px;   
-}
-
-.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab .HKmarket-tab
-{
+    width: 80px;
+    padding:6px 0;
+    margin:0 18px 0 0;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #58626d;
     background-color: #f6f6f6;
-}
-.HKmarket .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active .HKmarket-tab
-{
-    background-color: #7a8087;
+    border-radius: 4px;
+    border: solid 1px #99a2ac;
+    background-image: none;
 }
 
-/*  */
+.title .HKmarket .ant-tabs-nav .ant-tabs-tab-active
+{
+    height: 30px;
+    width: 80px;
+    padding:6px 0;
+    margin:0 18px 0 0;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff; 
+    background-color: #7a8087;
+    border-radius: 4px;
+    border: solid 1px #99a2ac;
+    background-image: none;
+}
+
+

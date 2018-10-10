@@ -21,6 +21,7 @@ class MyComments extends Component{
                 <Tabs 
                     defaultActiveKey="1"
                     tabPosition='top'
+                    className='comment-and-message-summarize'
                 >
                   <TabPane tab={<div>我的评论</div>} key="1">
                     <div style={{overflowY:'auto', height:'410px'}}>

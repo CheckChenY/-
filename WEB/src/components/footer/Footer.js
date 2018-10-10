@@ -9,12 +9,13 @@ class Footer extends Component{
 
     render(){
         return (
-            <div>
+            <div className="footer">
                 <Row>
                 <Col span={8}></Col>
                 <Col span={8}>
                     <div className='footer-text' style={{textAlign:'center'}}>
-                        Copyright © 2018金融搜索bar 沪ICP备XXXXXXXX号-X
+                        <span className="footer-text-one">Copyright © 2018金融搜索bar 沪ICP备XXXXXX号-X</span>
+                        <span className="footer-text-two">Version：v1.0</span>
                     </div>
                 </Col>
                 <Col span={8}></Col>

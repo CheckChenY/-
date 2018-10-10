@@ -3,9 +3,13 @@ import { combineReducers } from 'redux';
 import update from 'react-addons-update';
 
 
-// import {
-// 	GET_UPDATA_LOCATION_USER,
-// } from './home/action'
+import {
+	GET_LANGUAGE,
+} from './header/action'
+
+import {
+	GET_LANGUAGE_INIT,
+} from '../action'
 
 import {
 	GET_USER_REGISTER,
@@ -45,6 +49,18 @@ import {
 } from './detail/action'
 
 import {
+	GET_HK_BACK_LIST,
+	GET_HK_MARKET_LIST,
+	GET_HK_MARKET_LIST_DETAIL,
+	GET_HK_STOCK_CODE_LIST,
+	GET_HK_STOCK_CODE_PROFITS,
+	GET_HK_GET_YEAR,
+	GET_HK_GET_VALUATION_LIST,
+	GET_HK_GET_GROW_LIST,
+	GET_HK_SLCAPITAL_LIST,
+} from './hkmarket/action'
+
+import {
 	GET_IMG_CODE,
 	GET_HIDE_MODAL,
 	GET_NEXT_STEP_ONE,
@@ -59,6 +75,8 @@ const initState = {
 		Bool:true,//我的信息判断显示
 		loading:false,
 		newsListArry:[],
+		dataListDetail:true,//股票列表详情不显示
+		Language:'zh-CN'
 		// stop:true,//没有信息停止刷新
   };
 
@@ -73,10 +91,15 @@ const checkReducer = (state = initState, action) => {
 			return update(newState, {
 				loading:{ $set: action.loading }
 			});
-		// case STOP_GET_HK_NEWS:
-		// 	return update(newState, {
-		// 		stop: { $set: action.stop },
-		// 	});
+		case GET_LANGUAGE:
+			newState.Language = action.Language;
+			return update(newState, {
+				Language: { $set: newState.Language },
+			});
+		case GET_LANGUAGE_INIT:
+			return update(newState, {
+				loading: { $set: action.loading },
+			});
 		case GET_IMG_CODE:
 			return update(newState, {
 				imgSrc: 	{ $set: action.imgSrc },
@@ -157,7 +180,6 @@ const checkReducer = (state = initState, action) => {
 				arry.map((show)=>(
 					newState.newsListArry.push(show)
 				))
-				debugger;
 			}
 			
 			return update(newState, {
@@ -202,6 +224,45 @@ const checkReducer = (state = initState, action) => {
 		case GET_HK_REPLY_TO_COMMENT://评论回复功能
 			return update(newState, {
 				loading : { $set: action.loading},
+			});
+		case GET_HK_MARKET_LIST://港股列表
+			return update(newState, {
+				hkmarketstocklist : 	{ $set: action.data},
+				hkmarketstocklistPageSize : { $set: action.page.pageSize},
+				hkmarketstocklistTotal: { $set: action.page.total},
+			});
+		case GET_HK_MARKET_LIST_DETAIL://港股列表详情
+			return update(newState, {
+				dataListDetail 	: 	{ $set: action.detail },
+				stockCodeList 		:	{ $set: action.data }
+			});
+		case GET_HK_STOCK_CODE_LIST://港股基本资料
+			return update(newState, {
+				dataBasicDetail 	: 	{ $set: action.data },
+			});
+		case GET_HK_STOCK_CODE_PROFITS://港股利润表
+			return update(newState, {
+				dataProfitDetail 	: 	{ $set: action.data },
+			});
+		case GET_HK_GET_YEAR://港股分析获取年份
+			return update(newState, {
+				getYearList 	: 	{ $set: action.data },
+			});
+		case GET_HK_GET_VALUATION_LIST://港股分析获取数据
+			return update(newState, {
+				getValuationList 	: 	{ $set: action.data[0] },
+			});
+		case GET_HK_GET_GROW_LIST://成长能力获取数据
+			return update(newState, {
+				getGrowList 	: 	{ $set: action.data },
+			});
+		case GET_HK_SLCAPITAL_LIST://股本结构获取数据
+			return update(newState, {
+				getSlcapitalList 	: 	{ $set: action.data },
+			});
+		case GET_HK_BACK_LIST://返回股票行情列表
+			return update(newState, {
+				dataListDetail 	: 	{ $set: action.dataListDetail },
 			});
 		default:
 			return state

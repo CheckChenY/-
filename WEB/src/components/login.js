@@ -29,7 +29,7 @@ class Login extends Component {
         minWidth:'1140px'
       }}
       >
-        <Header bLoginRegister = {bLoginRegister}/>
+        <Header bLoginRegister = {bLoginRegister} bNoBoxShadow={true} />
           <LoginTxt { ...props } />
         <Footer/>
       </div>
