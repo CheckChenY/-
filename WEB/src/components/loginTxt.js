@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Axios from 'axios';
-
+// import Axios from 'axios';
+// import Tools from './corn/tools';
+import { handleSubmit } from './action'
 import {
   Link
 } from 'react-router-dom';
@@ -40,52 +41,57 @@ class NormalLoginForm extends Component {
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const self = this,
-    { props } = self;
-    props.form.validateFields((err, values) => {
-      if (!err) {
-        // console.log('Received values of form: ', values);
-        localStorage.setItem('userName', values.userName);
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const self = this,
+  //   { props } = self;
+  //   props.form.validateFields((err, values) => {
+  //     if (!err) {
+  //       console.log('Received values of form: ', values);
+  //       localStorage.setItem('userName', values.userName);
 
-        Axios.post('/api/User/userLogin', {
-          userAccount: values.userName,
-          userPassword: values.password
-        })
-        .then(function (response) {
-          if(response.data.code === 1){
-            localStorage.setItem('user', JSON.stringify(response.data));
-            self.props.history.push('/index');
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      }
-    });
-  }
+  //       Axios.post('/api/User/userLogin', {
+  //         userAccount: values.userName,
+  //         userPassword: values.password
+  //       })
+  //       .then(function (response) {
+  //         if(response.data.code === 1){
+  //           localStorage.setItem('userAccount', response.data.data.userAccount);
+  //           localStorage.setItem('userAddress', response.data.data.userAddress);
+  //           localStorage.setItem('userEmail', response.data.data.userEmail);
+  //           localStorage.setItem('userId', response.data.data.userId);
+  //           localStorage.setItem('userNickname', response.data.data.userNickname);
+  //           localStorage.setItem('userSlogan', response.data.data.userSlogan);
+  //           self.props.history.push('/index');
+  //         }
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       });
+  //     }
+  //   });
+  // }
 
   render() {
     const self = this,
     { props } = self,
-    { form } = props,
+    { form ,handleSubmit} = props,
     { getFieldDecorator } = form;
 
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
+      <Form className="login-form">
         <FormItem>
           {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+            rules: [{ required: false, message: '' }],
           })(
-            <Input className="login-form-name"  prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入用户名" />
+            <Input className="login-form-name" ref={input=>this.userName=input} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入用户名" />
           )}
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
+            rules: [{ required: false, message: '' }],
           })(
-            <Input className="login-form-name"  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请输入密码" />
+            <Input className="login-form-name" ref={input=>this.userPassword=input} prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请输入密码" />
           )}
         </FormItem>
         <FormItem >
@@ -106,9 +112,10 @@ class NormalLoginForm extends Component {
                       // textDecoration:'underline',
                       fontSize:'12px',
                       color:'#3172be',
+                      boxShadow:'none',
                   }} 
               >
-                  <span className="forgetpass">忘记密码???</span>
+                  <span className="forgetpass">忘记密码?</span>
               </Button>
             </Link>
           </Col>
@@ -116,7 +123,9 @@ class NormalLoginForm extends Component {
         <FormItem style={{marginBottom:'28px'}}>
           <Button type="primary" 
           htmlType="submit" 
-
+          onClick={
+            ()=>handleSubmit(props)
+          }
           className="login-box-button">
               登录
           </Button>
@@ -132,7 +141,10 @@ class LoginTxt extends Component {
 
   render() {
     const self = this,
-    { props } = self;
+    { props } = self,
+    { state } = props,
+    { loginTabKey='1' } = state;
+    // const step = Tools.getFromUrlParam('id') || '';
     return (
       <div>        
         <Content 
@@ -151,7 +163,7 @@ class LoginTxt extends Component {
               <Row>
                 <Col span={3}></Col>
                 <Col span={18} className='login-register-left-head-2'>
-                  <div style={{marginTop:'63px'}}>最全的港股资讯</div>
+                  <div style={{marginTop:'63px'}}>最全港股资讯</div>
                   <div style={{textAlign:'center', marginTop:'19px'}}>最新港股行情</div>
                   <div style={{textAlign:'right', marginTop:'19px'}}>精确定位搜索</div>
                 </Col>
@@ -168,12 +180,12 @@ class LoginTxt extends Component {
                       <div className='login-register-box-imgBg' >
                         <img src={imgUrl_1} alt='金融搜索' style={{width:'75px',height:'66px'}}/>                                        
                       </div>
-                      <Tabs defaultActiveKey="1" tabBarGutter={20} className="login-register-box-tab" >
+                      <Tabs defaultActiveKey={loginTabKey} tabBarGutter={20} className="login-register-box-tab" >
                         <TabPane tab="登录" key="1">
                           <WrappedNormalLoginForm { ...props }/>                               
                         </TabPane>
                         <TabPane tab="注册" key="2">
-                          <Register />  
+                          <Register {...props} />  
                         </TabPane>                                    
                       </Tabs>
                     </div>
@@ -196,5 +208,5 @@ const mapDispatchToProps = state => ({
 })
 
 export default connect(mapDispatchToProps,{
-  // showModal,
+    handleSubmit
 })(LoginTxt);

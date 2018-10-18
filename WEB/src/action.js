@@ -14,6 +14,7 @@ export const loadLocales = (Language) => dispath => {
     })
     dispath({
         type:GET_LANGUAGE_INIT,
-        loading:false
+        loading:false,
+        Language:Language,
     })
 }

@@ -3,7 +3,7 @@ import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button, Tabs} from 'antd';
 
-import { getLoading } from './action'
+// import { getLoading } from './action'
 
 import intl from 'react-intl-universal';
 
@@ -12,19 +12,21 @@ import MyInformation from './myInformation';
 
 import './Personalinformation.css';
 
+import imgoneURL from '../assient/myinformation.png';
 import imgoneURL1 from '../assient/userdefine.jpg';
 
 const TabPane = Tabs.TabPane;
 
 class Changepassword extends Component{
 
-        constructor(props){
-            super(props)
-            this.state={
-                visible: false,
-                tabBol:false,
-            }
+    constructor(props){
+        super(props)
+        this.state={
+            visible: false,
+            tabBol:true,
         }
+        // this.changeTab = this.changeTab.bind(this)
+    }
 
         showModal = () => {
             this.setState({
@@ -39,20 +41,24 @@ class Changepassword extends Component{
 
         render() {
             const self = this,
-            { props,state } = self,
-            { getLoading , state:selfState } = props,
-            { user,comment=[] } = selfState,
-            { data } = user,
-            { userId,userNickname } = data,
-            { tabBol } = state;
-
+            { props } = self,
+            { state:selfState } = props,
+            { comment=[],userId,userNickname } = selfState;
+            // { data } = user,
+            // { userNickname } = data;
+            // { tabBol } = state;
             return (
             <div>
                 <Button  onClick={this.showModal} className="my-information">
                     {intl.get('information_myself')}
                 </Button>
                 <Modal 
-                    title={intl.get('information_myself')}
+                    // title={intl.get('information_myself')}
+                    title={ <div>
+                                <img  alt='aaa' src={imgoneURL} style={{height:'40px', width:'40px'}}/>
+                                <span className='my-information-title'>{intl.get('information_myself')}</span>
+                            </div>}
+
                     style={{ top: 70 }}
                     visible={this.state.visible}
                     onCancel={this.hideModal}
@@ -63,17 +69,16 @@ class Changepassword extends Component{
                     <Tabs
                         defaultActiveKey="1"
                         tabPosition='left'
-                        onChange={
-                            ()=>getLoading(userId)
-                        }
                         >
                         <TabPane 
-                            tabBol={tabBol}
+                            // tabBol={tabBol}
                             tab={
                                 <span>
                                     <div style={{backgroundColor: '#ebedef', paddingBottom:'28px' }}>
                                         <img  alt='aaa' src={imgoneURL1} className="my-information-left-user-picture"/>
-                                        <div className='my-information-left-text'>ID: {data.userAccount}</div>
+                                        <div className='my-information-left-text'>
+                                        ID: {userId}
+                                        </div>
                                     </div>
                                     <div className='my-information-left-tab' >{intl.get('information_mine')}</div>
                                 </span>
@@ -89,6 +94,7 @@ class Changepassword extends Component{
                             key="2"
                         >
                             <MyComments 
+                            { ...props }
                             comment={comment}
                             userNickname={userNickname}
                             />
@@ -106,6 +112,6 @@ const mapDispatchToProps = (state) => ({
   })
   
   export default connect(mapDispatchToProps,{
-    getLoading
+    // getLoading
   })(Changepassword);
 

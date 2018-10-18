@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
+
 import { Button, Row, Col } from 'antd';
 
 import {
@@ -17,21 +19,21 @@ class BackPasswordStepTre extends Component {
           <Row >
             <Col span={6}></Col>
             <Col span={12}>
-              <div className='backPasswordStepTre-box'>
+              <div className='backPasswordStepTre-box' style={{height:'465px'}}>
                 <div className='backPasswordStepTre-box-header'>
                   <img alt='aaa' src={imgUrl_1} style={{width:'40px', height:'40px'}}/>                  
-                  <span style={{marginLeft:'10px'}}>找回密码</span>
+                  <span style={{marginLeft:'10px'}}>{intl.get('password_retrieve')}</span>
                 </div>
                 <div style={{marginTop:'20px'}}>
                   <Row style={{textAlign:'center'}}>
                     <span className='backPasswordStepTre-number-normal'>1</span>
-                    <span className='backPasswordStepTre-number-text'>确认账号</span>
+                    <span className='backPasswordStepTre-number-text'>{intl.get('confirm_account')}</span>
                     <span className='backPasswordStepTre-line'></span> 
                     <span className='backPasswordStepTre-number-normal'>2</span>
-                    <span className='backPasswordStepTre-number-text'>重置密码</span>
+                    <span className='backPasswordStepTre-number-text'>{intl.get('reset_password')}</span>
                     <span className='backPasswordStepTre-line'></span>
                     <span className='backPasswordStepTre-number-pink'>3</span>
-                    <span className='backPasswordStepTre-number-text'>重置成功</span> 
+                    <span className='backPasswordStepTre-number-text'>{intl.get('reset_success')}</span> 
                   </Row>
                 </div>
                 <div  className='backPasswordStepTre-form'>
@@ -41,13 +43,13 @@ class BackPasswordStepTre extends Component {
                       <div className='backPasswordStepTre-body'>
                         <img alt='修改成功' style={{width:'130px',height:'130px'}} src={imgUrl_3} />
                         <div className="backPasswordStepTre-body-text" style={{marginTop:'30px'}}>
-                            恭喜密码修改成功！
+                            {intl.get('password_modify_success')}
                         </div>
                           <Link to='/'>
                             <Button 
                               className='backPasswordStepTre-button'
                               >
-                              <span className='backPasswordStepTre-button-txt'>返回(5s后跳回首页)</span> 
+                              <span className='backPasswordStepTre-button-txt'>{intl.get('return_loginpage')}</span> 
                             </Button>                         
                           </Link>
                       </div>

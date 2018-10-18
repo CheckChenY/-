@@ -20,7 +20,12 @@
 
 .stocklist-button
 {
-    margin-right: 27px;
+    margin-right: 27px;    
+}
+
+.stocklist-button:after
+{
+    border:none;
 }
 
 .stocklist-button-text
@@ -68,6 +73,7 @@
 {
     text-align: center;
     color: #3a69a0;
+    cursor: pointer;
 }
 .ant-table-thead .stocklist-table-code
 {
@@ -82,6 +88,15 @@
     text-align: center;
     color: #3a69a0;
     background-color: #e0eefe;
+}
+.stocklist-table .ant-table-thead > tr > th.ant-table-column-sort
+{
+    background-color: #e0eefe;
+}
+
+.stocklist-table-code .ant-table-column-sorter
+{
+    display: none;
 }
 
 .stocklist-table-name
@@ -104,6 +119,11 @@
     background-color: #e0eefe;
 }
 
+.stocklist-table-name .ant-table-column-sorter
+{
+    display: none;
+}
+
 .stocklist-table-normal
 {
     text-align: center;
@@ -122,6 +142,12 @@
     color: #3a69a0;
     background-color: #e0eefe;
 }
+
+.stocklist-table-normal .ant-table-column-sorter
+{
+    display: none;
+}
+
 .stocklist-table-change-amount
 {
     text-align: center;
@@ -140,6 +166,11 @@
     text-align: center;
     color: #3a69a0;
     background-color: #e0eefe;
+}
+
+.stocklist-table-change-amount .ant-table-column-sorter
+{
+    display: none;
 }
 
 /* 隐藏表格中自身的分页 */
@@ -193,8 +224,26 @@
 {
     width: 80px;
     border-radius: 4px;
+    border:none;
     background-color: #7a8087;
 }
+
+.stock-list-select-button-one:hover
+{
+    border:none;
+    background-color: #7a8087;
+}
+.stock-list-select-button-one:focus
+{
+    border:none;
+    background-color: #7a8087;
+}
+.stock-list-select-button-one:active
+{
+    border:none;
+    background-color: #7a8087;
+}
+
 .stock-list-select-button-one>span
 {
     font-family: PingFangSC;
@@ -207,19 +256,38 @@
     text-align: center;
     color: #ffffff;
 }
+
 .stock-list-select-button-one:hover>span
 {
-    color: #7a8087;
+    color: #ffffff;
 }
+
 .stock-list-select-button-one:focus>span
 {
-    color: #7a8087;
+    color: #ffffff;
 }
 
 .stock-list-select-button-two
 {
     width: 80px;
     border-radius: 4px;
+    border:none;
+    background-image: linear-gradient(246deg, #f56f6f, #ff9191);
+}
+
+.stock-list-select-button-two:hover
+{
+    border:none;
+    background-image: linear-gradient(246deg, #f56f6f, #ff9191);
+}
+.stock-list-select-button-two:focus
+{
+    border:none;
+    background-image: linear-gradient(246deg, #f56f6f, #ff9191);
+}
+.stock-list-select-button-two:active
+{
+    border:none;
     background-image: linear-gradient(246deg, #f56f6f, #ff9191);
 }
 .stock-list-select-button-two>span
@@ -234,12 +302,30 @@
     text-align: center;
     color: #ffffff;
 }
+
 .stock-list-select-button-two:hover>span
 {
-    color: #f56f6f;
+    color: #ffffff;
 }
 
 .stock-list-select-button-two:focus>span
 {
-    color: #f56f6f;
+    color: #ffffff;
 }
+
+/* .stocklist-table-normal .stock-list-select-button-one .ant-btn:focus, .ant-btn:active, .ant-btn.active{
+    background-color: pink;
+    border: 1px solid pink;
+
+}
+
+.stocklist-table-normal .stock-list-select-button-one .ant-btn:hover, .ant-btn:focus, .ant-btn:active, .ant-btn.active{
+    background-color: pink;
+    border: 1px solid pink;
+    
+}
+
+.stocklist-table-normal .stock-list-select-button-one .ant-btn:hover, .ant-btn:focus{
+    background-color: pink;
+    border: 1px solid pink;
+} */

@@ -35,9 +35,7 @@ class MyComments extends Component{
     componentDidMount() {
         const self = this,
         { getLoading ,state} = self.props,
-        { user } = state,
-        { data } = user,
-        { userId } = data;
+        { userId } = state;
         // const step = Tools.getFromUrlParam('id') || '';
         getLoading(userId);
 
@@ -53,7 +51,6 @@ class MyComments extends Component{
             { bool } = state,
             { state:selfState } = props,
             { comment=[] } = selfState;
-            console.log(comment);
         return (
             <div>
                 {

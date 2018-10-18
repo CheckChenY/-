@@ -15,8 +15,8 @@ class Slprofitstatement extends Component{
     componentDidMount(){
         const self = this,
         { getStockProfitTable,stockCodeList } = self.props,
-        { stockCode } = stockCodeList;
-        getStockProfitTable(stockCode);
+        { stock_code } = stockCodeList;
+        getStockProfitTable(stock_code);
     }
     render() {
         const self = this,
@@ -25,62 +25,63 @@ class Slprofitstatement extends Component{
         console.log(dataProfitDetail);
         return (
             <div>
-                <div style={{padding:'20px 0 22px 0', border:'solid 1px #ebeef1'}}>
+                <div style={{padding:'20px 0 22px 0', borderTop:'solid 1px #ebeef1'}}>
                     <div style={{borderRight:'4px solid #f56f6f', marginLeft:'30px', display:'inline'}}/>
-                    <div className='profitstetement-title'>{intl.get('slprofitTable')}</div>
+                    <div className='profitstetement-title'>{intl.get('income_statement')}</div>
                 </div>
                 <div className="profitstetement-body">
                     <Row>
                         <Col span={6}>
                             <ul className="profitstetement-body-left">
                                 <li className="profitstetement-body-left-none"></li>
-                                <li className="profitstetement-body-left-one">起始日期</li>
-                                <li className="profitstetement-body-left-two">截止日期</li>
-                                <li className="profitstetement-body-left-two">报表类型</li>
-                                <li className="profitstetement-body-left-two">报表年结日</li>
-                                <li className="profitstetement-body-left-two">上市前/上市后</li>
-                                <li className="profitstetement-body-left-two">原始币种</li>
-                                <li className="profitstetement-body-left-two">营业收入(计算)(元)</li>
-                                <li className="profitstetement-body-left-two">销售成本(元)</li>
-                                <li className="profitstetement-body-left-two">毛利(计算)(元)</li>
-                                <li className="profitstetement-body-left-two">其他收入(元)</li>
-                                <li className="profitstetement-body-left-two">销售及分销成本(元)</li>
-                                <li className="profitstetement-body-left-two">行政开支(元)</li>
-                                <li className="profitstetement-body-left-two">员工薪酬(元)</li>
-                                <li className="profitstetement-body-left-two">研发费用(元)</li>
-                                <li className="profitstetement-body-left-two">折旧和摊销(元)</li>
-                                <li className="profitstetement-body-left-two">其他支出(元)</li>
-                                <li className="profitstetement-body-left-two">资产减值损失(元)</li>
-                                <li className="profitstetement-body-left-two">重估盈余(元)</li>
-                                <li className="profitstetement-body-left-two">出售资产之溢利(元)</li>
-                                <li className="profitstetement-body-left-two">经营溢利(计算)(元)</li>
-                                <li className="profitstetement-body-left-two">应占联营公司溢利(元)</li>
-                                <li className="profitstetement-body-left-two">应占合营公司溢利(元)</li>
-                                <li className="profitstetement-body-left-two">财务成本(元)</li>
-                                <li className="profitstetement-body-left-two">影响税前利润的其他项目(元)</li>
-                                <li className="profitstetement-body-left-two">税前利润(元)</li>
-                                <li className="profitstetement-body-left-two">所得税(元)</li>
-                                <li className="profitstetement-body-left-two">影响净利润的其他项目(元)</li>
-                                <li className="profitstetement-body-left-two">净利润(元)</li>
-                                <li className="profitstetement-body-left-two">本公司拥有人应占净利润(元)</li>
-                                <li className="profitstetement-body-left-two">非控股权益应占净利润(元)</li>
-                                <li className="profitstetement-body-left-two">股息(元)</li>
-                                <li className="profitstetement-body-left-two">每股股息(元)</li>
-                                <li className="profitstetement-body-left-two">每股收益</li>
-                                <li className="profitstetement-body-left-two">基本每股收益(元)</li>
-                                <li className="profitstetement-body-left-two">稀释每股收益(元)</li>
-                                <li className="profitstetement-body-left-two">其他全面收益(元)</li>
-                                <li className="profitstetement-body-left-two">全面收益总额(元)</li>
-                                <li className="profitstetement-body-left-two">本公司拥有人应占全面收益总额(元)</li>
-                                <li className="profitstetement-body-left-two">非控股权益应占全面收益总额(元)</li>
-                                <li className="profitstetement-body-left-two">公告日期</li>
-                                <li className="profitstetement-body-left-two">会计准则</li>
-                                <li className="profitstetement-body-left-two">审计意见</li>
-                                <li className="profitstetement-body-left-two">核数师</li>
+                                <li className="profitstetement-body-left-one">{intl.get('start_date')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('deadline')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('report_type')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('report_year_date')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('listing_before_after')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('original_currency')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('operating_income')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('cost_sales')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('gross_profit')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('other_income')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('sales_distribution_costs')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('administrative_expenses')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('employee_compensation')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('development_expenses')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('depreciation_amortization')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('other_expenses')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('asset_impairment_loss')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('revaluation_surplus')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('sale_assets')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('operating_profit')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('share_profit_associates')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('share_joint_associates')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('financial_costs')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('project_impact_profit_before')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('profit_before')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('income_tax')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('project_impact_net_profit')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('net_profit')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('net_profit_company')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('net_profit_controlling')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('dividend')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('dividend_pershare')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('earnings_pershare')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('earnings_pershare_basic')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('earnings_pershare_dilution')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('income_all')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('income_iumpsum')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('income_iumpsum_company')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('income_iumpsum_controlling')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('announcement_date')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('accounting_standards')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('audit_opinions')}</li>
+                                <li className="profitstetement-body-left-two">{intl.get('auditor')}</li>
                             </ul>
                         </Col>
-                        <Col span={18}  style={{overflowX:'scroll'}}>
-                            <div className="profitstetement-body-div">
+                        <Col span={18}>
+                            <div style={{overflowX:'auto'}}>
+                            <div style={{display:'inline-flex'}} className="profitstetement-body-div">
                                 {
                                     dataProfitDetail.map((show,i)=>(
                                         <ul className="profitstetement-body-right">
@@ -131,6 +132,7 @@ class Slprofitstatement extends Component{
                                         </ul>
                                     ))
                                 }
+                            </div>
                             </div>
                         </Col>
                         

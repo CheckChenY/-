@@ -32,6 +32,7 @@
   letter-spacing: normal;
   text-align: left;
   color: #646464;
+  margin-right:0;
 }
 
 .comment-and-message-summarize .ant-tabs-nav .ant-tabs-tab-active
@@ -46,6 +47,7 @@
   letter-spacing: normal;
   text-align: left;
   color: #e46464;
+  margin-right:0;
 }
 
 .comment-and-message-summarize .ant-tabs-ink-bar
@@ -55,9 +57,9 @@
 
 /* 我的评论  */
 .my-comments-user-picture{
-    margin-top: 35px;
-    width: 70px;
-    height: 70px;
+    margin-top: 25px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
@@ -65,7 +67,7 @@
 {
     margin-top: 16px;
     font-family: PingFangSC;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
@@ -77,7 +79,7 @@
 
 .my-comments-time
 {
-    margin-top: 35px;
+    margin-top: 25px;
     font-family: PingFangSC;
     font-size: 10px;
     font-weight: normal;
@@ -104,6 +106,30 @@
     text-align: justify;
     color: #383838;
 }
+
+.my-comments-text-all {
+    width: 335px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #f2f8ff;
+    margin-top: 30px;
+    padding-left: 10px;
+    cursor:pointer;
+}
+
+.my-comments-text-title {
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 30px;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #4979b0;
+    padding-left: 8px;
+}
+
 .my-comments-response
 {
     display: inline-block;
@@ -135,8 +161,8 @@
 
 /* 我的消息 */
 .my-message-user-picture{
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 .my-message-user-picture-sm{
@@ -144,6 +170,43 @@
     height: 40px;
     border-radius: 50%;
 }
+
+.my-message-ID {
+    margin-top: 16px;
+    font-family: PingFangSC;
+    font-size: 11px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #646464;
+}
+
+.my-message-text-all {
+    width: 335px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #f2f8ff;
+    margin-top: 30px;
+    padding-left: 10px;
+    cursor:pointer;
+}
+
+.my-message-text-title {
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 30px;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #4979b0;
+    padding-left: 8px;
+}
+
 .my-message-date
 {
     font-family: PingFangSC;

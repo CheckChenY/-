@@ -11,12 +11,24 @@ import './backPasswordStepTwo.css';
 // import imgoneURL from '../assient/invalid-name2.png';
 
 class BackPasswordStepTwo extends Component{
+
+    constructor(props){
+        super(props)
+        // this.state = {
+
+        // }
+        this.changehande = this.changehande.bind(this)
+    }
+
+    changehande=()=>{
+        console.log(this.textInput);
+    }
     
-        render() {
-            const self = this,
-            { nextStepTre ,state ,hideModal,getEmailCode } = self.props,
-            { visible,email } = state;
-            return (
+    render() {
+        const self = this,
+        { nextStepTre ,state ,hideModal,getEmailCode } = self.props,
+        { visible,email } = state;
+        return (
             <div>
                 <Modal
                     title="找回密码"
@@ -106,7 +118,10 @@ class BackPasswordStepTwo extends Component{
                     <Row className="reset">
                         <Col xl={6} md={6} className="reset-left"></Col>
                         <Col xl={12} md={12}>
-                            <input className="reset-write-newpassword-text"/> 
+                            <input ref={input => {
+                                    this.textInput = input;
+                                }} 
+                            className="reset-write-newpassword-text"/> 
                         </Col>
                         <Col xl={6} md={6} className="reset-right"></Col>
                     </Row>
@@ -157,10 +172,11 @@ class BackPasswordStepTwo extends Component{
                             <button 
                                 className="reset-confirm"
                                 onClick={
-                                    nextStepTre
+                                    // nextStepTre
+                                    this.changehande
                                 }
                             >
-                                <span className="reset-confirm-text">确认修改</span>
+                                <span className="reset-confirm-text">确认修改123</span>
                             </button> 
                         </Col>
                         <Col xl={6} md={6} className="reset-right"></Col>
@@ -168,7 +184,7 @@ class BackPasswordStepTwo extends Component{
                     <br/>
                 </Modal>
             </div>
-            );
+        );
     }
 }
 

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Plus from './plus';
-// import { getUser } from './action'
-
-// import Header from '../header/Index';
+import { homePage } from './action';
 import Header from '../header/Header';//访客头部按钮
 
 
@@ -14,31 +11,32 @@ import Homepagestocks from './Homepagestocks'
 import Homepageissues from './Homepageissues'
 
 class Home extends Component {
+  componentDidMount(){
+    const self = this,
+    { homePage } = self.props;
+    homePage();
+  }
   render() {
     const self = this,
-    { props } = self,
-    { state } = props,
-    { user } = state;
+    { props } = self;
+    
     return (
       <div
         style={{
           minWidth:'1140px'
         }}
       >
-        <Header 
-          user={user} 
+        <Header {...props} />
+        <Homepagesearch {...props} vister={true} />
+        <Homepagepicture 
+        // IndexOne={IndexOne} {...props} 
         />
-        {/* <Plus { ...props } /> */}
-        {/* <Header /> */}
-        {/* <hr style={{border: 'solid 1px #dadada', minWidth:'1000px'}}/> */}
-        <Homepagesearch vister={true} />
-        {/* <br /> */}
-        <Homepagepicture />
-        {/* <br /> */}
-        <Homepagestocks />
-        {/* <br /> */}
-        <Homepageissues/>
-        {/* <br /> */}
+        <Homepagestocks 
+        // IndexTwo={IndexTwo} {...props} 
+        />
+        <Homepageissues 
+        // IndexTre={IndexTre} {...props}
+        />
         <Footer/>
       </div>
     );
@@ -51,7 +49,7 @@ const mapDispatchToProps = state => ({
 })
 
 export default connect(mapDispatchToProps,{
-  // getUser
+  homePage
 })(Home);
 
 // export default Home;

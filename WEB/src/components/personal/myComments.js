@@ -1,122 +1,120 @@
 
 import React,{ Component} from 'react';
+import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
+import { getHKDetail } from '../stockNews/action';
+import { getMessage  } from './action';
 import { Row, Col, Tabs } from 'antd';
 
 import './myComments.css';
 import imgoneURL1 from '../assient/userdefine.jpg';
-import imgoneURL8 from '../assient/response.png';
-import imgoneURL9 from '../assient/like.png';
+// import imgoneURL8 from '../assient/response.png';
+// import imgoneURL9 from '../assient/like.png';
+
+import imgURLone from '../assient/link.png';
 
 
 const TabPane = Tabs.TabPane;
 
 class MyComments extends Component{
-    
-        render() {
-            const self = this,
-            { comment=[] ,userNickname} = self.props;
-            return (
+
+    componentDidMount(){
+        const self = this,
+        { getMessage,state } = self.props,
+        { userId } = state;
+        getMessage(userId)
+    }
+    render() {
+        const self = this,
+        { comment=[] ,getHKDetail,state} = self.props,
+        { myMessageList=[] } = state;
+        console.log(myMessageList);
+        return (
             <div>
-              <div className='my-comments-and-message'>
+                <div className='my-comments-and-message'>
                 <Tabs 
                     defaultActiveKey="1"
                     tabPosition='top'
                     className='comment-and-message-summarize'
                 >
-                  <TabPane tab={<div>我的评论</div>} key="1">
-                    <div style={{overflowY:'auto', height:'410px'}}>
-
-                    {
-                        comment.map((show,i)=>(
-                            <div key={i}>
-                                <Row >
-                                    <Col span={4} style={{display:'inline-block',textAlign:'center'}}>
-                                        <img  alt='aaa' src={imgoneURL1} className="my-comments-user-picture"/>
-                                        <div className='my-comments-ID'>ID:{userNickname}</div>
-                                    </Col>
-                                    <Col span={20}>
-                                        <div className='my-comments-time'>一小时前</div>
-                                        <div className='my-comments-text'>
-                                            <div>
-                                                {show.info_title}
+                    <TabPane tab={<div>{intl.get('comment_mine')}</div>} key="1">
+                        <div style={{overflowY:'auto', height:'410px'}}>
+                        {
+                            comment.map((show,i)=>(
+                                <div key={i}>
+                                    <Row >
+                                        <Col span={4} style={{display:'inline-block',textAlign:'center'}}>
+                                            <img  alt='aaa' src={imgoneURL1} className="my-comments-user-picture"/>
+                                            <div className='my-comments-ID'>ID:{show.topic_id}</div>
+                                        </Col>
+                                        <Col span={20}>
+                                            <div className='my-comments-time'>{show.com_time}</div>
+                                            <div className='my-comments-text'>
+                                                <div>
+                                                    {show.content}
+                                                </div>
+                                                <div 
+                                                    className="my-comments-text-all"
+                                                    onClick={
+                                                        ()=>getHKDetail(this.props,show.topic_id)
+                                                    }
+                                                >
+                                                    <img alt='链接' src={imgURLone}/>
+                                                    <span className="my-comments-text-title">{show.info_title}</span>
+                                                </div>
                                             </div>
-                                            <div>
-                                                {show.content}
+                                        </Col>
+                                    </Row>
+                                    <hr style={{border: 'solid 1px #E8E8E8'}}/>
+                                </div>
+                            ))
+                        }
+                        </div>
+                    </TabPane>
+                    <TabPane tab={<div>{intl.get('message_mine')}</div>} key="2">
+                        <div style={{overflowY:'auto', height:'410px'}}>
+                        {
+                            myMessageList.map((show,i)=>(
+                                <div key={i}>
+                                    <Row style={{margin:'24px 0 24px' }}>
+                                        <Col span={4} style={{display:'inline-block',textAlign:'center'}}>
+                                            <img  alt='aaa' src={imgoneURL1} className="my-message-user-picture"/>
+                                            <div className='my-message-ID'>ID:{show?show.news_id:''}</div>
+                                        </Col>
+                                        <Col span={20}>
+                                            <div className='my-message-date'>{show?show.time:'2016/8/21'}</div>
+                                            <div className='my-message-reponse-title'>
+                                                {show?show.user_nickname:''} {intl.get('responded_your_comment')}
+                                                <span style={{fontWeight:'500'}}>{show?show.comment:''}</span>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <span>
-                                                <img alt='金融搜索' src={imgoneURL8} style={{width:'23px', height:'23px'}}/>
-                                                <div className='my-comments-response'>回复</div>
-                                            </span>
-                                            
-                                            <span>
-                                                <img alt='金融搜索' src={imgoneURL9} style={{width:'23px', height:'23px'}}/>
-                                                <div className='my-comments-number'>195</div>
-                                            </span>
-                                        </div>
-                                    </Col>
-                                </Row>
-                                <hr/>
-                            </div>
-                        ))
-                    }
-                    </div>
-                  </TabPane>
-                  <TabPane tab={<div>我的消息</div>} key="2">
-                    <div style={{overflowY:'auto', height:'410px'}}>
-                    {
-                        comment.map((show,i)=>(
-                            <div key={i}>
-                                <Row style={{margin:'24px 0 40px' }}>
-                                    <Col span={4} style={{display:'inline-block',textAlign:'center'}}>
-                                        <img  alt='aaa' src={imgoneURL1} className="my-message-user-picture"/>
-                                    </Col>
-                                    <Col span={20}>
-                                        <div className='my-message-date'>2016/8/21</div>
-                                        <div className='my-message-reponse-title'>
-                                            {'轰天'} 回复了你的评论：{'一直以来，巴菲特都在考虑进一步放宽股票回购政策。'}
-                                        </div>
-                                        <div style={{marginTop:'50px'}}>
-                                            <Row>
-                                                <Col span={3}>
-                                                    <img  alt='aaa' src={imgoneURL1} className="my-message-user-picture-sm"/>
-                                                </Col>
-                                                <Col span={21}>
-                                                    <div className='my-message-text'>
-                                                        <div>
-                                                            {show.info_title}
-                                                        </div>
-                                                        <div>
-                                                            {show.content}
-                                                        </div>
-                                                    </div>
-                                                    <div style={{marginTop:'30px'}}>
-                                                        <span style={{cursor:'pointer'}}>
-                                                            <img alt='金融搜索' src={imgoneURL8} style={{width:'23px', height:'23px'}}/>
-                                                            <div className='my-message-response'>回复</div>
-                                                        </span>                                                    
-                                                        <span style={{cursor:'pointer'}}>
-                                                            <img alt='金融搜索' src={imgoneURL9} style={{width:'23px', height:'23px'}}/>
-                                                            <div className='my-message-number'>195</div>
-                                                        </span>
-                                                    </div>                                   
-                                                </Col>
-                                            </Row>
-                                        </div>
-                                    </Col>
-                                </Row>
-                                <hr/>
-                            </div>
-                        ))
-                    }    
-                    </div>
-                  </TabPane>
+                                            <div 
+                                                className="my-message-text-all"
+                                                onClick={
+                                                    ()=>getHKDetail(this.props,show.topic_id)
+                                                }
+                                            >
+                                                <img alt='链接' src={imgURLone}/>
+                                                <span className="my-message-text-title">{show.title}</span>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <hr style={{border: 'solid 1px #E8E8E8'}}/>
+                                </div>
+                            ))
+                        }    
+                        </div>
+                    </TabPane>
                 </Tabs>
-              </div>
+                </div>
             </div>
-            );
+        );
     }
 }
+const mapDispatchToProps = state => ({
+    state:state.checkReducer
+})
 
-export default MyComments;
+export default connect(mapDispatchToProps,{
+    getHKDetail,getMessage
+})(MyComments);
+// export default MyComments;

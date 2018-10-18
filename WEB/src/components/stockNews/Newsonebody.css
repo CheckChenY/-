@@ -1,6 +1,7 @@
 .news-one-all {
     /* width: 1000px; */
     padding-bottom: 32px;
+    cursor: pointer;
 }
 
 .news-one {
@@ -44,9 +45,11 @@
     position: absolute;
     margin-left: 31px;
 }
+.news-one-title highlight{
+    color: yellow;
+}
 
 .news-one-time {
-    /* width: 80px; */
     height: 18px;
     font-family: PingFangSC;
     font-size: 13px;
@@ -132,4 +135,30 @@
     text-align: justify;
     color: #8e8e8e;
     vertical-align: middle;
+}
+
+.news-three-body-loading {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 37px;
+}
+
+.news-three-body-loading-up {
+    border:0;
+    background: none;
+}
+
+.news-three-body-loading-up:focus{
+    outline: none;
+}
+
+.news-three-body-loading-behind {
+    text-align: center;
+    margin-left:-80px;
+}
+
+.news-three-body-loading-down {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 37px;
 }

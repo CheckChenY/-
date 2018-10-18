@@ -111,7 +111,14 @@ export const editPasswordHide = () => dispath => {
     })
 }
 
-export const editPasswordSave = (userPassword,newPassword,userName) => dispath => {
+export const editPasswordSave = (userPassword,newPassword,userName,newPasswordAgain) => dispath => {
+    if(newPasswordAgain===''){
+        alert('不能为空');
+        return false;
+    }else if(newPassword !==newPasswordAgain){
+        alert('两次输入密码不同');
+        return false;
+    }
 
     Axios.post('/api/User/updatePassword',qs.stringify({
         userPassword : userPassword,

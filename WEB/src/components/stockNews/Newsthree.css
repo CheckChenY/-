@@ -11,8 +11,8 @@
     border-left: 10px solid transparent;
     border-bottom: 0px solid transparent;
     position: absolute;
-    margin-top: -16px;
-    margin-left: 295px;
+    margin-top: -15px;
+    margin-left: 292px;
 }
 
 .title-select-one .ant-select-selection {
@@ -42,7 +42,8 @@
 }
 
 .title-search-result {
-    color: red;
+    color:#626262;
+    font-size: 13px;
 }
 
 

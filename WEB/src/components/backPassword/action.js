@@ -44,6 +44,10 @@ export const getImgCode = () => dispath => {
 //     })
 // }
 export const nextStepTwo = (uuid,code,userName) => dispath => {
+    if(code===''||userName===''){
+        alert('不能为空');
+        return false;
+    }
     Axios.post('/api/User/checkCode',qs.stringify({
             uuid:uuid,
             yanzheng:code,
@@ -74,27 +78,31 @@ export const getEmailCode = (userName) => dispath => {
     }))
 }
 
-export const nextStepTre = (userName,email,password,emailCode) => dispath => {
+export const nextStepTre = (userName,email,password,emailCode,againPassword) => dispath => {
 
-    Axios.post('/api/User/findPassword',qs.stringify({
-            userAccount  :  userName,
-            userEmail    :  email,
-            userPassword :  password,
-            str          :  emailCode
-        })
-        ,{
-            headers: {
-            'Content-Type':'application/x-www-form-urlencoded'
+    if(password === againPassword ){
+        Axios.post('/api/User/findPassword',qs.stringify({
+                userAccount  :  userName,
+                userEmail    :  email,
+                userPassword :  password,
+                str          :  emailCode
+            })
+            ,{
+                headers: {
+                'Content-Type':'application/x-www-form-urlencoded'
+                }
             }
-        }
-    )
-    .then(function (response) {
-        dispath({
-            type:GET_NEXT_STEP_TRE,
-            nextStep: 'tre',
+        )
+        .then(function (response) {
+            dispath({
+                type:GET_NEXT_STEP_TRE,
+                nextStep: 'tre',
+            })
         })
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+        .catch(function (error) {
+            console.log(error);
+        });
+    }else{
+        alert("密码不一致")
+    }
 }

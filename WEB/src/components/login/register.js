@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Axios from 'axios';
 import { connect } from 'react-redux';
-import { nextStep,registerSuccess } from './action'
+import { nextStep,registerSuccess,prvStep } from './action'
 import { getImgCode } from '../backPassword/action'
 import { Button, Form, Input ,Icon, Col,} from 'antd';
 
@@ -18,11 +18,13 @@ constructor(props){
     this.state={
         userName:'hh',
         userPassword:'123',
+        passwordAgain:'',
         email:'123456@qq.com',
         code:'1234'
     }
     this.handeChangeUser = this.handeChangeUser.bind(this);
     this.handeChangePassword = this.handeChangePassword.bind(this);
+    this.handeChangePasswordAgain = this.handeChangePasswordAgain.bind(this);
     this.handeChangeEmail = this.handeChangeEmail.bind(this);
     this.handeChangeCode = this.handeChangeCode.bind(this);
 }
@@ -43,6 +45,11 @@ handeChangePassword(e){
         userPassword:e.target.value
     })
 }
+handeChangePasswordAgain(e){
+    this.setState({
+        passwordAgain:e.target.value
+    })
+}
 handeChangeEmail(e){
     this.setState({
         email:e.target.value
@@ -54,67 +61,12 @@ handeChangeCode(e){
     })
 }
 
-//  handleSubmitBefore = (e) => {
-//     e.preventDefault();
-//     const self = this,
-//     { props } = self;
-//     props.form.validateFields((err, values) => {
-//       if (!err) {
-//         console.log('Received values of form: ', values);
-//         self.setState({
-//             userAccount:values.userName,
-//             userPassword:values.password,
-//             show:false
-//         })
-//       }
-//     });
-// }
-
-
-
-// handleSubmitLast = (e) => {
-//     e.preventDefault();
-//     const self = this,
-//     { props ,state} = self,
-//     { userName,userPassword } = state;
-//     props.form.validateFields((err, values) => {
-//       if (!err) {
-//         console.log('Received values of form: ', values);
-
-//         // let history = this.context.router.history;
-//         // console.log(history);
-
-//         Axios.post('/User/userRegister', {
-//           userAccount: userAccount,
-//           userPassword: userPassword,
-//           userEmail:values.email
-//         })
-//         .then(function (response) {
-
-//           // return (<Redirect to="/home" />);
-//           // History.push('/home')
-
-
-//           console.log(response);
-//           if(response.data.code === 1){
-//               alert('注册成功')
-//           }
-//           // console.log(response);
-//         })
-//         .catch(function (error) {
-//           console.log(error);
-//         });
-
-
-//       }
-//     });
-//   }
 
   render() {
     const self = this,
     { props ,state} = self,
-    { state:selfState,nextStep,getImgCode,registerSuccess } = props,
-    { userName ,userPassword,email ,code} = state,
+    { state:selfState,nextStep,getImgCode,registerSuccess,prvStep } = props,
+    { userName ,userPassword,email ,code,passwordAgain,} = state,
     { imgSrc , show ,uuid} = selfState;
     return (
       <div>
@@ -125,6 +77,7 @@ handeChangeCode(e){
                         <Input 
                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         onChange={this.handeChangeUser} 
+                        maxLength="12"
                         placeholder="请输入用户名" />
                     </FormItem>
 
@@ -132,12 +85,18 @@ handeChangeCode(e){
                         <Input 
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                         type="password" 
+                        maxLength="12"
                         onChange={this.handeChangePassword}
                         placeholder="请输入密码" />
                     </FormItem>
 
                     <FormItem>
-                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请重复输入密码" />
+                        <Input 
+                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
+                            maxLength="12"
+                            onChange={this.handeChangePasswordAgain}
+                            type="password" placeholder="请重复输入密码"
+                        />
                     </FormItem>
                     <FormItem
                     wrapperCol={{
@@ -146,7 +105,7 @@ handeChangeCode(e){
                     >
                                             
                     <Button type="primary"
-                    onClick={ ()=>nextStep(userName) }
+                    onClick={ ()=>nextStep(userName,userPassword,passwordAgain,true) }
                     className="register-box-button">
                         下一步
                     </Button>
@@ -156,11 +115,15 @@ handeChangeCode(e){
               ) :(
                 <Form layout="vertical" style={{marginBottom:'24px'}}>
                 <FormItem>
-                    <Input 
-                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
-                    type="text" 
-                    onChange={this.handeChangeEmail}
-                    placeholder="请输入邮箱" />
+                    <div>
+                        <Input 
+                            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} 
+                            placeholder="请输入邮箱" 
+                            maxLength='30'
+                            type="textarea"
+                            onChange={this.handeChangeEmail}
+                        />
+                    </div>
                 </FormItem>
 
                 <FormItem>
@@ -183,10 +146,14 @@ handeChangeCode(e){
                         xs: { span: 24, offset: 0 },
                     }}
                 >
+                    <Button type="default" 
+                        className="register-box-button"
+                        onClick={ ()=>prvStep() } >
+                        上一步
+                    </Button>
                     <Button type="primary" 
-                    style={{marginTop:'64px'}} 
-                    onClick={()=>registerSuccess(userPassword,email ,code,uuid,userName)}
-                    className="register-box-button">
+                        onClick={()=>registerSuccess(userPassword,email ,code,uuid,userName,props)}
+                        className="register-box-button">
                         完成
                     </Button>
 
@@ -208,6 +175,7 @@ const WrappedNormalLoginForm = Form.create()(Register);
 
 export default connect(mapDispatchToProps,{
     nextStep,
+    prvStep,
     getImgCode,
     registerSuccess
 })(WrappedNormalLoginForm);

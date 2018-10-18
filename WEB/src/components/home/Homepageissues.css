@@ -8,7 +8,6 @@
 .home-page-issues {
     display: inline-block;
     min-width: 1000px;
-    /* margin-left: 180px; */
 }
 
 .issues-title-word-left {
@@ -42,7 +41,6 @@
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    /* text-align: left; */
     color: #848484;
     margin-left: 12px;
     margin-bottom: 10px;
@@ -50,28 +48,26 @@
 }
 
 .stocks-body-pic-one {
-    /* width:100%; */
     width:49%;
     margin-bottom: 20px;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .stocks-body-pic-two {
-    /* width:100%; */
     width:49%;
     margin-bottom: 20px;
-    /* margin-right: 20px; */
+    cursor: pointer;
 }
 
 .stocks-body-pic-three {
-    /* width:100%; */
     width:49%;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .stocks-body-pic-four {
-    /* width:100%; */
     width:49%;
-    /* margin-right: 20px; */
+    cursor: pointer;
 }
     

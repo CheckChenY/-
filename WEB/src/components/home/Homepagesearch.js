@@ -1,7 +1,7 @@
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 import intl from 'react-intl-universal';
-import { Homepagesearch } from './action'
+import { Homepagesearch,getHotWord } from './action'
 
 import { Input } from 'antd';
 import './Homepagesearch.css';
@@ -13,13 +13,20 @@ class Homepage extends Component{
     constructor(props){
         super(props)
         this.state = {
-            keyValue:' '
+            keyValue:''
         }
+        this.handeChangeValue = this.handeChangeValue.bind(this);
+    }
+
+    componentDidMount(){
+        const self = this,
+        { getHotWord } = self.props;
+        getHotWord();
     }
 
     handeChangeValue = (e) =>{
         this.setState({
-            keyValue:e.target.text
+            keyValue:e.target.innerText
         })
     }
 
@@ -27,16 +34,17 @@ class Homepage extends Component{
             const self = this,
             { props,state} = self,
             { keyValue } = state,
-            { Homepagesearch ,vister} = props;
+            { Homepagesearch ,state:selfState} = props,
+            { hotWordList=[] } = selfState;
             return (
                 <div className="home-page-search">
                     <div className="user-head">
                         <div className="search">
-                            {
+                            {/* {
                                 vister ? (
                                     <Search
                                         className="search-content"
-                                        value={keyValue}
+                                        defaultValue={keyValue}
                                         enterButton={intl.get('search')}
                                         size="large"
                                         onSearch={
@@ -45,37 +53,37 @@ class Homepage extends Component{
                                             }
                                         }
                                     />
-                                ) : (
+                                ) : ( */}
                                     <Search
                                         className="search-content"
-                                        value={keyValue}
+                                        defaultValue={keyValue}
                                         enterButton={intl.get('search')}
                                         size="large"
                                         onSearch={
-                                            value=>Homepagesearch(props,value)
+                                            defaultValue=>Homepagesearch(props,defaultValue)
                                         }
                                         
                                     />
-                                )
-                            }
+                                {/* )
+                            } */}
                         </div>
                         <div className="hotsearch-all">
                             <span className="hotsearch-title">
-                                {intl.get('search_hot')}
+                                {intl.get('search_hot')+':'}
                             </span>
-                            <a 
-                                className="hotsearch-title-one"
-                                    onClick={this.handeChangeValue}
-                                >
-                                {intl.get('hot_search_one')}
-                            </a>
-                            <a className="hotsearch-title-one">{intl.get('hot_search_two')}</a>
-                            <a className="hotsearch-title-one">{intl.get('hot_search_three')}</a>
-                            <a className="hotsearch-title-one">{intl.get('hot_search_four')}</a>
-                            <a className="hotsearch-title-one">{intl.get('hot_search_five')}</a>
-                            <a className="hotsearch-title-one">{intl.get('hot_search_six')}</a>
-                            <a className="hotsearch-title-one">{intl.get('hot_search_seven')}</a>
-                            <a className="hotsearch-title-one">{intl.get('hot_search_eight')}</a>
+                            {
+                                hotWordList.map((show,i)=>(
+                                    <span 
+                                        className="hotsearch-title-one"
+                                            key={i}
+                                            onClick={
+                                                ()=>Homepagesearch(props,show)
+                                            }
+                                        >
+                                        {show}
+                                    </span>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -88,7 +96,8 @@ const mapDispatchToProps = (state) => ({
 })
     
 export default connect(mapDispatchToProps,{
-    Homepagesearch
+    Homepagesearch,
+    getHotWord
 })(Homepage);
 
 // export default Homepagesearch;

@@ -1,37 +1,13 @@
 {
-  "login_account": "sssssssssssAccount",
-  "login_pwd": "Password",
-  "login_submit": "Login",
-  "login_copyright": "All rights reserved",
-  "login_errMsg1": "User name or password not correct",
-  "login_errMsg2": "User name not exists",
-  "login_errMsg3": "Server error",
-  "grid_cover_title": "Grid Analysis",
-  "grid_cover_content": "Retail research has been upgraded to an unprecedented level: full coverage of land area, fine 1*1 kilometer grid, large data depth insight in the human field, and full access to big data in the era of marketing and shopping.",
-  "grid_cover_btn": "Enter the grid",
-  "sssss":"以上是要删除的以上是要删除的",
-
-
-  "ssssss":"以下四个是要删除的以下四个是要删除的以下四个是要删除的以下四个是要删除的以下四个是要删除的",
-  "logintitle":"金融搜索BAR 一款強大的搜索工具",
-  "login_title_one":"最全的港股資訊",
-  "login_title_two":"最新港股行情",
-  "login_title_three":"精確定位搜索",
-  "sssssss":"以上四个是要删除的以上四个是要删除的以上四个是要删除的以上四个是要删除的以上四个是要删除的",
-
-
-  "ssssssss":"以下四个是要删除的以下四个是要删除的以下四个是要删除的以下四个是要删除的以下四个是要删除的",
   "please_enter_username":"請輸入用戶名",
   "please_enter_password":"請輸入密碼",
   "please_enteragain_password":"請重複輸入密碼",
   "password_remember":"記住密碼",
   "password_forget":"忘記密碼",
-  "sssssssss":"以上四个是要删除的以上四个是要删除的以上四个是要删除的以上四个是要删除的以上四个是要删除的",
-
 
   "log_in":"登錄",
   "registered":"注冊",
- 
+  "log_out":"退出登錄",
   "password_retrieve":"找回密碼",
   "confirm_account":"確認賬號",
   "reset_password":"重置密碼",
@@ -45,13 +21,11 @@
   "enteragain_password":"重新輸入密碼",
   "get_mailbox_word":"獲取郵箱驗證碼",
   "confirm_modify":"確認修改",
-  "password_modify_success":"恭喜密碼修改成功",
+  "password_modify_success":"恭喜密碼修改成功！",
   "return_loginpage":"返回（5s後跳回首頁）",
+  "version_number":"Copyright © 2018金融搜索bar 滬ICP備XXXXXX號-X",
   "password_old":"舊密碼",
   "enteragain_password_new":"重新輸入新密碼",
-
-  
-
   "hot_search_one":"中國開戶",
   "hot_search_two":"A股H股",
   "hot_search_three":"市況不明",
@@ -60,8 +34,6 @@
   "hot_search_six":"港股市場",
   "hot_search_seven":"三國議息",
   "hot_search_eight":"恒生指數",
-
-
   "information_myself":"我的信息",
   "password_modify":"修改密碼",
   "information_mine":"個人信息",
@@ -75,7 +47,13 @@
   "location":"地點",
   "link_way":"聯系方式",
   "save":"保存",
+  "cancel":"取消",
+  "hour_ago":"一小時前",
+  "reply":"回複",
+  "collapse":"收起",
+  "responded_your_comment":"回複了你的評論：",
   "search":"搜索",
+  "search_finance":"金融搜索",
   "search_hot":"熱門搜索",
   "recommend_HKstocks":"港股推薦",
   "recommend_issues":"議題推薦",
@@ -93,7 +71,12 @@
   "share":"分享",
   "good":"點贊",
   "loading":"加載中",
+  "loading_ing":"加載",
   "all":"全部",
+  "author":"作者：",
+  "source":"來源：",
+  "make_comment":"發表評論",
+  "all_comments":"全部評論",
   "HKstocks_motherboard":"港股主板",
   "HKstocks_gem":"港股創業板",
   "HKstocks_hot":"熱門港股",
@@ -103,6 +86,7 @@
   "choice_mine":"我的自選",
   "gain":"漲幅",
   "refresh":"刷新",
+  "delete":"刪除",
   "code":"代碼",
   "name":"名稱",
   "latest_price":"最新價",
@@ -114,6 +98,7 @@
   "lowest":"最低",
   "yesterday_collect":"昨收",
   "append_choice_minestock":"自選股添加",
+  "minestock":"我的自選股",
   "append_success":"已添加",
   "append_choice_mine":"添加自選",
   "stock_overview":"股票總覽",
@@ -122,6 +107,7 @@
   "valuation_analysis":"估值分析",
   "growth_ability":"成長能力",
   "income_statement":"利潤表",
+  "company_announcement":"公司公告",
   "total_share_capital":"總股本",
   "total_market_capitalization":"總市值",
   "highest_price":"最高價",
@@ -182,6 +168,7 @@
   "maximum":"最大值",
   "minimum":"最小值",
   "final_value":"期末值",
+  "years":"年",
   "market_profit_ratio_one":"市盈率（PE,TTM）",
   "market_profit_ratio_two":"市盈率（PE,LYR）",
   "market_netvalue_ratio_one":"市淨率（PB,MRQ）",
@@ -253,7 +240,8 @@
   "income_iumpsum_controlling":"非控股權益應占全面收益總額(元)",
   "accounting_standards":"會計準則",
   "audit_opinions":"審計意見",
-
-
-  "slprofitTable":"利潤表"
+  "temporarily_no_data":"暫時沒有數據",
+  "search_no_result_one":"對不起，沒有找到與",
+  "search_no_result_two":"相關的內容。",
+  "have_sofa":"有沙發可以搶"
 }

@@ -2,13 +2,13 @@ import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 import Tools from '../corn/tools';
 import { getIssueDetail ,getHotHKNews} from './action';
-
-// import { Spin, Icon } from 'antd';
-
+import intl from 'react-intl-universal';
+import { Spin, Icon, Row, Col, } from 'antd';
+import Newsthreebodynone from './Newsthreebodynone.js';
 
 import './Newsthreebody.css'
 
-import imgoneURL from '../assient/stockNews/1.png';
+// import imgoneURL from '../assient/stockNews/1.png';
 // import imgtwoURL from '../assient/stockNews/2.png';
 // import imgthreeURL from '../assient/stockNews/3.png';
 // import imgfourURL from '../assient/stockNews/4.png';
@@ -18,109 +18,110 @@ import imgoneURL from '../assient/stockNews/1.png';
 // import imgeightURL from '../assient/stockNews/8.png';
 // import imgnineURL from '../assient/stockNews/9.png';
 
+import img1 from '../assient/shareDetails/1.png';
+import img2 from '../assient/shareDetails/2.png';
+import img3 from '../assient/shareDetails/3.png';
+import img4 from '../assient/shareDetails/4.png';
+import img5 from '../assient/shareDetails/5.png';
+import img6 from '../assient/shareDetails/6.png';
+import img7 from '../assient/shareDetails/7.png';
+import img8 from '../assient/shareDetails/8.png';
+import img9 from '../assient/shareDetails/9.png';
+// import img10 from '../assient/shareDetails/10.png';
+// import img11 from '../assient/stockNews/11.png';
+// import img12 from '../assient/shareDetails/12.png';
+// import img13 from '../assient/shareDetails/13.png';
+// import img14 from '../assient/shareDetails/14.png';
+
 import imgtenURL from '../assient/stockNews/good.png';
 
 
 
-// const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class Newsthreebody extends Component{
-
-    onScrollHandle(event) {
-        if(event.scrollDom === null){
-            return false
-        }
-        const self = this,
-        { getHotHKNews ,state } = self.props,
-        { currentPageIsseu ,numPageIsseu } = state;
-        // { pages } = infoListPage;
-
-        // console.log(document.documentElement.scrollTop)
-        // console.log(document.documentElement.clientHeight)
-    
-    
-        const clientHeight = event.scrollDom.clientHeight + 222;
-        // const scrollHeight = event.scrollDom.scrollHeight
-        // const scrollTop = event.scrollDom.scrollTop
-    
-        const scrollHeight = document.documentElement.scrollTop;
-        const scrollTop = document.documentElement.clientHeight;
-    
-        const isBottom = (scrollHeight + scrollTop === clientHeight);
-
-        if(isBottom){
-            const step = Tools.getFromUrlParam('key') || '';
-
-            if( numPageIsseu < currentPageIsseu ){
-                return false
-            }else {
-                getHotHKNews(step,'',currentPageIsseu);
-            }
-            
-            console.log('is bottom:' + isBottom)
-        }
-    }
 
     componentWillMount() {
         const self = this,
         { getHotHKNews } = self.props;
         const step = Tools.getFromUrlParam('key') || '';
         getHotHKNews(step,'',1);
-
-
-        // let _this = this;
-        window.addEventListener('scroll', () =>
-        self.onScrollHandle(self)
-        )
-    }
-    
-    componentWillUnmount() {
-        let _this = this;
-        if (this.scrollDom) {
-            window.removeEventListener('scroll', () =>
-                _this.onScrollHandle(_this)
-            );
-        }
     }
 
     render() {
+        const imgsArr = [img1,img2,img3,img4,img5,img6,img7,img8,img9]
         const self = this,
-        { getIssueDetail,state } = self.props,
-        { infoListHotData=[] } = state;
-        console.log(infoListHotData);
+        { getIssueDetail,state,getHotHKNews } = self.props,
+        { loading,infoListHotData=[],none ,currentPageIsseu,} = state;
+        const step = Tools.getFromUrlParam('key') || '';
         return (
         <div ref={body=>self.scrollDom = body}>
-
+            <Row>
+                {
+                    infoListHotData.map((show,i)=>(
+                        // <div key={i} className="news-three-body-top">
+                        //     <span 
+                        //     onClick={
+                        //         ()=>getIssueDetail(this.props,show.issue_id)
+                        //     }
+                        //     >
+                        //         <span className="news-three-body-picture">
+                        //             <img alt='详情' src={imgsArr[i]} className="news-picture"/>
+                        //         </span>
+                        //         <span className="news-three-body-good">
+                        //             <img alt='点赞' src={imgtenURL} className="news-good"/>
+                        //             <span className="news-good-number">{show.zanNum?show.zanNum:'0'}</span>
+                        //         </span>
+                        //     </span>
+                        //     <div className="news-three-body-top-word">
+                        //         <a className="news-three-body-words">{show.issue_title}</a>
+                        //     </div>
+                        // </div>
+                        
+                        <Col key={i} md={8}>
+                            <div
+                                className="news-three-body-top"
+                                onClick={
+                                    ()=>getIssueDetail(this.props,show.issue_id)
+                                }>
+                                <div>
+                                    <span className="news-three-body-picture">
+                                        <img alt='详情' src={imgsArr[i]} className="news-picture"/>
+                                    </span>
+                                    <span className="news-three-body-good">
+                                        <img alt='点赞' src={imgtenURL} className="news-good"/>
+                                        <span className="news-good-number">{show.zanNum?show.zanNum:'0'}</span>
+                                    </span>
+                                </div>
+                                <div className="news-three-body-top-word">
+                                    <a className="news-three-body-words">{show.issue_title}</a>
+                                </div>
+                            </div>
+                        </Col>
+                    ))
+                }
+            </Row>
             {
-                infoListHotData.map((show,i)=>(
-                    <div key={i} className="news-three-body-top">
-                        <span 
-                        onClick={
-                            ()=>getIssueDetail(this.props,show.issue_id)
-                        }
+                none?(
+                    <div className="news-three-body-loading">
+                        <button 
+                            className="news-three-body-loading-up"
+                            onClick={
+                                ()=>getHotHKNews(step,'',currentPageIsseu)
+                            }
                         >
-                            <span className="news-three-body-picture">
-                                <img alt='详情' src={imgoneURL} className="news-picture"/>
-                            </span>
-                            <span className="news-three-body-good">
-                                <img alt='点赞' src={imgtenURL} className="news-good"/>
-                                <span className="news-good-number">195</span>
-                            </span>
-                        </span>
-                        <div className="news-three-body-top-word">
-                            <a className="news-three-body-words">{show.issue_title}</a>
-                        </div>
+                        {loading ? (
+                            <div className="news-three-body-loading">
+                                    <Spin 
+                                        tip={intl.get('loading')}
+                                        indicator={antIcon} 
+                                    />
+                                </div>
+                        ) : <span className="news-three-body-loading-down">{intl.get('loading_ing')}</span>}
+                        </button>
                     </div>
-                ))
+                ) : infoListHotData.length === 0 ? <Newsthreebodynone  word={'港股议题'} /> :''
             }
-            
-
-            {/* <div className="news-three-body-loading">
-                <Spin 
-                    tip="加载中"
-                    indicator={antIcon} 
-                />
-            </div> */}
 
         </div>
                         
@@ -132,5 +133,6 @@ const mapDispatchToProps = (state) => ({
 })
   
 export default connect(mapDispatchToProps,{
-    getIssueDetail,getHotHKNews
+    getIssueDetail,
+    getHotHKNews
 })(Newsthreebody);

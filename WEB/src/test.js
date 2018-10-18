@@ -6,7 +6,8 @@ import {
   import zhCN from 'antd/lib/locale-provider/zh_CN';
   import moment from 'moment';
   import 'moment/locale/zh-cn';
-  
+  // "target": "http://10.204.24.129:8080",
+  // "target": "http://192.168.50.151:8080",
   moment.locale('en');
   
   const Option = Select.Option;

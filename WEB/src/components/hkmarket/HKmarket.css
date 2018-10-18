@@ -12,6 +12,7 @@
     letter-spacing: normal;
     text-align: right;
     color: #7a8087;
+    box-shadow: none;
 }
 
 .HKmarket-company
@@ -28,18 +29,22 @@
 
 .HKmarket
 {
-    margin-top:10px;
+    /* margin-top:10px; */
+    width:auto;
+    margin:10px 2px 25px 2px; 
+    box-shadow: 0 0 4px 0 rgba(179, 179, 179, 0.5);
 }
 
 /* 公司信息的样式 */
 .HKmarket .ant-tabs-extra-content
 {
     float: left !important;
+    width:26%;
 }
 
 .HKmarket-company-information
 {
-    width:260px;
+    width:100%;
     height: 62px;
     display: inline-block;
     background-image: linear-gradient(63deg, #68c0ff, #4c87e2);
@@ -73,23 +78,26 @@
     color: #ffffff;
 }
 
-/* 保留 .title 以防被上一级页面覆盖样式 */
-.title .HKmarket .ant-tabs-nav-container
+.HKmarket-tab>.ant-tabs-bar 
 {
-    width: 740px;
+    margin:0;
+}
+.ant-tabs .HKmarket-tab>.ant-tabs-bar .ant-tabs-nav-container
+{
+    width: 74%;
     height: 62px;
     background-color: #ffffff;
-    border: solid 1px #ebebeb;
+    /* border: solid 1px #ebebeb; */
     display: inline-block;
     vertical-align: middle;
     padding: 15px 0 15px 30px;
 }
 
-.title .HKmarket .ant-tabs-nav-scroll
+.HKmarket .ant-tabs-nav-scroll
 {
     background: none;
 }
-.title .HKmarket .ant-tabs-nav .ant-tabs-tab
+.HKmarket-tab>.ant-tabs-bar .ant-tabs-nav .ant-tabs-tab
 {
     height: 30px;
     width: 80px;
@@ -100,7 +108,8 @@
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
-    line-height: normal;
+    /* line-height: normal; */
+    line-height: 15px;
     letter-spacing: normal;
     text-align: center;
     color: #58626d;
@@ -110,7 +119,7 @@
     background-image: none;
 }
 
-.title .HKmarket .ant-tabs-nav .ant-tabs-tab-active
+.HKmarket-tab>.ant-tabs-bar .ant-tabs-nav .ant-tabs-tab-active
 {
     height: 30px;
     width: 80px;
@@ -121,7 +130,8 @@
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
-    line-height: normal;
+    /* line-height: normal; */
+    line-height: 15px;
     letter-spacing: normal;
     text-align: center;
     color: #ffffff; 
@@ -130,5 +140,4 @@
     border: solid 1px #99a2ac;
     background-image: none;
 }
-
 

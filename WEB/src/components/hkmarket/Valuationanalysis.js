@@ -1,6 +1,8 @@
 
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
+
 import { 
     getYear,
     getValuationListSelect
@@ -32,38 +34,23 @@ class ValuationAnalysis extends Component{
           {   getYear , 
             stockCodeList,
         } = self.props,
-        { stockCode } = stockCodeList;
-        getYear(stockCode);
+        { stock_code } = stockCodeList;
+        getYear(stock_code);
     }
-    // componentDidMount(){
-    //     const self = this,
-    //     { 
-    //         stockCodeList,
-    //         getValuationList
-    //     } = self.props,
-    //     { stockCode } = stockCodeList;
-    //     getValuationList(stockCode)
-    // }
-
-    // getYear(stockCode){
-    //     const self = this;
-    // }
-    
-
     render(){
         const { ValuationAnalysisData,props } =this,
         { state,
             getValuationListSelect=()=>{},
             stockCodeList } = props,
-        { stockCode } = stockCodeList,
+        { stock_code } = stockCodeList,
         { getYearList=[],getValuationList } = state;
         return (
             <div >
-                <div style={{padding:'20px 0 22px 0', border:'solid 1px #ebeef1'}}>
+                <div style={{padding:'20px 0 22px 0', borderTop:'solid 1px #ebeef1'}}>
                     <div style={{borderRight:'4px solid #f56f6f', marginLeft:'30px', display:'inline'}}/>
-                    <div className='valuation-analysis-title'>估值分析</div>
+                    <div className='valuation-analysis-title'>{intl.get('valuation_analysis')}</div>
                 </div>
-                <div style={{marginBottom:'40px', border:'solid 1px #ebeef1'}}>
+                <div style={{borderTop:'solid 1px #ebeef1'}}>
                 <table style={{width:'100%'}}>
                     <tbody>
                     <tr >
@@ -77,7 +64,7 @@ class ValuationAnalysis extends Component{
                                 className='valuation-analysis-select'
                             >
                                  {getYearList.map((show,i)=>(
-                                     <Option key={i} name={stockCode} value={show}>{show}年</Option>
+                                     <Option key={i} name={stock_code} value={show}>{show}年</Option>
                                  ))}
                             </Select>
                         </td>
@@ -95,56 +82,56 @@ class ValuationAnalysis extends Component{
                         ))}
                     </tr>  
                     <tr>
-                        <th className='valuation-analysis-table-head'>市盈率(PE,TTM)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_profit_ratio_one')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmMinValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peTtmFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>市盈率(PE,LYR)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_profit_ratio_two')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peLyrMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peLyrMinValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.peLyrFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>市净率(PB,MRQ)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_netvalue_ratio_one')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqMinValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbMrqFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>市净率(PB,LYR)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_netvalue_ratio_two')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrMinValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pbLyrFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>市销率(PS,TTM)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_sell_ratio_one')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmMinValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psTtmFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>市销率(PS,LYR)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_sell_ratio_two')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrMinValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.psLyrFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>市现率(PCF,TTM)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_now_ratio_one')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmMinValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfTtmFinalValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>市现率(PCF,LYR)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('market_now_ratio_two')}</th>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfLyrAverageValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfLyrMaxValue:'-9.9858'}</td>
                         <td className='valuation-analysis-table-value-text'>{getValuationList?getValuationList.pcfLyrMinValue:'-9.9858'}</td>
@@ -161,27 +148,27 @@ class ValuationAnalysis extends Component{
                         </td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>总市值</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('total_market_capitalization')}</th>
                         <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.totalMarketValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>流通市值</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('circulation_market_value')}</th>
                         <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.circulationMarketValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>企业股权价值</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('corporate_equity_value')}</th>
                         <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.equityValue:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>股息率(股价复权)</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('dividend_yield_share_price')}</th>
                         <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.dividendYield:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>区间起始日</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('interval_start_date')}</th>
                         <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.startDate:'-9.9858'}</td>
                     </tr>
                     <tr>
-                        <th className='valuation-analysis-table-head'>区间截至日</th>
+                        <th className='valuation-analysis-table-head'>{intl.get('interval_deadline')}</th>
                         <td className='valuation-analysis-table-value-text' style={{textAlign:'left'}}>{getValuationList?getValuationList.endDate:'-9.9858'}</td>
                     </tr>
                     <tr>

@@ -1,7 +1,8 @@
-/* 顶部头的样式 */
+/* 顶部头样式 */
+
 .HKmarket-stock
 {
-    width: 99%;
+    width: auto;
     box-shadow: 0 0 4px 0 rgba(179, 179, 179, 0.5);
     background-color: #ffffff;
     margin-bottom: 33px;
@@ -9,20 +10,24 @@
     margin-left: 2px;
 }
 
-.title .HKmarket-stock .ant-tabs-bar
+.HKmarket-stock-tab .ant-tabs-bar
 {
     height: 60px;
     margin: 0;
     border-bottom: 1px solid #ebebeb;
 }
+.ant-tabs .HKmarket-stock-tab>.ant-tabs-bar .ant-tabs-nav-container
+{
+    height: 100%;
+}
 
-.title .HKmarket-stock .ant-tabs-nav-scroll
+.HKmarket-stock-tab .ant-tabs-nav-scroll
 {
     background-color: #ffffff;
     padding: 15px;
 }
 
-.title .HKmarket-stock .ant-tabs-nav .ant-tabs-tab
+.HKmarket-stock-tab>.ant-tabs-bar .ant-tabs-nav .ant-tabs-tab
 {
     height: 30px;
     width: 80px;
@@ -33,7 +38,7 @@
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
-    line-height: 30px;
+    line-height: 27px;
     letter-spacing: normal;
     text-align: center;
     color: #58626d;
@@ -43,7 +48,7 @@
     border: solid 1px #99a2ac;
 }
 
-.title .HKmarket-stock .ant-tabs-nav .ant-tabs-tab-active
+.HKmarket-stock-tab>.ant-tabs-bar .ant-tabs-nav .ant-tabs-tab-active
 {
     height: 30px;
     width: 80px;
@@ -54,7 +59,7 @@
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
-    line-height: 30px;
+    line-height: 27px;
     letter-spacing: normal;
     text-align: center;
     color: #ffffff;
@@ -63,6 +68,4 @@
     border-radius: 4px;
     border: solid 1px #99a2ac;
 }
-
-
 

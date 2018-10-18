@@ -6,17 +6,19 @@ import intl from 'react-intl-universal';
 import { Row, Col,Modal, Button } from 'antd';
 import { editPassword , editPasswordHide,editPasswordSave} from './action'
 import './Changepassword.css';
-import imgoneURL from '../assient/invalid-name.png';
-
+import imgoneURL from '../assient/invalid-name.png'; 
+import imgoneURL1 from '../assient/invalid-name@3x.png';
 class Changepassword extends Component{
     constructor(props){
         super(props);
         this.state={
             userPassword:'123',
-            newPassword:'456'
+            newPassword:'456',
+            newPasswordAgain:''
         }
         this.oldPassword = this.oldPassword.bind(this);
         this.newPassword = this.newPassword.bind(this);
+        this.newPasswordAgain = this.newPasswordAgain.bind(this);
     }
 
     oldPassword(e){
@@ -30,14 +32,20 @@ class Changepassword extends Component{
         })
     }
 
+    newPasswordAgain(e){
+        this.setState({
+            newPasswordAgain: e.target.value
+        })
+    }
+
         render() {
             const self = this,
             { props ,state:selfState} = self,
-            { userPassword, newPassword} = selfState,
+            { userPassword, newPassword,newPasswordAgain} = selfState,
             { editPassword,state,editPasswordHide,editPasswordSave } = props,
-            { visible,user } = state;
-            const userArr = user,
-            { userAccount } = userArr.data;
+            { visible,userAccount } = state;
+            // const userArr = user,
+            // { userAccount } = userArr.data;
             return (
             <div>
                 <Button  onClick={editPassword} className="change-psw">
@@ -45,7 +53,13 @@ class Changepassword extends Component{
                     {intl.get('password_modify')}
                 </Button>
                 <Modal
-                    title={intl.get('password_modify')}
+                    // title={intl.get('password_modify')}
+
+                    title={ <div>
+                        <img  alt='aaa' src={imgoneURL1} style={{height:'40px', width:'40px'}}/>
+                        <span className='change-psw-title'>{intl.get('password_modify')}</span>
+                    </div>}
+
                     wrapClassName ="change-base"
                     iconType= {<img alt='修改密码' src={imgoneURL} />}
                     visible={visible}
@@ -73,68 +87,67 @@ class Changepassword extends Component{
                     ]}
                 >
                     <Row className="change">
-                        <Col xl={7} md={7} className="change-left"></Col>
-                        <Col xl={10} md={10} className="change-oldpassword">
+                        <Col xl={5} md={5} className="change-left"></Col>
+                        <Col xl={14} md={14} className="change-oldpassword">
                             <span className="change-oldpassword-title">{intl.get('password_old')}</span> 
                         </Col>
-                        <Col xl={7} md={7} className="change-right"></Col>
+                        <Col xl={5} md={5} className="change-right"></Col>
                     </Row>
                     <Row className="change">
-                        <Col xl={7} md={7} className="change-left"></Col>
-                        <Col xl={10} md={10} className="change-oldpassword-input">
+                        <Col xl={5} md={5} className="change-left"></Col>
+                        <Col xl={14} md={14} className="change-oldpassword-input">
                             <input 
                             className="change-oldpassword-textone"
                             onChange={this.oldPassword}
                              /> 
                         </Col>
-                        <Col xl={7} md={7} className="change-right"></Col>
+                        <Col xl={5} md={5} className="change-right"></Col>
                     </Row>
                     <br/>
                     <Row className="change">
-                        <Col xl={7} md={7} className="change-left"></Col>
-                        <Col xl={10} md={10} className="change-newpassword">
+                        <Col xl={5} md={5} className="change-left"></Col>
+                        <Col xl={14} md={14} className="change-newpassword">
                             <span className="change-newpassword-title">{intl.get('password_new')}</span> 
                         </Col>
-                        <Col xl={7} md={7} className="change-right"></Col>
+                        <Col xl={5} md={5} className="change-right"></Col>
                     </Row>
                     <Row className="change">
-                        <Col xl={7} md={7} className="change-left"></Col>
-                        <Col xl={10} md={10} className="change-newpassword-input">
+                        <Col xl={5} md={5} className="change-left"></Col>
+                        <Col xl={14} md={14} className="change-newpassword-input">
                             <input 
                             className="change-newpassword-texttwo"
                             onChange={this.newPassword}
                             /> 
                         </Col>
-                        <Col xl={7} md={7} className="change-right"></Col>
+                        <Col xl={5} md={5} className="change-right"></Col>
                     </Row>
                     <br/>
                     <Row className="change">
-                        <Col xl={7} md={7} className="change-left"></Col>
-                        <Col xl={10} md={10} className="change-expassword">
+                        <Col xl={5} md={5} className="change-left"></Col>
+                        <Col xl={14} md={14} className="change-expassword">
                             <span className="change-expassword-title">{intl.get('enteragain_password_new')}</span> 
                         </Col>
-                        <Col xl={7} md={7} className="change-right"></Col>
+                        <Col xl={5} md={5} className="change-right"></Col>
                     </Row>
                     <Row className="change">
-                        <Col xl={7} md={7} className="change-left"></Col>
-                        <Col xl={10} md={10} className="change-expassword-input">
-                            <input className="change-expassword-textthree"/> 
+                        <Col xl={5} md={5} className="change-left"></Col>
+                        <Col xl={14} md={14} className="change-expassword-input">
+                            <input onChange={this.newPasswordAgain} className="change-expassword-textthree"/> 
                         </Col>
-                        <Col xl={7} md={7} className="change-right"></Col>
+                        <Col xl={5} md={5} className="change-right"></Col>
                     </Row>
                     <br/>
                     <Row className="change">
-                        <Col xl={8} md={8} className="change-left"></Col>
-                        <Col xl={8} md={8} className="change-save">
+                        <Col xl={5} md={5} className="change-left"></Col>
+                        <Col xl={14} md={14} className="change-save">
                             <button 
                                 className="change-save-one"
-                                type='danger'
-                                onClick={()=>editPasswordSave(userPassword,newPassword,userAccount)}
+                                onClick={()=>editPasswordSave(userPassword,newPassword,userAccount,newPasswordAgain)}
                             >
                                 {intl.get('save')}
                             </button> 
                         </Col>
-                        <Col xl={8} md={8} className="change-right"></Col>
+                        <Col xl={5} md={5} className="change-right"></Col>
                     </Row>
                 </Modal>
             </div>

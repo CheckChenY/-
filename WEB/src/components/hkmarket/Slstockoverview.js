@@ -1,87 +1,150 @@
 import React,{ Component} from 'react';
-import {Button } from 'antd';
-import { Tabs } from 'antd';
+import { connect } from 'react-redux';
+import { 
+    getInfoStock,
+    getImageStock,
+    getHKMarketstockListSelf,
+    backList,
+    setSelfCodeView
+} from './action';
+import {Button , Row, Col} from 'antd';
+// import { Tabs } from 'antd';
+import intl from 'react-intl-universal';
 
 
 import './Slstockoverview.css'
-import imgoneURL from '../assient/stockcc.jpg';
+// import imgoneURL from '../assient/stockcc.jpg';
 import imgtwoURL from '../assient/stockdd.jpg';
+import imgoneURL from '../assient/stockNews/arrow.png';
 
-const TabPane = Tabs.TabPane;
+// const TabPane = Tabs.TabPane;
 
-function callback(key) {
-  console.log(key);
-}
+// function callback(key) {
+//   console.log(key);
+// }
 
 class Slstockoverview extends Component{
+     
+    componentDidMount(){
+        const self = this,
+        { getInfoStock,
+            stockCodeList,
+            getImageStock,
+            getHKMarketstockListSelf,
+            state } = self.props,
+        { stock_code } = stockCodeList,
+        { userAccount } = state;
+        getInfoStock(stock_code);
+        getImageStock(stock_code);
+        getHKMarketstockListSelf(1,userAccount);
+        // 增加定时器
+        this.interval = setInterval(()=>this.tick(), 30000);
+    }
 
-        render() {
-            return (
-            <div style={{border:'solid 1px #ebeef1',marginBottom:'14px'}}>
+    componentWillUnmount(){
+        clearInterval(this.interval);
+    }
+
+    tick() {
+        const self = this,
+        { stockCodeList ,getInfoStock,getImageStock} = self.props,
+        { stock_code } = stockCodeList;
+        getInfoStock(stock_code);
+        getImageStock(stock_code);
+    }
+
+    render() {
+        const self = this,
+        { state,backList,setSelfCodeView } = self.props,
+        { 
+            getStockList,
+            getStockImg ,
+            hkmarketstocklistSelf=[],
+            current,
+            userAccount,
+            code,
+        } = state;
+        return (
+            <div style={{borderTop:'solid 1px #ebeef1'}}>
                 <div className="stockoverview-top" >
                     <span className="stockoverview-top-left">
-                        <p>
-                            <span className="stockoverview-top-left-one">0.870</span>
-                            <span className="stockoverview-top-left-two"><img alt='aaa' src={imgoneURL} className=""/></span>
-                        </p>
-                        <p>
-                            <span className="stockoverview-top-left-three">+0.405</span>
-                            <span className="stockoverview-top-left-four">+87.10%</span>
-                        </p>
-                        <p className="stockoverview-top-left-five">
-                            <Button>+ 添加自选</Button>
-                        </p>
+                        <div style={{marginTop:'16px', textAlign:'center'}}>
+                            <span className="stockoverview-top-left-one">{getStockList?getStockList.top:'0.870'}</span>
+                            <img alt='aaa' src={imgoneURL} style={{height:'34px', weight:'18px', verticalAlign:'top', margin:'8px 0 0 8px'}}/>
+                        </div>                        
+                        <div style={{ marginTop:'10px', textAlign:'center'}}>
+                            <Row>
+                                <Col span={12}>
+                                    <span className="stockoverview-top-left-two">{getStockList?((parseFloat(getStockList.left)>0?'+':'') + getStockList.left):'+0.405'}</span>
+                                </Col>
+                                <Col span={12}>
+                                    <span className="stockoverview-top-left-two">{getStockList?((parseFloat(getStockList.right)>0?'+':'') + getStockList.right):'+87.10%'}</span>
+                                </Col>
+                            </Row>
+                        </div>
+                        <div className="stockoverview-top-left-three">
+                            <Button
+                                onClick={
+                                    ()=>setSelfCodeView(userAccount,getStockList.stockCode,current)
+                                }
+                            >
+                            {
+                                code===2 ? '已添加' : '添加'
+                            }
+                            
+                            </Button>
+                        </div>
                     </span>
                     <span className="stockoverview-top-right">
                         <table className="stockoverview-table-all">
                             <tbody>
                                 <tr >
-                                    <td className="stockoverview-table-one-top">今开</td>
-                                    <td className="stockoverview-table-two-top" style={{color:'#4cc9ad'}}>0.590</td>
-                                    <td className="stockoverview-table-one-top">最高价</td>
-                                    <td className="stockoverview-table-two-top" style={{color:'#e0394d'}}>0.590</td>
-                                    <td className="stockoverview-table-one-top">52周最高</td>
-                                    <td className="stockoverview-table-two-top">0.910</td>
-                                    <td className="stockoverview-table-one-top">成交量</td>
-                                    <td className="stockoverview-table-two-top">5744.00万</td>
-                                    <td className="stockoverview-table-one-top">外盘</td>
-                                    <td className="stockoverview-table-two-top">3617.20万</td>
+                                    <td className="stockoverview-table-one">{intl.get('today_open')}</td>
+                                    <td className="stockoverview-table-two" style={{color:'#4cc9ad'}}>{getStockList?getStockList.nowOpen:'0.590'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('highest_price')}</td> 
+                                    <td className="stockoverview-table-two" style={{color:'#e0394d'}}>{getStockList?getStockList.highestPrice:'0.590'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('highest_week')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.ftwHigh:'0.910'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('volume')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.volume/10000).toFixed(2)+'万'):'5744.00万'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('outer_disk')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.outerDisc/10000).toFixed(2)+'万'):'3617.20万'}</td>
                                 </tr>
                                 <tr >
-                                    <td className="stockoverview-table-one">昨收</td>
-                                    <td className="stockoverview-table-two">0.465</td>
-                                    <td className="stockoverview-table-one">最低价</td>
-                                    <td className="stockoverview-table-two">0.465</td>
-                                    <td className="stockoverview-table-one">52周最低</td>
-                                    <td className="stockoverview-table-two">0.455</td>
-                                    <td className="stockoverview-table-one">成交额</td>
-                                    <td className="stockoverview-table-two">0.455</td>
-                                    <td className="stockoverview-table-one">内盘</td>
-                                    <td className="stockoverview-table-two">2126.60万</td>
+                                    <td className="stockoverview-table-one">{intl.get('yesterday_collect')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.yesCol:'0.465'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('lowest_price')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.lowestPrice:'0.465'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('lowest_week')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.ftwLow:'0.455'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('turnover')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.turnover/100000000).toFixed(2)+'亿'):'0.455'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('inner_disk')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.innerDisc/10000).toFixed(2)+'万'):'2126.60万'}</td>
                                 </tr>
                                 <tr >
-                                    <td className="stockoverview-table-one">总股本</td>
-                                    <td className="stockoverview-table-two">6.66亿</td>
-                                    <td className="stockoverview-table-one">港股本</td>
-                                    <td className="stockoverview-table-two">6.66亿</td>
-                                    <td className="stockoverview-table-one">市净率</td>
-                                    <td className="stockoverview-table-two">-</td>
-                                    <td className="stockoverview-table-one">每日收益</td>
-                                    <td className="stockoverview-table-two">-</td>
-                                    <td className="stockoverview-table-one">股息率</td>
-                                    <td className="stockoverview-table-two">-</td>
+                                    <td className="stockoverview-table-one">{intl.get('total_share_capital')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.generalCapital/100000000).toFixed(2)+'亿'):'6.66亿'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('HK_share_capital')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.hkGeneralCapital/100000000).toFixed(2)+'亿'):'6.66亿'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('market_netvalue_ratio')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.pbRatio:'-'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('daily_income')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.perProfit:'-'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('dividend_yield')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.dividendYield:'-'}</td>
                                 </tr>
                                 <tr >
-                                    <td className="stockoverview-table-one-bottom">总市值</td>
-                                    <td className="stockoverview-table-two-bottom">5.80亿</td>
-                                    <td className="stockoverview-table-one-bottom">港市值</td>
-                                    <td className="stockoverview-table-two-bottom">5.80亿</td>
-                                    <td className="stockoverview-table-one-bottom">市盈率</td>
-                                    <td className="stockoverview-table-two-bottom">-</td>
-                                    <td className="stockoverview-table-one-bottom">每股净资产</td>
-                                    <td className="stockoverview-table-two-bottom">0.684</td>
-                                    <td className="stockoverview-table-one-bottom">换手率</td>
-                                    <td className="stockoverview-table-two-bottom">8.62%</td>
+                                    <td className="stockoverview-table-one">{intl.get('total_market_capitalization')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.marketValue/100000000).toFixed(2)+'亿'):'5.80亿'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('HK_market_value')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?((getStockList.hkMarketValue/100000000).toFixed(2)+'亿'):'5.80亿'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('market_profit_ratio')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.peRatio:'-'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('net_assets_pershare')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.perAssetValue:'0.684'}</td>
+                                    <td className="stockoverview-table-one">{intl.get('hand_turnover_rate')}</td>
+                                    <td className="stockoverview-table-two">{getStockList?getStockList.turnover:'8.62%'}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -89,7 +152,9 @@ class Slstockoverview extends Component{
                 </div>
                 <div className="stockoverview-bottom">
                     <span className="stockoverview-bottom-left">
-                        <Tabs defaultActiveKey="1" onChange={callback}>
+                        <img alt='分时' src={getStockImg?getStockImg.codeImage:imgtwoURL} className=""/>
+
+                        {/* <Tabs defaultActiveKey="1" onChange={callback}>
                             <TabPane 
                                 tab={<div><span className="stockoverview-bottom-left-one">分时</span></div>}
                                 key="1"
@@ -121,34 +186,55 @@ class Slstockoverview extends Component{
                                 <div className="stockoverview-bottom-left-content"><img alt='月K' src={imgtwoURL} className=""/></div>
                             </TabPane>
                             
-                        </Tabs>
+                        </Tabs> */}
                     </span>
                     <span className="stockoverview-bottom-right">
-                    <p>
-                        <Button className="stockoverview-bottom-right-one">
-                            <span className="stockoverview-bottom-right-one-text">我的自选股</span>
-                            <span>></span>
-                        </Button>
-                    </p>
-                    
-                    <ul>
-                        <li className="stockoverview-bottom-right-two">远大医药股</li>
-                        <li className="stockoverview-bottom-right-three">CEC INT'L HOLD</li>
-                        <li className="stockoverview-bottom-right-two">新威斯顿</li>
-                        <li className="stockoverview-bottom-right-three">俊文宝石</li>
-                        <li className="stockoverview-bottom-right-two">英裘控股</li>
-                        <li className="stockoverview-bottom-right-three">佰悦集团</li>
-                        <li className="stockoverview-bottom-right-two">日成控股</li>
-                        <li className="stockoverview-bottom-right-three">香港国际建投</li>
-                        <li className="stockoverview-bottom-right-two">泰山石化</li>
-                        <li className="stockoverview-bottom-right-three">精雅印刷集团</li>
-                    </ul>
-                    
+                        <p>
+                            <Button 
+                                className="stockoverview-bottom-right-one"
+                                onClick={
+                                    backList
+                                }
+                            >
+                                <span className="stockoverview-bottom-right-one-text">{intl.get('minestock')}</span>
+                                <span>></span>
+                            </Button>
+                        </p>
+                        <ul className='stockoverview-bottom-right-ul'>
+                            {
+                                hkmarketstocklistSelf.map((show,i)=>(
+                                    <li key={i} className={i%2===0?('stockoverview-bottom-right-two'):('stockoverview-bottom-right-three')}> {show?show.name:'长河'} </li>
+                                ))
+                            }
+                        </ul>
+                        <span>
+                            {/* <Pagination
+                                className='stockoverview-pagination' 
+                                defaultCurrent={hkmarketstocklistPageSizeSelf} 
+                                total={hkmarketstocklistTotalSelf}
+                                // onChange={
+                                //     (current, size)=>getHKMarketstockList(current)
+                                // }
+                            /> */}
+                        </span>                    
                     </span>
                 </div>
+                
             </div>
-            );
+        );
     }
 }
 
-export default Slstockoverview;
+const mapDispatchToProps = (state) => ({
+    state:state.checkReducer
+})
+  
+export default connect(mapDispatchToProps,{
+    getInfoStock,
+    getImageStock,
+    getHKMarketstockListSelf,
+    backList,
+    setSelfCodeView
+})(Slstockoverview);
+
+// export default Slstockoverview;

@@ -7,7 +7,7 @@ import {
 } from './action';
 
 import {
-	BrowserRouter as Router,
+	Router,
 	Route,
 	// Link
 } from 'react-router-dom';
@@ -27,9 +27,9 @@ import IssueDetail from './components/detail/HKissuedetails';
 import BackPassword from './components/backPassword';
 
 // import { browserHistory } from 'react-router';
-// import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createBrowserHistory';
 // import Editpassword from './components/editpassword/edit';
-// const history = createHistory();
+const history = createHistory();
 
 // import Test from './test';
 
@@ -40,9 +40,6 @@ import BackPassword from './components/backPassword';
 // };
 
 class App extends Component {
-	// state = {
-	// 	initDone: false
-	// }
 
 	componentWillMount() {
 		const self = this,
@@ -50,31 +47,9 @@ class App extends Component {
 		{ Language } = state;
 		loadLocales(Language);
 	}
-
-	// loadLocales() {
-	// 	// init method will load CLDR locale data according to currentLocale
-	// 	// react-intl-universal is singleton, so you should init it only once in your app
-	// 	intl.init({
-	// 		currentLocale: Language, // TODO: determine locale here
-	// 		locales,
-	// 	})
-	// 	.then(() => {
-	// 		// After loading CLDR locale data, start to render
-	// 		this.setState({
-	// 			initDone: true
-	// 		});
-	// 	});
-	// }
-
-	
-
 	render() {
-		const self = this,
-		{ state } = self.props,
-		{ Language } = state;
-		console.log(Language);
 		return(
-			<Router>
+			<Router history={history}>
 				<div className='container'>
 					
 					<Route exact path="/" component={Vister} />
@@ -85,11 +60,11 @@ class App extends Component {
 
 					<Route path="/backPassword" component={BackPassword} />
 
-					<Route path="/StockNews" component={StockNews} />
+					<Route path="/stockNews" component={StockNews} />
 
-					<Route path="/HKDetail" component={HKDetail} />
+					<Route path="/hkDetail" component={HKDetail} />
 
-					<Route path="/IssueDetail" component={IssueDetail} />
+					<Route path="/issueDetail" component={IssueDetail} />
 
 					{/* <Route exact path="/" component={Test} /> */}
 				</div>

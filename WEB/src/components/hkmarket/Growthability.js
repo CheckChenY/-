@@ -1,5 +1,7 @@
 
 import React,{ Component} from 'react';
+import intl from 'react-intl-universal';
+
 import { connect } from 'react-redux';
 import {Row , Col} from 'antd';
 import { 
@@ -20,8 +22,8 @@ class GrowthAbility extends Component{
     componentDidMount(){
         const self = this,
         { getGrowBili,stockCodeList } = self.props,
-        { stockCode } = stockCodeList;
-        getGrowBili(stockCode);
+        { stock_code } = stockCodeList;
+        getGrowBili(stock_code);
     }
 
     render(){
@@ -32,31 +34,31 @@ class GrowthAbility extends Component{
         console.log(getGrowList,GrowthAbilityData);
         return (
             <div >
-                <div style={{padding:'20px 0 22px 0', border:'solid 1px #ebeef1'}}>
+                <div style={{padding:'20px 0 22px 0', borderTop:'solid 1px #ebeef1'}}>
                     <div style={{borderRight:'4px solid #f56f6f', marginLeft:'30px', display:'inline'}}/>
-                    <div className='growth-ability-title'>成长能力</div>
+                    <div className='growth-ability-title'>{intl.get('growth_ability')}</div>
                 </div>
-                <div style={{marginBottom:'40px', border:'solid 1px #ebeef1'}}>
+                <div style={{ borderTop:'solid 1px #ebeef1'}}>
                 <Row>
                     <Col span={7}>
                         <ul className='growth-ability-head-ul'>
-                            <li className="growth-ability-head"></li>
-                            <li className="growth-ability-head">总资产同比增长率(%)</li>
-                            <li className="growth-ability-head">每股净资产同比增长率(%)</li>
-                            <li className="growth-ability-head">总负债同比增长率(%)</li>
-                            <li className="growth-ability-head">税前利润同比增长率(%)</li>
-                            <li className="growth-ability-head">基本每股收益同比增长率(%)</li>
-                            <li className="growth-ability-head">毛利同比增长率(%)</li>
-                            <li className="growth-ability-head">归属母公司股东净利润同比增长率(%)</li>
-                            <li className="growth-ability-head">归属母公司股东的权益同比增长率(%)</li>
-                            <li className="growth-ability-head">营业利润同比增长率(%)</li>
-                            <li className="growth-ability-head">营业收入同比增长率(%)</li>
-                            <li className="growth-ability-head">股东权益合计同比增长率(%)</li>
+                            <li className="growth-ability-head-one"></li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_total_assets')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_net_assets')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_total_liability')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_profit_before')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_basic_income')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_gross_profit')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_net_profit')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_equity')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_operating_profit')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_operating_income')}</li>
+                            <li className="growth-ability-head">{intl.get('yeargrowth_ratio_shareholders_equity')}</li>
                             <li className="growth-ability-head" style={{height:'19px'}}></li>
                         </ul>
                     </Col>
                     <Col span={17} >
-                        <div style={{overflowX:'auto'}}>
+                        <div style={{overflowX:'auto',paddingRight:'2px'}}>
                         <div style={{display:'inline-flex'}}>
                             {
                                 getGrowList.map((show,i)=>(

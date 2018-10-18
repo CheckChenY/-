@@ -31,32 +31,39 @@
   padding: 20px 22px;
   text-align: right;
 }
+
 .details-add-comment-button
 {
-  width: 79.9px;
-  height: 36px;
-  border-radius: 6px;
-  background-image: linear-gradient(242deg, #ff4444, #ff9191);
+    display:inline-block;
+    width:80px;
+    border-radius:4px;
+    border:0;
+    background-color: #ff8e8e;
+    background-image:linear-gradient(261deg, #ff4444, #ff9191);
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
 }
-
-.details-add-comment-button>span
+.details-add-comment-button:hover
 {
-  font-family: PingFangSC;
-  font-size: 13px;
-  font-weight: 600;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
+  background-color: #ff8e8e;
 }
-
-.details-add-comment-button:hover>span
+.details-add-comment-button:focus
 {
-  color: #ff9191
+  background-image:linear-gradient(261deg, #ff4444, #ff9191);
+}
+.details-add-comment-button:active 
+{
+  background-image: linear-gradient(-219deg, #CD2222 32%, #DC2D2D 100%);
 }
 
+/*
 .comment-summarize
 {  
   font-family: PingFangSC;
@@ -92,4 +99,17 @@
 {
   background-color: #e46464;
 }
-
+*/
+.all-comment-title
+{
+  display: inline-block;
+  margin-left: 8px;
+  font-family: PingFangSC;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #646464;
+}

@@ -1,6 +1,8 @@
 
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
+
 import Tools from '../corn/tools';
 import { 
     getHKDetailIssue ,
@@ -9,12 +11,12 @@ import {
 } from './action';
 
 import Header from '../header/Index'
-
+import HeaderVister from '../header/Header';//访客头部按钮
 import './HKissuedetails.css';
 
-import imgURL1 from '../assient/HKIssueDetails/HK-issue-details.png';
+import imgURL1 from '../assient/HKIssueDetails/HK-issue-details.jpg';
 import imgURL2 from '../assient/like-pink-no.png';
-import imgURL3 from '../assient/like-pink-add@3x.png';
+// import imgURL3 from '../assient/like-pink-add@3x.png';
 
 import MakeComment from './Makecomment';
 
@@ -23,71 +25,78 @@ class HKIssueDetails extends Component{
 
     componentDidMount() {
         const self = this,
-        { getHKDetailIssue ,getHKDetailComment} = self.props;
+        { getHKDetailIssue ,getHKDetailComment,state} = self.props,
+        { userId } = state;
         const step = Tools.getFromUrlParam('id') || '';
-        getHKDetailIssue(step);
+        getHKDetailIssue(step,userId);
         getHKDetailComment(step,2);
-
-
-        // let _this = this;
-        // window.addEventListener('scroll', () =>
-        // self.onScrollHandle(self)
-        // )
     }
 
     render(){
         const { state ,thumbsUpIsseu} = this.props,
-        { infoListHotIsseu ,loading,user} = state,
-        { data } = user,
-        { userId } = data;
-        console.log(imgURL2);
+        { infoListHotIsseu ,loading,userId} = state;
+        console.log(userId);
+        debugger;
         return (
             <div>
-                <Header bShowSearch={true}/>
-                {/* <hr style={{border: 'solid 1px #dadada', minWidth:'1000px'}}/> */}
+                {userId===null? <HeaderVister /> : <Header bShowSearch={true}/>}
                 <div style={{margin:'auto', width:'1000px'}}>
                     <div className='issue-details-tittle'>
-                    {infoListHotIsseu ? infoListHotIsseu.issueTitle :
-                    '【议题】巴菲特准备回购自家股票 伯克希尔站上30万美元'
-                    }
+                    {infoListHotIsseu ? infoListHotIsseu.issue_title :''}
                     </div>
                     <div className='issue-details-author'>
                         <div>
-                            <span>作者：</span>
-                            <span style={{marginLeft:'4px'}}>{infoListHotIsseu ? infoListHotIsseu.issueAuthor : ' '}</span>
+                            <span>{intl.get('author')}</span>
+                            <span style={{marginLeft:'4px'}}>{infoListHotIsseu ? infoListHotIsseu.issue_author : ''}</span>
                         </div>
                         <div style={{marginTop:'20px'}}>
-                            <span>{infoListHotIsseu ? infoListHotIsseu.issueTime : ' 2018-07-20 10:20'}</span>
+                            <span>{infoListHotIsseu ? infoListHotIsseu.issue_time : ' 2018-07-20 10:20'}</span>
                             <span style={{marginLeft:'20px'}}>
-                                <span>来源：</span>
-                                <span style={{marginLeft:'4px'}}>{infoListHotIsseu ? infoListHotIsseu.issueSource : '证券时报'}</span>
+                                <span>{intl.get('source')}</span>
+                                <span style={{marginLeft:'4px'}}>{infoListHotIsseu ? infoListHotIsseu.issue_source : ''}</span>
                             </span>
                         </div>
                         <hr style={{border: 'solid 1px #dadada', marginTop:'20px'}}/>
-                        <div style={{margin:'40px 0'}}>
-                            <img alt='aaa' src={imgURL1} style={{height:'422px', width:'1000px', borderRadius:'8px'}}/>
-                            <div className='issue-details-text'>
-                            {infoListHotIsseu ? infoListHotIsseu.issueContent : '内容'}
-                            </div>
+                        <div style={{margin:'40px 0 0 0'}}>
+                            <img alt='aaa' src={imgURL1} style={{height:'320px', width:'1000px', borderRadius:'8px'}}/>
+                            {/* <div className='issue-details-text'>
+                            {infoListHotIsseu ? infoListHotIsseu.issue_content : '内容'}
+                            </div> */}
+                            <pre className='issue-details-text'>
+                                {infoListHotIsseu ? infoListHotIsseu.issue_content : ''}
+                            </pre>
                         </div>
-                        <div style={{textAlign:'center',margin:'53px 0 80px 0'}}>
-                            <button
-                                onClick={
-                                    ()=>thumbsUpIsseu(userId,loading)
-                                }
-                                className='issue-details-like-button'
-                            >
-                                {loading ? (
-                                    <img alt='aaa' src={imgURL3} 
-                                        style={{height:'75px', width:'70px',cursor:'pointer'}}
-                                        />
-                                ) : (
-                                    <img alt='aaa' src={imgURL2} 
-                                        style={{height:'60px', width:'60px',cursor:'pointer'}}
-                                    />
-                                )} 
-                            </button>
-                            <div className='information-details-like'>{loading?'取消点赞':'点赞'}</div>
+                        {/* 改成动画 */}
+                        <div style={{textAlign:'center',height:'250px',verticalAlign:'middle'}}>
+                            {loading ? (
+                                <div>
+                                    <div style={{height:'65px'}} > 
+                                        <div className='issue-details-like-number-animation'>+1</div>                                    
+                                    </div>  
+                                    <button
+                                    onClick={
+                                        ()=>thumbsUpIsseu(userId,loading)
+                                    }
+                                    className='issue-details-like-button'
+                                    >
+                                        <img alt='aaa' src={imgURL2} className='issue-details-like-button-img-animation' style={{height:'60px', width:'60px'}} />
+                                    </button>
+                                </div>
+                            ) : (
+                                <div>
+                                    <div style={{height:'65px'}}>
+                                        <div style={{opacity:'0'}}>+1</div>
+                                    </div>                                
+                                    <button
+                                    onClick={
+                                        ()=>thumbsUpIsseu(userId,loading)
+                                    }
+                                    className='issue-details-like-button'
+                                    >
+                                        <img alt='aaa' src={imgURL2} className='issue-details-like-button-img'  />
+                                    </button>
+                                </div>
+                            )} 
                         </div>
                     </div>
                    <MakeComment/> 

@@ -1,10 +1,11 @@
 
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
 
 import { subCommentContent } from './action';
 
-import { Col, Input, Button, Tabs, Row } from 'antd';
+import { Col, Input, Button, Row } from 'antd';
 // import Header from '../header/Header'
 import AllComments from './Allcomments';
 // import MyComments from './Mycomments';
@@ -16,7 +17,7 @@ import imgURL1 from '../assient/userdefine.jpg';
 
 
 const { TextArea } = Input;
-const TabPane = Tabs.TabPane;
+// const TabPane = Tabs.TabPane;
 
 class MakeComment extends Component{
     constructor(props){
@@ -38,18 +39,16 @@ class MakeComment extends Component{
             { props,state:selfState } = self,
             { txt } = selfState,
             { subCommentContent ,state} = props,
-            { user } = state,
-            { data } = user,
-            { userId ,userNickname} = data;
+            { userId } = state;
         return (
             <div>
-                <hr style={{border: 'solid 1px #dadada'}}/>
+                <hr style={{border: 'solid 1px #E8E8E8'}}/>
                     <div style={{marginTop:'70px'}}>
                         <Row>
                             <Col span={3}>
                                 <div style={{width:'100%', textAlign:'center'}}>
                                     <img  alt='aaa' src={imgURL1} className='details-user-icon'/>
-                                    <div className='details-user-ID'>ID: {userNickname}</div>
+                                    <div className='details-user-ID'>ID: {userId}</div>
                                 </div>
                             </Col>
                             <Col span={21}>
@@ -58,20 +57,21 @@ class MakeComment extends Component{
                                     onChange={this.handeChangeTxt}
                                     style={{height:'135px', border:'none'}}
                                     />
-                                    <hr style={{border: 'solid 1px #dadada'}}/>
-                                    <Button 
+                                    <hr style={{border: 'solid 1px #E8E8E8'}}/>
+                                    <Button
+                                    type="primary" 
                                     onClick={
                                         ()=>subCommentContent(userId,txt)
                                     }
                                     className='details-add-comment-button'
-                                     >发表评论</Button>
+                                     >{intl.get('make_comment')}</Button>
                                 </div>
                             </Col>
                         </Row>
                     </div>
                     <div style={{margin:'70px 0 125px', width:'100%'}}>
-                        <Tabs defaultActiveKey='1' className='comment-summarize'>
-                            <TabPane tab='全部评论' key='1'>
+                        {/* <Tabs defaultActiveKey='1' className='comment-summarize'>
+                            <TabPane tab={intl.get('all_comments')} key='1'>
                                 <AllComments/>
                             </TabPane>
                             {/* <TabPane tab='我的评论' key='2'>
@@ -80,7 +80,13 @@ class MakeComment extends Component{
                             <TabPane tab='我的信息' key='3'>
                                 <MyMessage/>
                             </TabPane> */}
-                        </Tabs>
+                        {/* </Tabs> */}
+                        <div >
+                            <div style={{borderRight:'4px solid #f56f6f', display:'inline'}}/>
+                            <div className='all-comment-title'>{intl.get('all_comments')}</div> 
+                            <hr style={{border: 'solid 1px #E8E8E8' ,marginTop:'20px'}}/>
+                        </div>
+                        <AllComments/>
                     </div>
             </div>
         )

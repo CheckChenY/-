@@ -21,8 +21,6 @@ const { TextArea } = Input;
 class MyMessage extends Component{
 
     render(){
-        const { user } = this.props;
-        console.log(user);
         return (
             <div>
                 <Row style={{margin:'24px 0 20px 0'}}>

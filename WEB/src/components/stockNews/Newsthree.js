@@ -1,23 +1,14 @@
 import React,{ Component} from 'react';
 import intl from 'react-intl-universal';
-
+import { connect } from 'react-redux';
+import { getHKIssueSelect } from './action';
 import { Select } from 'antd';
-
-
-import './Newsthree.css'
-
-
-
-
+import './Newsthree.css';
 const Option = Select.Option;
-
-function handleChange(value) {
-    console.log(`selected ${value}`);
-}
-
 class Newsthree extends Component{
-
-        render() {
+    render() {
+        const self = this,
+        { getHKIssueSelect=()=>{},numPageIsseuTotal } = self.props;
             return (
                 <div>
                     <div>
@@ -27,22 +18,23 @@ class Newsthree extends Component{
                         <Select 
                             className="title-select-one"
                             defaultValue= {intl.get('any_time')} 
-                            onChange={handleChange}
+                            onChange={getHKIssueSelect}
                             showArrow={true} 
                             style={{ 
                                 border:'0',
                                 marginLeft:'-10px'
                             }}
                         >
-                            <Option value="day">{intl.get('day')}</Option>
-                            <Option value="week">{intl.get('week')}</Option>
-                            <Option value="month">{intl.get('month')}</Option>
-                            <Option value="yesr">{intl.get('year')}</Option>
+                            <Option value="">{intl.get('any_time')}</Option>
+                            <Option value="1">{intl.get('day')}</Option>
+                            <Option value="7">{intl.get('week')}</Option>
+                            <Option value="30">{intl.get('month')}</Option>
+                            <Option value="365">{intl.get('year')}</Option>
                         </Select>
                         <Select 
                             className="title-select-two"
                             defaultValue= {intl.get('classify')}
-                            onChange={handleChange}
+                            // onChange={handleChange}
                             showArrow={true} 
                             style={{ 
                                 border:'0'
@@ -54,7 +46,7 @@ class Newsthree extends Component{
                         </Select>
                         <span className="title-search">
                             {intl.get('search_result_one')}
-                            <span className="title-search-result">490,000</span>
+                            <span className="title-search-result">{numPageIsseuTotal?numPageIsseuTotal:' '}</span>
                             {intl.get('search_result_two')}
                         </span>
                     </div>
@@ -63,5 +55,11 @@ class Newsthree extends Component{
             );
     }
 }
-
-export default Newsthree;
+const mapDispatchToProps = (state) => ({
+    state:state.checkReducer
+})
+  
+export default connect(mapDispatchToProps,{
+    getHKIssueSelect
+})(Newsthree);
+// export default Newsthree;

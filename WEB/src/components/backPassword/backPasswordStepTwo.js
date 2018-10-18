@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
+
 import {  Input, Row, Col, Button, Form  } from 'antd';
 
 import { 
@@ -19,10 +21,20 @@ class BackPasswordStepTwo extends Component {
     super(props);
     this.state={
         emailCode:'123',
-        newPassword:'123456'
+        newPassword:'123456',
+        againPassword:''
     }
     this.handeChangeCode = this.handeChangeCode.bind(this);
     this.handeChangePassword = this.handeChangePassword.bind(this);
+
+    this.handeChangeAgainPassword = this.handeChangeAgainPassword.bind(this);
+  }
+
+  handeChangeAgainPassword = (e) =>{
+    // console.log(this.textInput.input.value);
+    this.setState({
+      againPassword:e.target.value
+    })
   }
 
   handeChangeCode(e){
@@ -41,26 +53,26 @@ class BackPasswordStepTwo extends Component {
     const self=this,
     { props ,state} = self,
     { userName, email, getEmailCode ,nextStepTre} = props,
-    { emailCode , newPassword } = state;
+    { emailCode , newPassword ,againPassword} = state;
     return (
       <Row >
         <Col span={6}></Col>
         <Col span={12}>
-          <div className='backPasswordStepTwo-box'>
+          <div className='backPasswordStepTwo-box' style={{height:'465px'}}>
             <div className='backPasswordStepTwo-box-header'>
               <img alt='aaa' src={imgUrl_1} style={{width:'40px', height:'40px'}}/>                  
-              <span style={{marginLeft:'10px'}}>找回密码</span>
+              <span style={{marginLeft:'10px'}}>{intl.get('password_retrieve')}</span>
             </div>
             <div style={{marginTop:'20px'}}>
               <Row style={{textAlign:'center'}}>
                 <span className='backPasswordStepTwo-number-normal'>1</span>
-                <span className='backPasswordStepTwo-number-text'>确认账号</span>
+                <span className='backPasswordStepTwo-number-text'>{intl.get('confirm_account')}</span>
                 <span className='backPasswordStepTwo-line'></span> 
                 <span className='backPasswordStepTwo-number-pink'>2</span>
-                <span className='backPasswordStepTwo-number-text'>重置密码</span>
+                <span className='backPasswordStepTwo-number-text'>{intl.get('reset_password')}</span>
                 <span className='backPasswordStepTwo-line'></span>
                 <span className='backPasswordStepTwo-number-normal'>3</span>
-                <span className='backPasswordStepTwo-number-text'>重置成功</span> 
+                <span className='backPasswordStepTwo-number-text'>{intl.get('reset_success')}</span> 
               </Row>
             </div>
             <div  className='backPasswordStepTwo-form'>
@@ -69,35 +81,41 @@ class BackPasswordStepTwo extends Component {
                 <Col span={10}>
                   <Form layout='vertical' >
                     <FormItem
-                      label="账号"
+                      label={intl.get('account')}
                     >
                       <Input value={userName} disabled />
                     </FormItem>
 
                     <FormItem
-                      label="邮箱"
+                      label={intl.get('mailbox')}
                     >
                       <Input value={email} disabled />
                     </FormItem>
 
                     <FormItem
-                      label="新密码"
+                      label={intl.get('password_new')}
                     >
-                      <Input onChange={this.handeChangePassword} placeholder="新密码" />
+                      <Input onChange={this.handeChangePassword} placeholder={intl.get('password_new')} />
                     </FormItem>
                     <FormItem
-                      label="重新输入密码"
+                      label={intl.get('enteragain_password')}
                     >
-                      <Input placeholder="重新输入密码" />
+                      <Input 
+                        // ref={input => {
+                        //   this.textInput = input;
+                        // }} 
+                        onChange={this.handeChangeAgainPassword} 
+                        placeholder={intl.get('enteragain_password')} />
                     </FormItem>
                     
                     <FormItem
-                      label="验证码"
+                      label={intl.get('verification_code')}
+                      className="backPasswordStepTwo-form-getbutton"
                     >
                       <Col span={10}>
                         <Input type="text"
                         onChange={this.handeChangeCode}
-                        placeholder="验证码" />
+                        placeholder={intl.get('verification_code')} />
                       </Col>
                       <Col span={1}></Col>
                       <Col span={13} >
@@ -105,15 +123,18 @@ class BackPasswordStepTwo extends Component {
                           type='danger'
                           onClick={()=>getEmailCode(userName)}
                           style={{ width:'100%'}}
+                          className="backPasswordStepTwo-form-get"
                           >
-                            获取邮箱验证码
+                            {intl.get('get_mailbox_word')}
                           </Button> 
                       </Col>
                     </FormItem>
                     <FormItem >
                       <Button type="primary" htmlType="submit"
-                      onClick={ ()=>nextStepTre(userName,email,newPassword,emailCode) }
-                      className='backPasswordStepTwo-form-button'>确认修改</Button>
+                      onClick={ 
+                        ()=>nextStepTre(userName,email,newPassword,emailCode,againPassword)
+                       }
+                      className='backPasswordStepTwo-form-button'>{intl.get('confirm_modify')}</Button>
                     </FormItem>
                   </Form>
                 </Col>

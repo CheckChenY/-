@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import intl from 'react-intl-universal';
+
 import {  Input, Row, Col, Button, Form  } from 'antd';
 import { 
   // hideModal ,
@@ -60,21 +62,21 @@ class BackPasswordStepOne extends Component {
           <Row >
             <Col span={6}></Col>
             <Col span={12}>
-              <div className='backPasswordStepOne-box'>
+              <div className='backPasswordStepOne-box' style={{height:'465px'}}>
                 <div className='backPasswordStepOne-box-header'>
                   <img alt='aaa' src={imgUrl_1} style={{width:'40px', height:'40px'}}/>                  
-                  <span style={{marginLeft:'10px'}}>找回密码</span>
+                  <span style={{marginLeft:'10px'}}>{intl.get('password_retrieve')}</span>
                 </div>
                 <div style={{marginTop:'20px'}}>
                   <Row style={{textAlign:'center'}}>
                       <span className='backPasswordStepOne-number-pink'>1</span>
-                      <span className='backPasswordStepOne-number-text'>确认账号</span>
+                      <span className='backPasswordStepOne-number-text'>{intl.get('confirm_account')}</span>
                       <span className='backPasswordStepOne-line'></span> 
                       <span className='backPasswordStepOne-number-normal'>2</span>
-                      <span className='backPasswordStepOne-number-text'>重置密码</span>
+                      <span className='backPasswordStepOne-number-text'>{intl.get('reset_password')}</span>
                       <span className='backPasswordStepOne-line'></span>
                       <span className='backPasswordStepOne-number-normal'>3</span>
-                      <span className='backPasswordStepOne-number-text'>重置成功</span> 
+                      <span className='backPasswordStepOne-number-text'>{intl.get('reset_success')}</span> 
                   </Row>
                 </div>
                 <div  className='backPasswordStepOne-form'>
@@ -83,21 +85,21 @@ class BackPasswordStepOne extends Component {
                     <Col span={10}>
                       <Form layout='vertical' >
                         <FormItem
-                          label="请输入账号"
+                          label={intl.get('enteragain_account')}
                         >
                           <Input 
                           onChange={
                             this.handeChangeAccound
                           }
-                          placeholder="账号" />
+                          placeholder={intl.get('account')} />
                         </FormItem>
                         <FormItem
-                          label="验证码"
+                          label={intl.get('verification_code')}
                         >
                           <Col span={15}>
                             <Input type="text"
                             onChange={this.changeCode}
-                            placeholder="验证码" />
+                            placeholder={intl.get('verification_code')} />
                           </Col>
                           <Col span={1}></Col>
                           <Col span={8} >
@@ -109,7 +111,7 @@ class BackPasswordStepOne extends Component {
                            htmlType="submit" 
                            className='backPasswordStepOne-form-button'
                            onClick={ ()=>nextStepTwo(uuid,code,userName) }
-                           >下一步</Button>
+                           >{intl.get('next')}</Button>
                         </FormItem>
                       </Form>
                     </Col>
