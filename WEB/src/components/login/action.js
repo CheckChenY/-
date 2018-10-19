@@ -1,11 +1,17 @@
 import Axios from 'axios';
 import qs from 'qs';
-export const LOGIN_USER_INTER = 'LOGIN_USER_INTER'
+
+import { openNotification } from '../errcode/index';
+
+export const LOGIN_USER_INTER = 'LOGIN_USER_INTER';
 
 export const GET_USER_REGISTER = 'GET_USER_REGISTER';
 export const GET_REGISTER_SUCCESS = 'GET_REGISTER_SUCCESS';
 export const GET_BACK_TAB = 'GET_BACK_TAB';
 export const GET_USER_PREV_STEP = 'GET_USER_PREV_STEP';
+
+// export const ERR_CODE_LOGIN = 'ERR_CODE_LOGIN';
+
 
 export const nextStep = (userName,userPassword,passwordAgain)=> dispath => {
 
@@ -23,7 +29,11 @@ export const nextStep = (userName,userPassword,passwordAgain)=> dispath => {
                 show:true
             })
         }else{
-            alert(response.data.code)
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_LOGIN,
+            //     errcode:response.data.code
+            // })
         }
     })
     .then(function (err) {
@@ -54,6 +64,12 @@ export const registerSuccess = (userPassword,email ,code,uuid,userName,self) => 
                 tabNub:1,
             })
             alert("注册成功")
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_LOGIN,
+            //     errcode:response.data.code
+            // })
         }
     })
     .then(function (err) {

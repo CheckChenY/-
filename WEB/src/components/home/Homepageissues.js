@@ -13,7 +13,7 @@ import imgfourURL from '../assient/home/issuephotodd.png';
 class Homepageissues extends Component{
     render() {
         const self = this,
-        {  IndexTre ,getIssueDetail} = self.props;
+        {  IndexTwo ,getIssueDetail} = self.props;
         return (
             <div className="home-issue">
                 <div className="home-page-issues">
@@ -33,25 +33,25 @@ class Homepageissues extends Component{
                     <img 
                     alt='轮播'
                     onClick={
-                        ()=>getIssueDetail(this.props,IndexTre[0].id)
+                        ()=>getIssueDetail(this.props,IndexTwo[0].styleId)
                     }
                     src={imgoneURL}className="stocks-body-pic-one"/>
                     <img 
                     alt='轮播'
                     onClick={
-                        ()=>getIssueDetail(this.props,IndexTre[1].id)
+                        ()=>getIssueDetail(this.props,IndexTwo[1].styleId)
                     }
                     src={imgtwoURL}className="stocks-body-pic-two"/>
                     <img 
                     alt='轮播'
                     onClick={
-                        ()=>getIssueDetail(this.props,IndexTre[2].id)
+                        ()=>getIssueDetail(this.props,IndexTwo[2].styleId)
                     }
                     src={imgthreeURL}className="stocks-body-pic-three"/>
                     <img 
                     alt='轮播'
                     onClick={
-                        ()=>getIssueDetail(this.props,IndexTre[3].id)
+                        ()=>getIssueDetail(this.props,IndexTwo[3].styleId)
                     }
                     src={imgfourURL}className="stocks-body-pic-four"/>
                 </div>

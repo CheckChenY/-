@@ -44,9 +44,6 @@ class Changepassword extends Component{
             { props } = self,
             { state:selfState } = props,
             { comment=[],userId,userNickname } = selfState;
-            // { data } = user,
-            // { userNickname } = data;
-            // { tabBol } = state;
             return (
             <div>
                 <Button  onClick={this.showModal} className="my-information">
@@ -71,13 +68,12 @@ class Changepassword extends Component{
                         tabPosition='left'
                         >
                         <TabPane 
-                            // tabBol={tabBol}
                             tab={
                                 <span>
                                     <div style={{backgroundColor: '#ebedef', paddingBottom:'28px' }}>
                                         <img  alt='aaa' src={imgoneURL1} className="my-information-left-user-picture"/>
                                         <div className='my-information-left-text'>
-                                        ID: {userId}
+                                        ID: {userNickname?userNickname:(userId ? userId : '刘德华')}
                                         </div>
                                     </div>
                                     <div className='my-information-left-tab' >{intl.get('information_mine')}</div>

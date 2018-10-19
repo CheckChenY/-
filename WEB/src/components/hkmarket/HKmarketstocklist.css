@@ -94,6 +94,14 @@
     background-color: #e0eefe;
 }
 
+.stocklist-table .ant-table-tbody>tr>td.ant-table-column-sort
+{
+    background:none;
+}
+.stocklist-table .ant-table-tbody > tr:hover > td
+{
+    background-color: #e6f7ff !important;
+}
 .stocklist-table-code .ant-table-column-sorter
 {
     display: none;

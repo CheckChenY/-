@@ -124,6 +124,7 @@ class HKMarketStockList extends Component{
                     dataSource={hkmarketstocklist}
                     size='middle'
                     rowKey="id"
+                    locale= {{ emptyText : '暂无数据'}}
                     rowClassName={(record, index)=>(index%2===0?
                         (
                             'stocklist-table-row-text-another'

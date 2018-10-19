@@ -20,7 +20,6 @@ const Option = Select.Option;
 // }
 
 class ValuationAnalysis extends Component{
-
     constructor(props) {
         super(props); 
         this.state = {

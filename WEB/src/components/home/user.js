@@ -25,15 +25,13 @@ class Home extends Component {
     { props } = self,
     { state } = props,
     { userId,IndexOne,IndexTwo,IndexTre  } = state;
-    console.log(userId);
-    debugger;
     return (
       <div style={{minWidth:'1140px'}}>
         {userId===''? <HeaderVister /> : <Header userId={userId} {...props} />}
         <Homepagesearch {...props} />
         <Homepagepicture IndexOne={IndexOne} {...props} />
-        <Homepagestocks IndexTwo={IndexTwo} {...props} />
-        <Homepageissues IndexTre={IndexTre} {...props}/>
+        <Homepagestocks IndexTre={IndexTre} {...props} />
+        <Homepageissues IndexTwo={IndexTwo} {...props}/>
         <Footer/>
       </div>
     );

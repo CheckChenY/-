@@ -104,7 +104,12 @@
   -webkit-animation:like-button-img 0.6s ease-in-out;
   animation:like-button-img 0.6s 1 ease-in-out;  
 }
-
+.issue-details-like-button-img-black
+{
+  height:60px;
+  width:60px;
+  filter: grayscale(1);
+}
 @keyframes like-button-img{
   0%{
     height:60px;

@@ -1,6 +1,8 @@
 import Axios from 'axios';
 import ECharts from 'echarts';
 import qs from 'qs';
+import { openNotification } from '../errcode/index';
+
 export const GET_HK_MARKET_LIST = 'GET_HK_MARKET_LIST';
 export const GET_HK_MARKET_LIST_SELF = 'GET_HK_MARKET_LIST_SELF';
 export const GET_HK_MARKET_LIST_DETAIL = 'GET_HK_MARKET_LIST_DETAIL';
@@ -15,6 +17,7 @@ export const GET_HK_NEWS_START_LOADING = 'GET_HK_NEWS_START_LOADING';
 export const GET_HK_STOCK_LIST = 'GET_HK_STOCK_LIST';
 export const GET_HK_STOCK_IMG_LIST = 'GET_HK_STOCK_IMG_LIST';
 export const GET_HK_SELF_CODE_VIEW = 'GET_HK_SELF_CODE_VIEW';
+// export const ERR_CODE_HKMARKET = 'ERR_CODE_HKMARKET';
 
 
 export const backList = () => dispath => {
@@ -49,6 +52,12 @@ export const getHKMarketstockList = (current,userAccount) => dispath => {
                     current:current,
                     loading:false
                 })
+            }else{
+                openNotification(response.data.code)
+                // dispath({
+                //     type:ERR_CODE_HKMARKET,
+                //     errcode:response.data.code
+                // })
             }
         })
         .catch(function (error) {
@@ -79,6 +88,12 @@ export const getHKMarketstockListSelf = (current,userAccount) => dispath => {
                     page:response.data.page,
                     loading:false,
                 })
+            }else{
+                openNotification(response.data.code)
+                // dispath({
+                //     type:ERR_CODE_HKMARKET,
+                //     errcode:response.data.code
+                // })
             }
         })
         .catch(function (error) {
@@ -93,8 +108,9 @@ export const setSelfCodeView = (userAccount,a,current) => dispath => {
         type    :GET_HK_SELF_CODE_VIEW,
         code    :2,
     })
-    dispath(setSelfCode(current,userAccount))
+    dispath(setSelfCode(userAccount,a,current))
 }
+
 
 export const getPageList = (data) => dispath => {
     dispath({
@@ -114,6 +130,8 @@ export const setSelfCode= (userAccount,stockCode,current) => dispath => {
         if(response.data.code === 1){
                 dispath(getHKMarketstockListSelf(current,userAccount))
                 dispath(getHKMarketstockList(current,userAccount))
+        }else{
+            openNotification(response.data.code)
         }
     })
     .catch(function(error){
@@ -135,6 +153,12 @@ export const getStockCodeList = (stockCode) => dispath => {
                 type:GET_HK_STOCK_CODE_LIST,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {
@@ -157,6 +181,12 @@ export const getInfoStock = (stockCode) => dispath => {
                 type:GET_HK_STOCK_LIST,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {
@@ -179,6 +209,12 @@ export const getImageStock = (stockCode) => dispath => {
                 type:GET_HK_STOCK_IMG_LIST,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {
@@ -203,6 +239,12 @@ export const getSlcapitalList = (stockCode) => dispath => {
                 type:GET_HK_SLCAPITAL_LIST,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {
@@ -253,6 +295,12 @@ export const getYear = (stockCode) => (dispath) => {
                 type:GET_HK_GET_YEAR,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {
@@ -302,6 +350,12 @@ export const getValuationListSis = (firstYear,stockCode) => dispath => {
                 type:GET_HK_GET_VALUATION_LIST,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {
@@ -330,6 +384,12 @@ export const getGrowBili = (stockCode) => dispath => {
                 type:GET_HK_GET_GROW_LIST,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {
@@ -352,6 +412,12 @@ export const getStockProfitTable = (stockCode) => dispath => {
                 type:GET_HK_STOCK_CODE_PROFITS,
                 data:response.data.data,
             })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_HKMARKET,
+            //     errcode:response.data.code
+            // })
         }
     })
     .catch(function (error) {

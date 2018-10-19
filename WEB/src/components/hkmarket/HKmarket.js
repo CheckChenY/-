@@ -2,7 +2,7 @@
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 import intl from 'react-intl-universal';
-
+import Tools from '../corn/tools';
 import { 
     backList
 } from './action';
@@ -61,7 +61,8 @@ class HKMarket extends Component{
         { currenttime } = state,
         { state:selfState, stockCodeList,backList } = props,
         { getStockList } = selfState;
-        // console.log(getStockList) 
+        const title = Tools.getFromUrlParam('title') || '';
+        console.log(getStockList) 
         return (
             <div>
                 <div> 
@@ -89,7 +90,7 @@ class HKMarket extends Component{
                                             } 
                     >
                         <TabPane tab={<span className='HKmarket-tab'>{intl.get('stock_overview')}</span>} key="1">
-                            <Slstockoverview stockCodeList = {stockCodeList} />
+                            <Slstockoverview stockCodeList = {stockCodeList === undefined ? title : stockCodeList } />
                         </TabPane>
                         <TabPane tab={<span className='HKmarket-tab'>{intl.get('basic_information')}</span>} key="2">
                             <BasicInformation stockCodeList = {stockCodeList}/>

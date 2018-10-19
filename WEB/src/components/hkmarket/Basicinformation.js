@@ -15,8 +15,8 @@ class BasicInformation extends Component{
     componentDidMount(){
         const self = this,
         { getStockCodeList,stockCodeList } = self.props,
-        { stockCode } = stockCodeList;
-        getStockCodeList(stockCode);
+        { stock_code } = stockCodeList;
+        getStockCodeList(stock_code);
     }
     render(){
         const self = this,

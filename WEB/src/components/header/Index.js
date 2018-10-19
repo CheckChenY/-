@@ -3,7 +3,7 @@ import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 import { getHKNews } from '../stockNews/action';
 import intl from 'react-intl-universal';
-// import Tools from '../corn/tools';
+import Tools from '../corn/tools';
 import { 
     loadLocales
 } from '../../action';
@@ -35,11 +35,11 @@ class Header extends Component{
             getHKNews,
             loadLocales=()=>{},
             state,
+            searchword
         } = props,
-        {userId,Language} = state;
-        // const step = Tools.getFromUrlParam('key') || '';
-        // getHKNews(step,'',1,true);
-        // console.log(Language);
+        {userId,userNickname,Language,dataListDetail} = state;
+        const key = Tools.getFromUrlParam('key') || '';
+        console.log(dataListDetail);
         const menu = (
             <Menu>
                 <Menu.Item key="1" className='head-right-choose'>
@@ -64,22 +64,24 @@ class Header extends Component{
                     </Col>
                     <Col span={10} className="head-center">
                     { bShowSearch ? (
-                        <div>
-                            <Search                            
-                                defaultValue="" 
-                                ref={
-                                    input=>{
-                                        this.searchword = input
+                        searchword===1 ? '' : (
+                            <div>
+                                <Search                            
+                                    defaultValue={key}
+                                    ref={
+                                        input=>{
+                                            this.searchword = input
+                                        }
+                                    }                               
+                                    onSearch={
+                                        value=>getHKNews(self,'',1,1)
                                     }
-                                }                               
-                                onSearch={
-                                    value=>getHKNews(self,'',1,1)
-                                }
-                                enterButton="搜索"
-                                size="large"
-                                className='head-center-search'
-                            />
-                        </div>  
+                                    enterButton="搜索"
+                                    size="large"
+                                    className='head-center-search'
+                                />
+                            </div>  
+                        )
                     ):''}                      
                     </Col>
                     <Col span={8} className="index-head-right">
@@ -101,7 +103,7 @@ class Header extends Component{
                             <img  alt='aaa' src={imgoneURL1} className="user-picture"/> 
                         </Dropdown>
                         <div className='head-right-text' >
-                            ID: {userId ? userId : '刘德华' }
+                            ID: {userNickname?userNickname:(userId ? userId : '刘德华') }
                         </div>
                     </Col>
                 </Row>

@@ -67,7 +67,7 @@ class AllComments extends Component{
                             <Row style={{margin:'40px 0 0 0'}}>
                                 <Col span={3} style={{display:'inline-block',textAlign:'center'}}>
                                     <img  alt='aaa' src={imgURL3} className='details-all-comment-user-icon'/>
-                                    <div className='details-all-comment-user-ID'>ID: {show.user_id}</div>
+                                    <div className='details-all-comment-user-ID'>ID: {show.user_nickname?show.user_nickname:'刘德华'}</div>
                                 </Col>
                                 <Col span={21}>
                                     <div className='details-all-comment-time'>{show.com_time}</div>
@@ -76,18 +76,11 @@ class AllComments extends Component{
                                     </div>
                                         {
                                             show.showReply.map((item,j)=>(
-                                                <div key={j} >
-                                                    {/* {item.fromUser===''?'A' : item.fromUser}
-                                                    回复
-                                                    {item.toUser===''?'B' :item.toUser}
-                                                    <br/>
-                                                    {item.content}
-                                                    <br/>
-                                                    {item.rep_time} */}                                                    
+                                                <div key={j} >                                                  
                                                     <Row style={{padding:'15px 30px' ,borderRadius: '4px', backgroundColor: '#fbfbfb'}}>
                                                         <Col span={3}>
                                                             <img  alt='aaa' src={imgURL3} className='details-all-comment-user-icon-sm'/>
-                                                            <div className='details-all-comment-reply-id'>王双</div>
+                                                            <div className='details-all-comment-reply-id'>{item.fromUser}</div>
                                                         </Col>
                                                         <Col span={16}>
                                                             <div className='details-all-comment-reply-text'>{item.content}</div>
@@ -126,6 +119,7 @@ class AllComments extends Component{
                                             <div className='details-all-comment-add-response'>
                                                 <TextArea row={8} 
                                                 style={{height:'45px', border:'none'}}
+                                                value={handeChangeValue}
                                                 onChange={
                                                     this.handeChangeValue
                                                 }
@@ -134,7 +128,10 @@ class AllComments extends Component{
                                                 type="primary" 
                                                 className='details-all-comment-add-response-button'
                                                 onClick={
-                                                    ()=>replyToComment(show.id,show.user_id,userId,handeChangeValue)
+                                                    ()=>{
+                                                        replyToComment(show.id,show.user_id,userId,handeChangeValue)
+                                                        this.setState({handeChangeValue:''})
+                                                    }
                                                 }
                                                 >{intl.get('reply')}</Button>
                                             </div>

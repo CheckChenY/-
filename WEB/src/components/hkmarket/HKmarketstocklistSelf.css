@@ -1,0 +1,301 @@
+.stocklistself-search
+{
+    width: 80px;  
+    margin-top: 6px; 
+    margin-right: 10px;
+}
+.stocklistself-search .ant-select-selection
+{
+    background: none;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #3f3f3f;
+}
+
+.stocklistself-button
+{
+    margin-right: 27px;    
+}
+
+.stocklistself-button:after
+{
+    border:none;
+}
+
+.stocklistself-button-text
+{
+    margin-left:7px;
+    vertical-align: middle; 
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+/* 表格样式 */
+/* .stocklistself-table {
+    cursor: pointer;
+} */
+
+.stocklistself-table-row-text
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;
+    background-color: #f4f4f4;    
+}
+
+.stocklistself-table-row-text-another
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;   
+}
+
+.stocklistself-table .ant-table-thead .ant-table-selection-column
+{    
+    background-color: #e0eefe;  
+    width:6%;  
+}
+/* 隐藏头部复选框 */
+.stocklistself-table .ant-table-thead .ant-table-selection-column>span
+{    
+    display: none; 
+}
+
+.stocklistself-table-code
+{
+    text-align: center;
+    color: #3a69a0;
+    cursor: pointer;
+}
+.ant-table-thead .stocklistself-table-code
+{
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3a69a0;
+    background-color: #e0eefe;
+}
+.stocklistself-table-code .ant-table-column-sorter
+{
+    display: none;
+}
+.stocklistself-table .ant-table-thead > tr > th.ant-table-column-sort
+{
+    background-color: #e0eefe;
+}
+
+.stocklistself-table .ant-table-tbody>tr>td.ant-table-column-sort
+{
+    background:none;
+}
+
+.stocklistself-table .ant-table-tbody > tr:hover > td
+{
+    background-color: #e6f7ff !important;
+}
+
+.stocklistself-table-name
+{
+    text-align: center;
+    color: #000000;
+    cursor: pointer;
+}
+.ant-table-thead .stocklistself-table-name
+{
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3a69a0;
+    background-color: #e0eefe;
+}
+.stocklistself-table-name .ant-table-column-sorter
+{
+    display: none;
+}
+.stocklistself-table-normal
+{
+    text-align: center;
+}
+.ant-table-thead .stocklistself-table-normal
+{
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3a69a0;
+    background-color: #e0eefe;
+}
+.stocklistself-table-normal .ant-table-column-sorter
+{
+    display: none;
+}
+.stocklistself-table-change-amount
+{
+    text-align: center;
+    color: #ff5469;
+}
+.ant-table-thead .stocklistself-table-change-amount
+{
+    text-align: center;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3a69a0;
+    background-color: #e0eefe;
+}
+.stocklistself-table-change-amount .ant-table-column-sorter
+{
+    display: none;
+}
+
+/* 隐藏表格中自身的分页 */
+.stocklistself-table .ant-table-pagination.ant-pagination
+{
+    display: none;
+}
+
+.stocklistself-table-pagination
+{
+    margin: 8px 0;
+    text-align: center;
+}
+
+.stocklistself-table-pagination .ant-pagination-item
+{
+    min-width: 30px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    border: none;
+    background-color: #f6f6f6;
+    margin-right: 12px;
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #7a8087;
+}
+
+.stocklistself-table-pagination .ant-pagination-item-active
+{
+    background-color: #a9a9aa;
+}
+
+.stocklistself-table-pagination .ant-pagination-item-active>a
+{
+    color: #ffffff;
+}
+
+.stocklistself-table-pagination .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link
+{
+    border:none;
+    background-color: #f6f6f6;
+}
+
+/* 
+.stock-list-select-button-one
+{
+    width: 80px;
+    border-radius: 4px;
+    background-color: #7a8087;
+}
+.stock-list-select-button-one>span
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.stock-list-select-button-one:hover>span
+{
+    color: #ffffff;
+}
+
+.stock-list-select-button-one:focus>span
+{
+    color: #ffffff;
+}
+
+.stock-list-select-button-two
+{
+    width: 80px;
+    border-radius: 4px;
+    background-image: linear-gradient(246deg, #f56f6f, #ff9191);
+}
+
+.stock-list-select-button-two>span
+{
+    font-family: PingFangSC;
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.stock-list-select-button-two:hover>span
+{
+    color: #f56f6f;
+}
+
+.stock-list-select-button-two:focus>span
+{
+    color: #f56f6f;
+}
+*/

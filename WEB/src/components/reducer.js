@@ -34,6 +34,7 @@ import {
 	SAVE_USER_CODE,
 	GET_LOADING_INT,
 	GET_MESSAGE_LIST,
+	GET_LOADING_BOOL,
 } from './personal/action'
 
 import {
@@ -43,12 +44,15 @@ import {
 
 import {
 	GET_HK_NEWS,
+	GET_HK_FIRST_NEWS,
 	GET_HK_NEWS_NONE,
 	GET_HK_NEWS_NEW_ADD_LIST,
 	GET_HK_HOT_NEW_ADD_LIST,
 	GET_HOT_HK_NEWS,
+	GET_HOT_HK_FIRST_NEWS,
 	GET_HK_NEWS_START_LOADING,
 	GET_HK_HOT_NEWS_NONE,
+	SET_TITLE_INDEX_NEWS,
 } from './stockNews/action'
 
 import {
@@ -56,8 +60,8 @@ import {
 	GET_HK_DETAIL_ISSEU,
 	GET_HK_DETAIL_COMMENT,
 	// GET_HK_DETAIL_COMMENT_SUBMIT,
-	GET_HK_THUMBS_UP,
-	GET_HK_THUMBS_UP_ISSEU,
+	// GET_HK_THUMBS_UP,
+	// GET_HK_THUMBS_UP_ISSEU,
 	// GET_HK_REPLY_TO_COMMENT,
 } from './detail/action'
 
@@ -110,7 +114,6 @@ const initState = {
 
 
 const checkReducer = (state = initState, action) => {
-
 	const newState = update(state, {
 		action: { $set: action.type }, // Required: for native event
 	});
@@ -229,6 +232,7 @@ const checkReducer = (state = initState, action) => {
 				userNickname:{ $set: newState.userNickname},
 				userAddress:{ $set: newState.userAddress},
 				userSlogan:{ $set: newState.userSlogan},
+				tabBol	:	{ $set: action.tabBol},
 			});
 		case GET_LOADING_INT:
 			return update(newState, {
@@ -239,16 +243,42 @@ const checkReducer = (state = initState, action) => {
 			return update(newState, {
 				myMessageList : { $set: action.data},
 			});
+		case GET_LOADING_BOOL:
+			return update(newState, {
+				tabBol : { $set: action.tabBol},
+			});
 		case GET_HK_NEWS_NONE://查询列表为空
 			return update(newState, {
 				none : { $set: action.none},
 				infoListPage : { $set: action.list.page},
 			});
+		case SET_TITLE_INDEX_NEWS://查询议题列表为空
+			return update(newState, {
+				dataListDetail : { $set: action.dataListDetail},
+				title : { $set: action.title},
+			});
 		case GET_HK_HOT_NEWS_NONE://查询议题列表为空
 			return update(newState, {
-				none : { $set: action.none},
+				issuerNone 			: { $set: action.issuerNone},
+				numPageIsseuTotal 	: { $set: action.numPageIsseuTotal},
+				loading		 		: { $set: action.loading },
+				isseuLoading		: { $set: action.isseuLoading },
 			});
-		case GET_HK_NEWS:
+		case GET_HK_FIRST_NEWS://首次加载港股资讯列表
+			newState.newsListArry = [];
+
+			action.list.data.map((show)=>(
+				newState.newsListArry.push(show)
+			))
+			return update(newState, {
+				infoListData : { $set: action.list.data},
+				infoListPage : { $set: action.list.page},
+				currentPage	 : { $set: action.currentPage},
+				numPage		 : { $set: action.numPage },
+				loading		 : { $set: action.loading },
+				none		 : { $set: action.none },
+			});
+		case GET_HK_NEWS://非首次添加港股资讯列表
 			if(action.list.data.length === 0){
 				newState.newsHotListArry = []
 			}else{
@@ -257,11 +287,12 @@ const checkReducer = (state = initState, action) => {
 				))
 			}
 			return update(newState, {
-				infoListData : { $set: action.list.data},
+				infoListData : { $set: newState.newsListArry },
 				infoListPage : { $set: action.list.page},
 				currentPage	 : { $set: action.currentPage},
 				numPage		 : { $set: action.numPage },
 				loading		 : { $set: action.loading },
+				none		 : { $set: action.none },
 			});
 		case GET_HK_NEWS_NEW_ADD_LIST:
 			newState.newsListArry = [];
@@ -274,7 +305,23 @@ const checkReducer = (state = initState, action) => {
 			return update(newState, {
 				infoListHotData 	: { $set: newState.newsHotListArry},
 			});
-		case GET_HOT_HK_NEWS:
+		case GET_HOT_HK_FIRST_NEWS://首次加载港股议题列表
+			newState.newsHotListArry = [];
+
+			action.list.data.map((show)=>(
+				newState.newsHotListArry.push(show)
+			))
+			return update(newState, {
+				infoListHotData 	: { $set: action.list.data },
+				currentPageIsseu 	: { $set: action.currentPageIsseu},
+				numPageIsseu	 	: { $set: action.numPageIsseu},
+				numPageIsseuTotal	: { $set: action.numPageIsseuTotal},
+				loading		 		: { $set: action.loading },
+				isseuLoading		: { $set: action.isseuLoading },
+				issuesNone		 	: { $set: action.issuesNone },
+				day		 			: { $set: action.day },
+			});
+		case GET_HOT_HK_NEWS://非首次加载港股议题列表
 			if(action.list.data.length === 0){
 				newState.newsHotListArry = []
 			}else{
@@ -299,20 +346,21 @@ const checkReducer = (state = initState, action) => {
 			});
 		case GET_HK_DETAIL_COMMENT://议题全部评论
 			return update(newState, {
-				infoListHotComment : { $set: action.data},
+				infoListHotComment 	: 	{ $set: action.data },
+				clearTxt			: 	{ $set: action.clearTxt }
 			});
 		// case GET_HK_DETAIL_COMMENT_SUBMIT://发表评论
 		// 	return update(newState, {
 		// 		locading : { $set: action.loading},
 		// 	});
-		case GET_HK_THUMBS_UP://给资讯详情点赞
-			return update(newState, {
-				loading : { $set: action.loading},
-			});
-		case GET_HK_THUMBS_UP_ISSEU://给议题详情点赞
-			return update(newState, {
-				loading : { $set: action.loading},
-			});
+		// case GET_HK_THUMBS_UP://给资讯详情点赞
+		// 	return update(newState, {
+		// 		loading : { $set: action.loading},
+		// 	});
+		// case GET_HK_THUMBS_UP_ISSEU://给议题详情点赞
+		// 	return update(newState, {
+		// 		loading : { $set: action.loading},
+		// 	});
 		// case GET_HK_REPLY_TO_COMMENT://评论回复功能
 		// 	return update(newState, {
 		// 		loading : { $set: action.loading},
@@ -390,7 +438,7 @@ const checkReducer = (state = initState, action) => {
 			return state
 	}
 }
-  
+
 export default combineReducers({
 	checkReducer
 })

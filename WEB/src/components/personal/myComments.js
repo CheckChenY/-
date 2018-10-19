@@ -27,7 +27,7 @@ class MyComments extends Component{
     render() {
         const self = this,
         { comment=[] ,getHKDetail,state} = self.props,
-        { myMessageList=[] } = state;
+        { myMessageList=[] ,userId, userNickname  } = state;
         console.log(myMessageList);
         return (
             <div>
@@ -45,7 +45,7 @@ class MyComments extends Component{
                                     <Row >
                                         <Col span={4} style={{display:'inline-block',textAlign:'center'}}>
                                             <img  alt='aaa' src={imgoneURL1} className="my-comments-user-picture"/>
-                                            <div className='my-comments-ID'>ID:{show.topic_id}</div>
+                                            <div className='my-comments-ID'>ID:{userNickname?userNickname:(userId ? userId : '刘德华')}</div>
                                         </Col>
                                         <Col span={20}>
                                             <div className='my-comments-time'>{show.com_time}</div>
@@ -79,7 +79,7 @@ class MyComments extends Component{
                                     <Row style={{margin:'24px 0 24px' }}>
                                         <Col span={4} style={{display:'inline-block',textAlign:'center'}}>
                                             <img  alt='aaa' src={imgoneURL1} className="my-message-user-picture"/>
-                                            <div className='my-message-ID'>ID:{show?show.news_id:''}</div>
+                                            <div className='my-message-ID'>ID:{/*show?show.news_id:''*/}{userNickname?userNickname:(userId ? userId : '刘德华')}</div>
                                         </Col>
                                         <Col span={20}>
                                             <div className='my-message-date'>{show?show.time:'2016/8/21'}</div>

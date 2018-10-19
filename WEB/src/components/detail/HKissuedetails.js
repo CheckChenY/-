@@ -20,9 +20,13 @@ import imgURL2 from '../assient/like-pink-no.png';
 
 import MakeComment from './Makecomment';
 
+var bFirstLoad = true ;
 
 class HKIssueDetails extends Component{
 
+    componentWillMount(){
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      }
     componentDidMount() {
         const self = this,
         { getHKDetailIssue ,getHKDetailComment,state} = self.props,
@@ -32,11 +36,18 @@ class HKIssueDetails extends Component{
         getHKDetailComment(step,2);
     }
 
+    componentWillUnmount()
+    {
+        bFirstLoad = true;
+    }
     render(){
         const { state ,thumbsUpIsseu} = this.props,
         { infoListHotIsseu ,loading,userId} = state;
-        console.log(userId);
-        debugger;
+        let status;
+        if(infoListHotIsseu){
+            status = infoListHotIsseu.status
+        }
+        console.log(status);
         return (
             <div>
                 {userId===null? <HeaderVister /> : <Header bShowSearch={true}/>}
@@ -68,18 +79,25 @@ class HKIssueDetails extends Component{
                         </div>
                         {/* 改成动画 */}
                         <div style={{textAlign:'center',height:'250px',verticalAlign:'middle'}}>
-                            {loading ? (
+                            {status === 1 ? (
                                 <div>
                                     <div style={{height:'65px'}} > 
-                                        <div className='issue-details-like-number-animation'>+1</div>                                    
+                                        {bFirstLoad?(
+                                            <div style={{opacity:'0'}}>+1</div>
+                                          ):( 
+                                            <div className='issue-details-like-number-animation'>+1</div>
+                                        )}                                     
                                     </div>  
                                     <button
                                     onClick={
-                                        ()=>thumbsUpIsseu(userId,loading)
+                                        ()=>{
+                                            thumbsUpIsseu(userId,loading)
+                                            bFirstLoad = false
+                                        }
                                     }
                                     className='issue-details-like-button'
                                     >
-                                        <img alt='aaa' src={imgURL2} className='issue-details-like-button-img-animation' style={{height:'60px', width:'60px'}} />
+                                        <img alt='aaa' src={imgURL2} className={bFirstLoad?'issue-details-like-button-img-black':'issue-details-like-button-img-animation'}  style={{height:'60px', width:'60px'}} />
                                     </button>
                                 </div>
                             ) : (
@@ -89,7 +107,10 @@ class HKIssueDetails extends Component{
                                     </div>                                
                                     <button
                                     onClick={
-                                        ()=>thumbsUpIsseu(userId,loading)
+                                        ()=>{
+                                            thumbsUpIsseu(userId,loading)
+                                            bFirstLoad = false
+                                        }
                                     }
                                     className='issue-details-like-button'
                                     >

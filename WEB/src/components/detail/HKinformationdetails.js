@@ -15,15 +15,24 @@ import imgURL1 from '../assient/HKInformationDetails/HK-information-details.jpg'
 import imgURL2 from '../assient/like-pink-no.png';
 // import imgURL3 from '../assient/like-pink-add@3x.png';
 
+var bFirstLoad = true ;
 
 class HKInformationDetails extends Component{
 
+    componentWillMount(){
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
     componentDidMount() {
         const self = this,
         { getHKDetail,state } = self.props,
         { userId } = state;
         const step = Tools.getFromUrlParam('id') || '';
+        // this.node.scrollIntoView();
         getHKDetail(step,userId);
+    }
+    componentWillUnmount()
+    {
+        bFirstLoad = true;
     }
 
     render(){
@@ -69,16 +78,23 @@ class HKInformationDetails extends Component{
                             {/* 改成动画 */}
                             {status === 1 ? (
                                 <div>
-                                    <div style={{height:'65px'}} > 
-                                        <div className='information-details-like-number-animation'>+1</div>                                    
+                                    <div style={{height:'65px'}} >
+                                        {bFirstLoad?(
+                                            <div style={{opacity:'0'}}>+1</div>
+                                          ):( 
+                                            <div className='information-details-like-number-animation'>+1</div>
+                                        )}                                   
                                     </div>  
                                     <button
                                     onClick={
-                                        ()=>thumbsUp(userId,loading)
+                                        ()=>{
+                                            thumbsUp(userId,loading)
+                                            bFirstLoad = false
+                                        }
                                     }
                                     className='information-details-like-button'
                                     >
-                                        <img alt='aaa' src={imgURL2} className='information-details-like-button-img-animation' style={{height:'60px', width:'60px'}} />
+                                        <img alt='aaa' src={imgURL2} className={bFirstLoad?'information-details-like-button-img-black':'information-details-like-button-img-animation'} style={{height:'60px', width:'60px'}} />
                                     </button>
                                 </div>
                             ) : (
@@ -88,7 +104,10 @@ class HKInformationDetails extends Component{
                                     </div>                                
                                     <button
                                     onClick={
-                                        ()=>thumbsUp(userId,loading)
+                                        ()=>{
+                                            thumbsUp(userId,loading)
+                                            bFirstLoad = false
+                                        }
                                     }
                                     className='information-details-like-button'
                                     >

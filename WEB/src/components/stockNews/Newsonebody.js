@@ -4,7 +4,7 @@ import intl from 'react-intl-universal';
 import Tools from '../corn/tools';
 import { 
     getHKNews,
-    // getHKDetail,
+    getHKFirstNews,
     // stopGetNews 
 } from './action';
 import Newsthreebodynone from './Newsthreebodynone.js';
@@ -14,18 +14,18 @@ import {
 
 import './Newsonebody.css'
 
-import img1 from '../assient/shareDetails/111.png';
-import img2 from '../assient/shareDetails/112.png';
-import img3 from '../assient/shareDetails/113.png';
-import img4 from '../assient/shareDetails/114.png';
-import img5 from '../assient/shareDetails/115.png';
-import img6 from '../assient/shareDetails/116.png';
-import img7 from '../assient/shareDetails/117.png';
-import img8 from '../assient/shareDetails/118.png';
+import img1 from '../assient/stockNews/111.png';
+import img2 from '../assient/stockNews/112.png';
+import img3 from '../assient/stockNews/113.png';
+import img4 from '../assient/stockNews/114.png';
+import img5 from '../assient/stockNews/115.png';
+import img6 from '../assient/stockNews/116.png';
+import img7 from '../assient/stockNews/117.png';
+import img8 from '../assient/stockNews/118.png';
 import img11 from '../assient/stockNews/11.png';
-import img12 from '../assient/shareDetails/12.png';
-import img13 from '../assient/shareDetails/13.png';
-import img14 from '../assient/shareDetails/14.png';
+import img12 from '../assient/stockNews/12.png';
+import img13 from '../assient/stockNews/13.png';
+import img14 from '../assient/stockNews/14.png';
 
 // import imgfiveURL from '../assient/stockNews/share.png';
 // import imgsixURL from '../assient/stockNews/clickgood.png';
@@ -36,9 +36,9 @@ class Newsonebody extends Component{
 
     componentDidMount() {
         const self = this,
-        { getHKNews } = self.props;
+        { getHKFirstNews } = self.props;
         const step = Tools.getFromUrlParam('key') || '';
-        getHKNews(step,'',1);
+        getHKFirstNews(step,'',1);
     }
     
     render() {
@@ -103,7 +103,11 @@ class Newsonebody extends Component{
                                     <span className="news-three-body-loading-down">{intl.get('loading_ing')}</span>}
                                 </button>
                             </div>
-                        ) : newsListArry.length === 0 ? <Newsthreebodynone word={'港股资讯'} /> :''
+                        ) : newsListArry.length === 0 ? 
+
+                        <Newsthreebodynone word={'港股资讯'} /> 
+                        : 
+                        ''
                     }
                     
                 </div>
@@ -119,7 +123,7 @@ const mapDispatchToProps = (state) => ({
   
 export default connect(mapDispatchToProps,{
     getHKNews,
-    // getHKDetail
+    getHKFirstNews
 })(Newsonebody);
 // export default Newsonebody;
 

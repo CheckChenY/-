@@ -1,5 +1,7 @@
 import Axios from 'axios';
 import qs from 'qs';
+import { openNotification } from '../errcode/index';
+
 // import Uuid from 'uuid';
 // export const GET_SHOW_MODAL = 'GET_SHOW_MODAL';
 // export const GET_HIDE_MODAL = 'GET_HIDE_MODAL';
@@ -11,6 +13,8 @@ import qs from 'qs';
 
 export const GET_EDIT_PASSWORD = 'GET_EDIT_PASSWORD';
 export const GET_EDIT_PASSWORD_HIDE = 'GET_EDIT_PASSWORD_HIDE';
+// export const ERR_CODE_EDITPASSWORD = 'ERR_CODE_EDITPASSWORD';
+
 // export const EDIT_PASSWORD_SAVE = 'EDIT_PASSWORD_SAVE';
 
 
@@ -131,6 +135,12 @@ export const editPasswordSave = (userPassword,newPassword,userName,newPasswordAg
                 visible: false,
             })
             alert("修改成功")
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_EDITPASSWORD,
+            //     errcode:response.data.code
+            // })
         }
     })
     .then(function (err) {

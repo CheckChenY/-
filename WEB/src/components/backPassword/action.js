@@ -1,11 +1,14 @@
 import Axios from 'axios';
 import qs from 'qs';
 import Uuid from 'uuid';
+import { openNotification } from '../errcode/index';
+
 export const GET_IMG_CODE = 'GET_IMG_CODE';
 export const GET_HIDE_MODAL = 'GET_HIDE_MODAL';
 export const GET_NEXT_STEP_ONE = 'GET_NEXT_STEP_ONE';
 export const GET_NEXT_STEP_TWO = 'GET_NEXT_STEP_TWO';
 export const GET_NEXT_STEP_TRE = 'GET_NEXT_STEP_TRE';
+// export const ERR_CODE_BACKPASSWORD = 'ERR_CODE_BACKPASSWORD';
 
 
 export const getImgCode = () => dispath => {
@@ -18,11 +21,19 @@ export const getImgCode = () => dispath => {
         }
         )
         .then(function (response) {
-            dispath({
-                type:GET_IMG_CODE,
-                imgSrc:response.data,
-                uuid:uuid,
-            })
+            if(response.status === 200){
+                dispath({
+                    type:GET_IMG_CODE,
+                    imgSrc:response.data,
+                    uuid:uuid,
+                })
+            }else{
+                openNotification(response.data.code)
+                // dispath({
+                //     type:ERR_CODE_BACKPASSWORD,
+                //     errcode:response.data.code
+                // })
+            }
         })
         .catch(function (error) {
             console.log(error);
@@ -60,12 +71,20 @@ export const nextStepTwo = (uuid,code,userName) => dispath => {
         }
     )
     .then(function (response) {
-        dispath({
-            type:GET_NEXT_STEP_TWO,
-            nextStep: 'two',
-            visible: true,
-            email:response.data.data
-        })
+        if(response.data.code === 1){
+            dispath({
+                type:GET_NEXT_STEP_TWO,
+                nextStep: 'two',
+                visible: true,
+                email:response.data.data
+            })
+        }else{
+            openNotification(response.data.code)
+            // dispath({
+            //     type:ERR_CODE_BACKPASSWORD,
+            //     errcode:response.data.code
+            // })
+        }
     })
     .catch(function (error) {
         console.log(error);
@@ -94,10 +113,18 @@ export const nextStepTre = (userName,email,password,emailCode,againPassword) => 
             }
         )
         .then(function (response) {
-            dispath({
-                type:GET_NEXT_STEP_TRE,
-                nextStep: 'tre',
-            })
+            if(response.data.code === 1){
+                dispath({
+                    type:GET_NEXT_STEP_TRE,
+                    nextStep: 'tre',
+                })
+            }else{
+                openNotification(response.data.code)
+                // dispath({
+                //     type:ERR_CODE_BACKPASSWORD,
+                //     errcode:response.data.code
+                // })
+            }
         })
         .catch(function (error) {
             console.log(error);

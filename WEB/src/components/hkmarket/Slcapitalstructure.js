@@ -92,7 +92,7 @@ class Slcapitalstructure extends Component{
                                                 <li className="capitalstructure-body-right-two">{show?show.overseasListedStock:'-'}-</li>
                                                 <li className="capitalstructure-body-right-two">{show?show.noListedStock:'-'}-</li>
                                                 <li className="capitalstructure-body-right-two">{show?show.preferredStock:'-'}-</li>
-                                                <li className="capitalstructure-body-right-two">{show?show.noticeDate:'购回股份'}</li>
+                                                <li className="capitalstructure-body-right-two">{show?show.changeReason:'购回股份'}</li>
                                             </ul>
                                         ))
                                     }

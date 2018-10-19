@@ -9,6 +9,7 @@ class Newsthree extends Component{
     render() {
         const self = this,
         { getHKIssueSelect=()=>{},numPageIsseuTotal } = self.props;
+        console.log(numPageIsseuTotal);
             return (
                 <div>
                     <div>
@@ -46,7 +47,7 @@ class Newsthree extends Component{
                         </Select>
                         <span className="title-search">
                             {intl.get('search_result_one')}
-                            <span className="title-search-result">{numPageIsseuTotal?numPageIsseuTotal:' '}</span>
+                            <span className="title-search-result">{numPageIsseuTotal?numPageIsseuTotal:'0'}</span>
                             {intl.get('search_result_two')}
                         </span>
                     </div>

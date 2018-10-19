@@ -5,7 +5,7 @@ import intl from 'react-intl-universal';
 
 // import { getLoading } from './action'
 
-import { userInfoUpdate,getLoading } from './action';
+import { userInfoUpdate,getLoading,getLoadingBool } from './action';
 import { Row, Col, Button, Input, Form } from 'antd';
 
 import './myInformation.css';
@@ -33,7 +33,7 @@ class MyInformation extends Component{
             Bool:true
             // getLoadingBool:false,
         }
-        this.changeData = this.changeData.bind(this);
+        // this.changeData = this.changeData.bind(this);
         // this.handeChangeEmail = this.handeChangeEmail.bind(this);
         // this.handeChangeNickname = this.handeChangeNickname.bind(this);
         // this.handeChangeAddress = this.handeChangeAddress.bind(this);
@@ -43,31 +43,37 @@ class MyInformation extends Component{
 
     componentDidMount(){
         const self = this,
-        { getLoading,state } =  self.props,
+        { getLoading,state,getLoadingBool } =  self.props,
         { userId } = state;
         // { data } = user,
         // { userId } = data;
         getLoading(userId);
+        getLoadingBool(false);
     }
 
-    changeData=()=>{
-        this.setState({
-            Bool:!this.state.Bool
-        })
-    }
+    // changeData=()=>{
+    //     this.setState({
+    //         Bool:!this.state.Bool
+    //     })
+    // }
     render() {
         const self = this,
-        { state ,props } = self,
+        {props } = self,
         { 
             userInfoUpdate,
-            state:selfState 
+            state ,
+            getLoadingBool
         } = props,
-        { userAccount,userEmail,userNickname,userAddress,userSlogan} = selfState,
-        { Bool} = state;
+        { userAccount,
+            userEmail,
+            userNickname,
+            userAddress,
+            userSlogan,
+            tabBol} = state;
         return (
             <div>
                 {
-                Bool ? (
+                tabBol ? (
                     <Row>   
                     <div className='my-information-right'>
                         <img alt='金融搜索' src={imgoneURL2} className='my-information-right-BG'/>
@@ -83,7 +89,7 @@ class MyInformation extends Component{
                                 <Button 
                                 className='my-information-right-button'
                                 onClick={
-                                    this.changeData
+                                    ()=>getLoadingBool(true)
                                 }
                                 >
                                     <img alt='金融搜索' src={imgoneURL3} style={{width:'9px', height:'9px', margin:'4px 4px 0 0', verticalAlign:'top'}}/>
@@ -100,7 +106,7 @@ class MyInformation extends Component{
                             <span style={{borderLeft:'solid 1px #6b6b6b', margin:'0 15px', height:'25px'}}/>
                             <span className='my-information-right-text'>
                                 <img alt='金融搜索' src={imgoneURL5} style={{width:'25px', height:'25px',marginRight:'8px'}}/>
-                                {userAddress}   
+                                {userAddress === 'null' ? '' : userAddress}   
                             </span>                                    
                         </div>
                         <div style={{marginTop:'20px'}}>
@@ -149,11 +155,11 @@ class MyInformation extends Component{
                                     label={intl.get('location')}
                                 >
                                     <Input 
-                                    ref={input=>{
-                                        self.userAddress=input
-                                    }}
+                                        ref={input=>{
+                                            self.userAddress=input
+                                        }}
                                     // onChange={this.handeChangeAddress} 
-                                    defaultValue={userAddress} />
+                                    defaultValue={userAddress === 'null' ? '' : userAddress} />
                                 </FormItem>
                                 <FormItem
                                     label={intl.get('link_way')}
@@ -184,7 +190,7 @@ class MyInformation extends Component{
                                                 htmlType="submit" 
                                                 className='modify-information-form-button-cancel'
                                                 onClick={
-                                                    this.changeData
+                                                    ()=>getLoadingBool(false)
                                                 }
                                             >
                                                 {intl.get('cancel')}
@@ -226,6 +232,6 @@ const mapDispatchToProps = (state) => ({
   })
   
   export default connect(mapDispatchToProps,{
-    userInfoUpdate,getLoading
+    userInfoUpdate,getLoading,getLoadingBool
   })(MyInformation);
 

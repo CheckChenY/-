@@ -10,7 +10,6 @@ import imgthreeURL from '../assient/home/3.png';
 
 
 class Homepagepicture extends Component{
-
     render() {
         const self = this,
         {  IndexOne ,getHKDetail} = self.props;

@@ -34,44 +34,6 @@ const FormItem = Form.Item;
 
 
 class NormalLoginForm extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      userAccount:'123'
-    }
-  }
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const self = this,
-  //   { props } = self;
-  //   props.form.validateFields((err, values) => {
-  //     if (!err) {
-  //       console.log('Received values of form: ', values);
-  //       localStorage.setItem('userName', values.userName);
-
-  //       Axios.post('/api/User/userLogin', {
-  //         userAccount: values.userName,
-  //         userPassword: values.password
-  //       })
-  //       .then(function (response) {
-  //         if(response.data.code === 1){
-  //           localStorage.setItem('userAccount', response.data.data.userAccount);
-  //           localStorage.setItem('userAddress', response.data.data.userAddress);
-  //           localStorage.setItem('userEmail', response.data.data.userEmail);
-  //           localStorage.setItem('userId', response.data.data.userId);
-  //           localStorage.setItem('userNickname', response.data.data.userNickname);
-  //           localStorage.setItem('userSlogan', response.data.data.userSlogan);
-  //           self.props.history.push('/index');
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //     }
-  //   });
-  // }
-
   render() {
     const self = this,
     { props } = self,
@@ -120,7 +82,7 @@ class NormalLoginForm extends Component {
             </Link>
           </Col>
         </FormItem>
-        <FormItem style={{marginBottom:'28px'}}>
+        <FormItem style={{marginBottom:'28px',paddingTop:'5px'}}>
           <Button type="primary" 
           htmlType="submit" 
           onClick={

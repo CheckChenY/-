@@ -39,7 +39,7 @@ class MakeComment extends Component{
             { props,state:selfState } = self,
             { txt } = selfState,
             { subCommentContent ,state} = props,
-            { userId } = state;
+            { userId, userNickname } = state;
         return (
             <div>
                 <hr style={{border: 'solid 1px #E8E8E8'}}/>
@@ -48,23 +48,29 @@ class MakeComment extends Component{
                             <Col span={3}>
                                 <div style={{width:'100%', textAlign:'center'}}>
                                     <img  alt='aaa' src={imgURL1} className='details-user-icon'/>
-                                    <div className='details-user-ID'>ID: {userId}</div>
+                                    <div className='details-user-ID'>ID: {userNickname?userNickname:userId}</div>
                                 </div>
                             </Col>
                             <Col span={21}>
                                 <div style={{width:'100%',height:'218px'}} className='details-add-comment'>
+                                    
                                     <TextArea row={8}  
-                                    onChange={this.handeChangeTxt}
-                                    style={{height:'135px', border:'none'}}
+                                        onChange={this.handeChangeTxt}
+                                        style={{height:'135px', border:'none'}}
+                                        value={txt}
                                     />
                                     <hr style={{border: 'solid 1px #E8E8E8'}}/>
                                     <Button
-                                    type="primary" 
-                                    onClick={
-                                        ()=>subCommentContent(userId,txt)
-                                    }
-                                    className='details-add-comment-button'
-                                     >{intl.get('make_comment')}</Button>
+                                        type="primary" 
+                                        onClick={
+                                            ()=>{
+                                                subCommentContent(userId,txt)
+                                                this.setState({txt:''})
+                                            }
+                                        }
+                                        className='details-add-comment-button'
+                                        >{intl.get('make_comment')}
+                                    </Button>
                                 </div>
                             </Col>
                         </Row>

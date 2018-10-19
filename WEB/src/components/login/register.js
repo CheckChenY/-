@@ -68,6 +68,7 @@ handeChangeCode(e){
     { state:selfState,nextStep,getImgCode,registerSuccess,prvStep } = props,
     { userName ,userPassword,email ,code,passwordAgain,} = state,
     { imgSrc , show ,uuid} = selfState;
+    console.log(imgSrc);
     return (
       <div>
           {
@@ -145,9 +146,10 @@ handeChangeCode(e){
                     wrapperCol={{
                         xs: { span: 24, offset: 0 },
                     }}
+                    style={{paddingTop:'27px'}}
                 >
-                    <Button type="default" 
-                        className="register-box-button"
+                    <Button type="primary" 
+                        className="register-box-button-last"
                         onClick={ ()=>prvStep() } >
                         上一步
                     </Button>

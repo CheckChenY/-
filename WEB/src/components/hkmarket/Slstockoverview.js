@@ -24,7 +24,11 @@ import imgoneURL from '../assient/stockNews/arrow.png';
 // }
 
 class Slstockoverview extends Component{
-     
+    
+    componentWillMount(){
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+
     componentDidMount(){
         const self = this,
         { getInfoStock,
@@ -34,8 +38,18 @@ class Slstockoverview extends Component{
             state } = self.props,
         { stock_code } = stockCodeList,
         { userAccount } = state;
-        getInfoStock(stock_code);
-        getImageStock(stock_code);
+            if(stock_code === undefined){
+                if(stockCodeList === ''){
+                    getInfoStock('00010');
+                    getImageStock('00010');
+                }else{
+                    getInfoStock(stockCodeList);
+                    getImageStock(stockCodeList);
+                }
+            }else{
+                getInfoStock(stock_code);
+                getImageStock(stock_code);
+            }
         getHKMarketstockListSelf(1,userAccount);
         // 增加定时器
         this.interval = setInterval(()=>this.tick(), 30000);
@@ -49,8 +63,19 @@ class Slstockoverview extends Component{
         const self = this,
         { stockCodeList ,getInfoStock,getImageStock} = self.props,
         { stock_code } = stockCodeList;
-        getInfoStock(stock_code);
-        getImageStock(stock_code);
+
+        if(stock_code === undefined){
+            if(stockCodeList === ''){
+                getInfoStock('00010');
+                getImageStock('00010');
+            }else{
+                getInfoStock(stockCodeList);
+                getImageStock(stockCodeList);
+            }
+        }else{
+            getInfoStock(stock_code);
+            getImageStock(stock_code);
+        }
     }
 
     render() {
@@ -64,6 +89,10 @@ class Slstockoverview extends Component{
             userAccount,
             code,
         } = state;
+        let stockCode;
+        if(getStockList){
+            stockCode = getStockList.stockCode
+        }
         return (
             <div style={{borderTop:'solid 1px #ebeef1'}}>
                 <div className="stockoverview-top" >
@@ -85,7 +114,7 @@ class Slstockoverview extends Component{
                         <div className="stockoverview-top-left-three">
                             <Button
                                 onClick={
-                                    ()=>setSelfCodeView(userAccount,getStockList.stockCode,current)
+                                    ()=>setSelfCodeView(userAccount,stockCode,current)
                                 }
                             >
                             {
@@ -234,7 +263,7 @@ export default connect(mapDispatchToProps,{
     getImageStock,
     getHKMarketstockListSelf,
     backList,
-    setSelfCodeView
+    setSelfCodeView,
 })(Slstockoverview);
 
 // export default Slstockoverview;

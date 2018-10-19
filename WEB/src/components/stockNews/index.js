@@ -1,10 +1,11 @@
 import React,{ Component} from 'react';
 import intl from 'react-intl-universal';
 import { Tabs } from 'antd';
-
+import Tools from '../corn/tools';
 import { connect } from 'react-redux';
 import { 
     getHKDetail,
+    setTitleIndex,
 } from './action';
 // import Tools from '../corn/tools';
 import HeaderVister from '../header/Header';//访客头部按钮
@@ -33,6 +34,18 @@ function callback(key) {
 
 
 class MyInformation extends Component{
+
+    componentDidMount(){
+        const self = this,
+        { setTitleIndex } = self.props;
+        const title = Tools.getFromUrlParam('title') || '';
+        if(title === ''){
+
+        }else{
+            setTitleIndex();
+        }
+    }
+
     render() {
         const self = this,
         { props } = self,
@@ -44,12 +57,14 @@ class MyInformation extends Component{
             numPageIsseuTotal,
             userId
         } = state;
+        const tab = Tools.getFromUrlParam('tab') || '';
         return (
             <div>
-                {userId===null? <HeaderVister /> : <Index {...props} bShowSearch={true}/>}
+                {userId===null? <HeaderVister /> : <Index {...props} bShowSearch={true} searchWord={'1'}/>}
                 <div className="page-all">
                     <div className="title">
-                        <Tabs defaultActiveKey="1" onChange={callback} type="card" className='page-all-tab'>
+                        <Tabs defaultActiveKey={tab===''?'1':tab} 
+                        onChange={callback} type="card" className='page-all-tab'>
                             <TabPane 
                                 tab={<div><span className="title-stock-one">{intl.get('HKstocks_information')}</span></div>}
                                 key="1"
@@ -95,6 +110,7 @@ const mapDispatchToProps = (state) => ({
   
 export default connect(mapDispatchToProps,{
     getHKDetail,
+    setTitleIndex
 })(MyInformation);
   
 // export default MyInformation;
